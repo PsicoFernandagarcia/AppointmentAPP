@@ -1,0 +1,28 @@
+<app-loader></app-loader>
+<router-outlet></router-outlet>
+<mat-toolbar *ngIf="showToolbar" class ="toolbarNav">
+  <button *ngIf="role === 'HOST'" mat-flat-button routerLink="/my-time" routerLinkActive="active-link">
+    <mat-icon class="material-icons color_blue">
+      star_border</mat-icon>
+    <span>{{"my_time"|translate}}</span>
+  </button>
+  <button *ngIf="role !== 'HOST'" mat-flat-button routerLink="/new-appointment" routerLinkActive="active-link">
+    <mat-icon class="material-icons color_blue">
+      add</mat-icon>
+    <span>{{"new_appointment"|translate}}</span>
+  </button>
+  <button *ngIf="role === 'HOST'" mat-flat-button routerLink="/new-appointment" routerLinkActive="active-link">
+    <mat-icon class="material-icons color_blue">
+      add</mat-icon>
+    <span>{{"assign_appointment"|translate}}</span>
+  </button>
+  <button mat-flat-button routerLink="/dashboard" routerLinkActive="active-link">
+    <mat-icon class="material-icons color_blue">
+      star_border</mat-icon>
+    <span>{{"my_appointments"|translate}}</span>
+  </button>
+  <button mat-flat-button (click)="logout()">
+    <mat-icon class="material-icons color_blue">exit_to_app</mat-icon>
+    <span>{{"log_out"|translate}}</span>
+  </button>
+</mat-toolbar>

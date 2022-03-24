@@ -1,0 +1,11 @@
+
+.calendar-button{
+  z-index: 100;
+  position: fixed;
+  bottom:10%;
+  left:10px;
+}
+
+.mat-list-base{
+  padding: 0px;
+}

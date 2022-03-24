@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.full-width-input {
+  width: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+.side-calendar{
+  width: 300px;
+}
+td.mat-calendar-body-cell.custom-date-class{
+  background: orange !important;
+  border-radius: 100% !important;
+}
+
+.success-snackbar {
+  background: rgb(42, 161, 42);
+  color:white;
+}
+
+.error-snackbar {
+  background: rgb(192, 37, 37);
+  color:white;
+}

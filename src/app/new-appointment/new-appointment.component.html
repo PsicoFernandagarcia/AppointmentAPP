@@ -1,0 +1,89 @@
+<mat-drawer-container style="height: 91%;">
+  <mat-drawer #drawer [opened]="shouldDrawerBeOppened()" [mode]="'side'">
+    <div class="side-calendar">
+      <mat-calendar [(selected)]="selectedDay" [minDate]="minDate" [maxDate]="maxDate" [dateFilter]="removeDates"
+        (selectedChange)="onDateChange($event)">
+      </mat-calendar>
+
+      <div class="actions">
+        <mat-divider></mat-divider>
+        
+      </div>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div class="host-assignment">
+      <div class="user-list" *ngIf ="isHost">
+        <mat-list role="list">
+          <h2>Selecciona un usuario del listado o escribe su email y nombre </h2>
+        </mat-list>
+        <mat-form-field appearance="fill">
+          <mat-label>{{"patient"|translate}}</mat-label>
+          <mat-select (valueChange)="onUserChange($event)">
+            <mat-option *ngFor="let p of patients" [value]="p.id">
+              {{p.name}} {{p.lastName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+          <mat-form-field appearance="fill">
+          <mat-select (valueChange)="onCountryChange($event)">
+            <mat-option [value]="-180">AR</mat-option>
+            <mat-option [value]="60">ESP</mat-option>
+          </mat-select>
+        </mat-form-field>
+        
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>{{"Email"|translate}}</mat-label>
+          <input matInput [(ngModel)]="userToAssignSelected.email">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>{{"Name"|translate}}</mat-label>
+          <input matInput [(ngModel)]="userToAssignSelected.name">
+        </mat-form-field>
+      </div>
+
+    </div>
+    <div data-column="_agendacolumn2" data-column-id="agendaColumn"
+      class="b-grid-cell b-calendar-cell b-nonworking-day b-sticky-cell" style="min-width: 60px;">
+      <div style="width: 100%;">
+        <mat-accordion>
+          <mat-expansion-panel *ngFor="let availability of selectedMonthAvailabilities; let index = index;">
+            <mat-expansion-panel-header class="panel-header" *ngIf="availability.length > 0">
+              <mat-panel-title>
+                <div class="cal-agenda-date-date-number" [ngClass]="'day-selected'">
+                  {{index+1}}
+                </div>
+              </mat-panel-title>
+              <mat-panel-description>
+                <div class="cal-agenda-date-text">
+                  {{getIndexDate(index+1) | date:'EEEE' | translate}} -
+                  {{getIndexDate(index+1) | date:'MMMM' | translate}} {{getIndexDate(index+1) | date:'yyyy'}}
+                </div>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="time-selection">
+              <h3>{{'availability'|translate}}:</h3>
+              <mat-chip-list aria-label="Fish selection">
+                <mat-chip class="time-chip" *ngFor="let hour of availability"
+                  [ngClass]="!hour.availability ? 'enable' : 'disable'"
+                  [class.chip-selected]="hour.availability.id== availabilitySelected.id"
+                  (click)="selectAvailability(hour.availability)">
+                  {{hour.hour}}                  
+                </mat-chip>
+              </mat-chip-list>
+            </div>
+            <mat-action-row>
+              <button mat-button color="primary" (click)="saveAppointment()">{{'save'|translate}}</button>
+            </mat-action-row>
+          </mat-expansion-panel>
+        </mat-accordion>
+
+      </div>
+
+    </div>
+
+  </mat-drawer-content>
+</mat-drawer-container>
+<button mat-icon-button color="primary" class="calendar-button">
+  <mat-icon (click)="drawer.toggle()">calendar_today</mat-icon>
+</button>

@@ -1,0 +1,89 @@
+.round-button{
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  padding:0px;
+  text-align: center;
+  font-size: xxx-large;
+}
+.mat-list-item.mat-focus-indicator{
+  height: auto;
+  min-height: 50px;
+}
+.b-cal-agenda-date {
+  flex-flow: row nowrap;
+  flex: 0 0 14em;
+  padding: 0 1em;
+  align-items: center;
+  height: 2.6em;
+  margin: 0.2em 0 0;
+}
+.cal-agenda-date-date-number {
+  margin: 0 0.1em 0 0;
+  font-size: 3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+}
+
+.cal-agenda-date-text{
+  top: 33%;
+    height: fit-content;
+    position: relative;
+}
+
+.b-cal-event-bar-container {
+  flex: 1;
+  flex-flow: column;
+}
+.b-cal-agenda-event-row {
+  flex: 1;
+  display: flex;
+  flex-flow: row nowrap;
+  align-self: stretch;
+}
+.b-calendar-cell{
+  flex: 1 1 100%;
+    padding: 1.5em 0;
+    align-items: flex-start;
+    color: #606060;
+    display: flex;
+}
+.b-cal-agenda-event-time {
+  flex: 0 0 12em;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+.cal-agenda-date-date-number:hover{
+  background-color: #f0f0f0;
+}
+
+.day-selected{
+  border-color:#8f8fe8b3;
+  border-style: groove;
+}
+.canceled-chip{
+  background-color: #ec5c5c!important;
+}
+
+.canceled{
+  text-decoration: line-through;
+}
+
+.time-selection{
+
+}
+.disable{
+  background-color:#3f51b5;
+  color: white;
+}
+.panel-header{
+  height: fit-content;
+  margin:10px;
+  padding:5px;
+}
