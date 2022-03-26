@@ -8,7 +8,7 @@ on:
 
 jobs:
 
-  build:
+  build-and-push:
 
     runs-on: ubuntu-latest
 
@@ -30,4 +30,30 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: joacoferroni/appointment-api:ui-psicofer
+          tags: joacoferroni/${{ secrets.DOCKER_IMAGE }}:latest
+  deploy:
+    needs: build-and-push
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: SSH connector
+        id: deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          envs: IMAGE_NAME
+          script: |
+            echo "Log into registry"
+            echo "${{ secrets.SSH_KEY }}" 
+            echo "Pull image"
+            docker pull joacoferroni/${{ secrets.DOCKER_IMAGE }}:latest
+            echo "Stop psico fer api image"
+            docker stop psicofer_api
+            echo "Remove psicofer_api container"
+            docker rm psicofer_api
+            echo "Run Docker psicofer_api"
+            docker run -d --network="host" --restart=unless-stopped \
+            --name psicofer_api joacoferroni/${{ secrets.DOCKER_IMAGE }}:latest
