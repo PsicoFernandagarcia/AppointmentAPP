@@ -56,4 +56,4 @@ jobs:
             docker rm psicofer_ui
             echo "Run Docker psicofer_ui"
             docker run -d --restart=unless-stopped \
-            --name psicofer_ui -p 4200:8088/tcp joacoferroni/${{ secrets.DOCKER_IMAGE }}:latest
+            --name psicofer_ui -p 80:8088/tcp joacoferroni/${{ secrets.DOCKER_IMAGE }}:latest
