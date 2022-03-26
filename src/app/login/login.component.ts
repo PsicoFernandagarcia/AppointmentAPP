@@ -75,10 +75,6 @@ export class LoginComponent implements OnInit {
 
   login(){
     this.loaderService.show();
-
-    this.authService.getTimeZone().subscribe(res=>{
-      console.log(res);
-    });
     if(!this.formGroup.valid) return;
     this.authService.auth(this.formGroup.value).subscribe(data=>{
       this.onLoginSuccess(data);
