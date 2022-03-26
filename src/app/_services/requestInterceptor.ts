@@ -24,8 +24,8 @@ export class RequestInterceptor implements HttpInterceptor {
       let secureReq = req;
       if(req.url.indexOf('bing')<0)
         secureReq = req.clone({
-          url:'http://localhost:5000/api'+ req.url,
-          //url:'http://143.198.126.91/api'+ req.url,
+          //url:'http://localhost:5000/api'+ req.url,
+          url:'http://143.198.126.91/api'+ req.url,
           headers: req.headers.set('Authorization', authToken)
         });
       let ok: string;
