@@ -50,10 +50,10 @@ jobs:
             echo "${{ secrets.SSH_KEY }}" 
             echo "Pull image"
             docker pull joacoferroni/${{ secrets.DOCKER_IMAGE }}:latest
-            echo "Stop psico fer api image"
-            docker stop psicofer_api
-            echo "Remove psicofer_api container"
-            docker rm psicofer_api
-            echo "Run Docker psicofer_api"
-            docker run -d --network="host" --restart=unless-stopped \
-            --name psicofer_api joacoferroni/${{ secrets.DOCKER_IMAGE }}:latest
+            echo "Stop psico fer ui image"
+            docker stop psicofer_ui
+            echo "Remove psicofer_ui container"
+            docker rm psicofer_ui
+            echo "Run Docker psicofer_ui"
+            docker run -d --restart=unless-stopped \
+            --name psicofer_ui joacoferroni/${{ secrets.DOCKER_IMAGE }}:latest
