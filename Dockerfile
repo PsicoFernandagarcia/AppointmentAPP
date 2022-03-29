@@ -35,5 +35,6 @@ RUN chgrp -R root /var/cache/nginx /var/run /var/log/nginx && \
 
 # Expose port 8088 not 80
 EXPOSE 8088
+EXPOSE 443
 
 CMD ["nginx", "-g", "daemon off;"]
