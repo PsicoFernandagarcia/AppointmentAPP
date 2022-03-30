@@ -46,9 +46,10 @@
     align-items: flex-start;
     color: #606060;
     display: flex;
+    flex-wrap: wrap;
 }
 .b-cal-agenda-event-time {
-  flex: 0 0 12em;
+  flex: 0 0 9em;
   white-space: nowrap;
   display: flex;
   align-items: center;

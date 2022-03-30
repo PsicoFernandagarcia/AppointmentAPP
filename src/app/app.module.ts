@@ -14,6 +14,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { LoaderModule } from './loader/loader.module';
 import { AlertDialog, ConfirmationDialog } from './_services/notification.service';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { AlertDialog, ConfirmationDialog } from './_services/notification.servic
     MatToolbarModule,
     MatIconModule,
     MatSnackBarModule,
+    MatTooltipModule,
     MatDialogModule,
     LoaderModule
   ],
