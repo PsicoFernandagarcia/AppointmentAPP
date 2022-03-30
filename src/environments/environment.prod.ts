@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  apiUrl:"https://psicofernandagarcia.com:8443/api"
 };

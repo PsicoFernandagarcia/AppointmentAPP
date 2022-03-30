@@ -8,6 +8,7 @@ import { catchError, retry } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { NotificationService } from './notification.service';
 import { LoadingService } from './loading.service';
+import { environment } from 'src/environments/environment';
 
 /** Pass untouched request through to the next request handler. */
 @Injectable()
@@ -25,7 +26,7 @@ export class RequestInterceptor implements HttpInterceptor {
       if(req.url.indexOf('bing')<0)
         secureReq = req.clone({
           //url:'http://localhost:5000/api'+ req.url,
-          url:'http://143.198.126.91:5000/api'+ req.url,
+          url:environment.apiUrl+ req.url,
           headers: req.headers.set('Authorization', authToken)
         });
       let ok: string;
