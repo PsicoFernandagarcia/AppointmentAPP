@@ -178,7 +178,7 @@ export class NewAppointmentComponent implements OnInit {
       userName,
       currentUser.id,
       '',
-      2,
+      this.hosts[0].id,
       '',
       currentUser.id,
       `${currentUser.firstName} ${currentUser.lastName}`,
