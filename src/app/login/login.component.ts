@@ -113,7 +113,7 @@ export class LoginComponent implements OnInit {
   onLoginSuccess(data:AuthResponse){
     let info  = jwt_decode(data.token) as any;
     localStorage.setItem('currentUser',JSON.stringify(data));
-    localStorage.setItem('userName',this.formGroup.get('userName')?.value);
+    localStorage.setItem('userName',data.userName);
     localStorage.setItem('userRole',info.role);
     localStorage.setItem('token','Bearer '+ data.token);
      //LoginComponent.logginSuccess.next(new UserModel(0,this.loginModel.userName,info.role));
