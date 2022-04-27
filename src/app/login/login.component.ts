@@ -76,7 +76,9 @@ export class LoginComponent implements OnInit {
   login(){
     if(!this.formGroup.valid) return;
     this.loaderService.show();
-    this.authService.auth(this.formGroup.value).subscribe(data=>{
+    const timezoneOffset = (new Date().getTimezoneOffset()*-1);
+    const auth = new Auth(this.formGroup.get('userName')?.value,this.formGroup.get('password')?.value,timezoneOffset);
+    this.authService.auth(auth).subscribe(data=>{
       this.onLoginSuccess(data);
       this.loaderService.hide();
     },error =>{
@@ -99,7 +101,7 @@ export class LoginComponent implements OnInit {
 
   loginWithGoogle(): void {
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(data=>{
-      const timezoneOffset = new Date().getTimezoneOffset();
+      const timezoneOffset = (new Date().getTimezoneOffset()*-1);
       this.authService.authExternal(new AuthExternal(data.email,data.firstName,data.lastName,data.idToken,data.provider,timezoneOffset))
       .subscribe(res=>{
         this.onLoginSuccess(res);
@@ -116,9 +118,8 @@ export class LoginComponent implements OnInit {
     localStorage.setItem('userName',data.userName);
     localStorage.setItem('userRole',info.role);
     localStorage.setItem('token','Bearer '+ data.token);
-     //LoginComponent.logginSuccess.next(new UserModel(0,this.loginModel.userName,info.role));
+     this.router.navigate(['dashboard']);
      LoginComponent.logginSuccess.next(data);
-    this.router.navigate(['dashboard']);
   }
 
   showRegistrationForm(){

@@ -101,6 +101,7 @@ export class MyTimeComponent implements OnInit {
         return;
       }
       const date = new Date();
+      date.setDate(10);
       date.setMonth(this.selectedDay?.getMonth() ?? 1);
       date.setDate(dayNumber);
       date.setHours(hour.hour);

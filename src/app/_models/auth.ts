@@ -2,12 +2,14 @@
 export class Auth{
     userName: string;
     password: string;
+    timezoneOffset:number;
     /**
      *
      */
-    constructor(_userName:string,_password:string) {
+    constructor(_userName:string,_password:string, _timezoneOffset:number) {
         this.userName = _userName;
         this.password = _password;
+        this.timezoneOffset = _timezoneOffset
     }
 }
 

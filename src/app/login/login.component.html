@@ -65,24 +65,29 @@
               (click)="register()">{{"register"|translate}}</button>
             <div style="margin-top:10px">
               <button (click)="showRegistrationForm()" mat-button>{{'back_to_login'|translate}}</button>
+              
               <!-- /
-          <a mat-button href="https://www.google.com/" target="_blank">{{'forgot_password'|translate}}</a> -->
+                <a mat-button href="https://www.google.com/" target="_blank">{{'forgot_password'|translate}}</a> -->
+              </div>
+            </div>
+            <hr>
+          </form>
+          <!-- Social login -->
+          
+          <p style="padding-left: 16px;">{{'external_login'|translate}}</p>
+          <div id="gSignInWrapper" style="display: flex;" (click)="loginWithGoogle()">
+            <div id="customBtn" class="customGPlusSignIn" style="max-height: 44px;">
+              <span class="icon"></span>
+              <span class="buttonText">Google</span>
+            </div>
+            <div>
+
+              <img  class ="full-logo" src="../../assets/images/full-logo-min.png">
             </div>
           </div>
-          <hr>
-        </form>
-        <!-- Social login -->
-
-        <p style="padding-left: 16px;">{{'external_login'|translate}}</p>
-        <div id="gSignInWrapper" (click)="loginWithGoogle()">
-          <div id="customBtn" class="customGPlusSignIn">
-            <span class="icon"></span>
-            <span class="buttonText">Google</span>
-          </div>
-        </div>
-        <!-- Form -->
-
-      </mat-card-content>
+          <!-- Form -->
+          
+        </mat-card-content>
 
     </mat-card>
   </div>
