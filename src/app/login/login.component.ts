@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
 import jwt_decode from 'jwt-decode';
 import { BehaviorSubject } from 'rxjs';
 import { Auth, AuthExternal, AuthResponse } from '../_models/auth';
@@ -13,6 +12,7 @@ import { NotificationService } from '../_services/notification.service';
 import { createApi } from 'unsplash-js';
 import { Random } from 'unsplash-js/dist/methods/photos/types';
 import { LoadingService } from '../_services/loading.service';
+import { GoogleLoginProvider, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 const unsplash = createApi({ accessKey: 'HrgmLTUUM2pk2xwmYDoAxgn4dh1L7SZdF_3o4fjf-os' });
 
 @Component({

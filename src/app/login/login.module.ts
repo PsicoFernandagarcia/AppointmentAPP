@@ -10,9 +10,8 @@ import {MatInputModule} from '@angular/material/input';
 import { TranslateModule } from '../_pipes/resource.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
-import { GoogleLoginProvider } from 'angularx-social-login';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
 
 @NgModule({
   declarations: [
