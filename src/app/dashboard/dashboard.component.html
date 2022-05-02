@@ -3,18 +3,7 @@
     <div class="side-calendar">
       <mat-calendar [(selected)]="selectedDay" [minDate]="minDate" [maxDate]="maxDate" [dateClass]="setAppointments"
         [dateFilter]="removeDates"></mat-calendar>
-      <p>Selected date: {{selectedDay}}</p>
-      <p>Selected utc date: {{getUtc()}}</p>
-
-      <div class="actions">
-        <mat-divider></mat-divider>
-        <mat-list role="list">
-          <mat-list-item>
-            <mat-divider></mat-divider>
-            {{"log_out"|translate}}
-          </mat-list-item>
-        </mat-list>
-      </div>
+    
     </div>
   </mat-drawer>
   <mat-drawer-content>

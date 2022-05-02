@@ -15,6 +15,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { LoaderModule } from './loader/loader.module';
 import { AlertDialog, ConfirmationDialog } from './_services/notification.service';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
