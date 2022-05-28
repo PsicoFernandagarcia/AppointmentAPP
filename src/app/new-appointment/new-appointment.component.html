@@ -1,16 +1,5 @@
 <mat-drawer-container style="height: 91%;">
-  <mat-drawer #drawer [opened]="shouldDrawerBeOppened()" [mode]="'side'">
-    <div class="side-calendar">
-      <mat-calendar [(selected)]="selectedDay" [minDate]="minDate" [maxDate]="maxDate" [dateFilter]="removeDates"
-        (selectedChange)="onDateChange($event)">
-      </mat-calendar>
-
-      <div class="actions">
-        <mat-divider></mat-divider>
-        
-      </div>
-    </div>
-  </mat-drawer>
+ 
   <mat-drawer-content>
     <div class="host-assignment">
       <div class="user-list" *ngIf ="isHost">
@@ -41,8 +30,8 @@
           <input matInput [(ngModel)]="userToAssignSelected.name">
         </mat-form-field>
       </div>
-
     </div>
+
     <div data-column="_agendacolumn2" data-column-id="agendaColumn"
       class="b-grid-cell b-calendar-cell b-nonworking-day b-sticky-cell" style="min-width: 60px;">
       <div style="width: 100%;">
@@ -77,13 +66,18 @@
             </mat-action-row>
           </mat-expansion-panel>
         </mat-accordion>
-
+        <div class ="change-month-container">
+          <p *ngIf="!hasAvailabilities">No se han configurado citas aun</p>
+          <button 
+          class ="change-month-btn"
+            mat-raised-button color="primary"
+            (click)="changeDate((selectedDay.getMonth() === today.getMonth() ? nextMonthDate : today ))">
+              {{"view"|translate}} {{(selectedDay.getMonth() === today.getMonth() ? nextMonthDate : today )| date:'MMMM' | translate}}
+            </button>
+        </div>
       </div>
 
     </div>
 
   </mat-drawer-content>
 </mat-drawer-container>
-<button mat-icon-button color="primary" class="calendar-button">
-  <mat-icon (click)="drawer.toggle()">calendar_today</mat-icon>
-</button>

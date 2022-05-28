@@ -6,6 +6,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatChipsModule} from '@angular/material/chips';
 import { DayAppointmentModule } from '../day-appointment/day-appointment.module';
 import { MatButtonModule } from '@angular/material/button';
+import { TranslateModule } from '../_pipes/resource.module';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatListModule,
     MatChipsModule,
     MatButtonModule,
-    DayAppointmentModule
+    DayAppointmentModule,
+    TranslateModule
   ],
   exports:[AgendaComponent]
 })

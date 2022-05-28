@@ -1,7 +1,8 @@
 <div data-column="_agendacolumn2" data-column-id="agendaColumn"
   class="b-grid-cell b-calendar-cell b-nonworking-day b-sticky-cell" style="min-width: 60px;">
   <div class="b-cal-agenda-date">
-    <div class="cal-agenda-date-date-number" [ngClass]="day.isSelectedInCalendar ? 'day-selected': ''">{{day.appointmentDate | date:'d'}}
+    <div class="cal-agenda-date-date-number" [ngClass]="day.isSelectedInCalendar ? 'day-selected': ''">
+      {{day.appointmentDate | date:'d'}}
 
     </div>
     <div class="cal-agenda-date-date-text">
@@ -9,19 +10,23 @@
       <div>{{day.appointmentDate | date:'MMMM'| translate}} {{day.appointmentDate | date:'yyyy'}}</div>
     </div>
   </div>
-  <div >
-    <div *ngFor="let appointment of day.appointments" class="b-cal-event-bar-container b-cal-agenda-event-row" style="margin-bottom: 8px;">
-      <div class="b-cal-agenda-event-time">{{appointment.dateFrom | date:'shortTime'}} - {{appointment.dateTo | date:'shortTime'}}</div>
+  <div class="appointments-container">
+    <div *ngFor="let appointment of day.appointments" class="b-cal-event-bar-container b-cal-agenda-event-row"
+      style="margin-bottom: 8px;">
+      <div class="b-cal-agenda-event-time">{{appointment.dateFrom | date:'shortTime'}} - {{appointment.dateTo |
+        date:'shortTime'}}</div>
       <div class="b-cal-agenda-event-time" tabindex="0" data-event-id="1"
-        class="b-cal-event-wrap b-allday b-past-event b-cal-color-green b-continues-right" >
+        class="b-cal-event-wrap b-allday b-past-event b-cal-color-green b-continues-right">
         <div class="b-start-arrow" style="border-width: 12.5px 8.33333px 12.5px 0px;"></div>
         <div class="b-cal-event" style="width: max-content;">
-          <mat-chip-list >
+          <mat-chip-list>
             <mat-chip *ngIf="appointment.status !== 'CANCELED'" color="primary" selected>
               {{appointment.patientId === currentUser.id ? appointment.hostName :appointment.patientName}}
-              <button matChipRemove (click)="cancelEvent(appointment)"><mat-icon>cancel</mat-icon></button>
+              <button matChipRemove (click)="cancelEvent(appointment)">
+                <mat-icon>cancel</mat-icon>
+              </button>
             </mat-chip>
-            <mat-chip *ngIf="appointment.status === 'CANCELED'" class="canceled-chip"  selected>
+            <mat-chip *ngIf="appointment.status === 'CANCELED'" class="canceled-chip" selected>
               <span class="canceled">
                 {{appointment.patientId === currentUser.id ? appointment.hostName :appointment.patientName}}
               </span> - {{"canceled"|translate}}

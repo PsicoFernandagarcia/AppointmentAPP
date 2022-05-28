@@ -4,3 +4,14 @@
   min-height: 50px;
 }
 
+.no-appointment{
+  
+  margin:1em 1em 1em 3em
+}
+
+@media only screen and (max-width: 600px)  {
+  .no-appointment{
+    text-align: center;
+    width: 100%;
+  }
+}

@@ -5,6 +5,7 @@ import { AppointmentService } from '../_services/appointment.service';
 import '../_pipes/prototypes';
 import { NotificationService } from '../_services/notification.service';
 import { LoadingService } from '../_services/loading.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-agenda',
@@ -20,6 +21,7 @@ export class AgendaComponent implements OnInit, OnChanges {
     private appointmentService: AppointmentService
     , private notificationService:NotificationService
     , private loadingService:LoadingService
+    ,private router: Router
   ) {
   }
 
@@ -37,6 +39,7 @@ export class AgendaComponent implements OnInit, OnChanges {
       this.days= [];
       this.appointments = [];
       this.appointments = data;
+      debugger;
       this.loadDays();
     })
   }
@@ -77,7 +80,10 @@ export class AgendaComponent implements OnInit, OnChanges {
         this.loadingService.hide();
       });
     },"Cancelar Cita",()=>{
-      this.notificationService.alert("NO cancelar cita");
     });
+  }
+
+  redirectNewAppointment(){
+    this.router.navigate(['main/new-appointment']);
   }
 }

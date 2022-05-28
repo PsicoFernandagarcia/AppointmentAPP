@@ -7,3 +7,7 @@
      <mat-divider></mat-divider>
   </mat-list-item>
 </mat-list>
+<div class ="no-appointment" *ngIf="appointments.length === 0">
+  <p>No tienes ninguna cita pendiente</p>
+  <button mat-stroked-button color="primary" (click)="redirectNewAppointment()">{{"new_appointment_button"|translate}}</button>
+</div>
