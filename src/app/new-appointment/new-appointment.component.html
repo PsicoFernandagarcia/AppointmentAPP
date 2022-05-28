@@ -67,7 +67,7 @@
           </mat-expansion-panel>
         </mat-accordion>
         <div class ="change-month-container">
-          <p *ngIf="!hasAvailabilities">No se han configurado citas aun</p>
+          <p *ngIf="!hasAvailabilities">{{"no_appointment_configured"|translate}}</p>
           <button 
           class ="change-month-btn"
             mat-raised-button color="primary"

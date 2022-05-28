@@ -39,7 +39,6 @@ export class AgendaComponent implements OnInit, OnChanges {
       this.days= [];
       this.appointments = [];
       this.appointments = data;
-      debugger;
       this.loadDays();
     })
   }

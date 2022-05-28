@@ -44,6 +44,7 @@
   "November":"Noviembre",
   "December":"Diciembre",
   "write_user": "Selecciona un usuario creado",
-  "patient": "Paciente"
+  "patient": "Paciente",
+  "no_appointment_configured":"No hay citas configuradas aun"
 
 }
