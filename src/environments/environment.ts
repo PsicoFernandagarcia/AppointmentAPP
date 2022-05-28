@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl:"https://psicofernandagarcia.com:8443/api"
-  //apiUrl:"https://localhost:5004/api"
+  //apiUrl:"https://psicofernandagarcia.com:8443/api"
+  apiUrl:"https://localhost:5004/api"
 };
 
 /*

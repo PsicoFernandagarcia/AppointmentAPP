@@ -18,13 +18,13 @@ export class AppComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    const token = localStorage.getItem("token");
-    this.showToolbar = (token && this.isTokenValid(token.split(' ')[1])) || false;
-    if(!this.showToolbar)
-    {
-      this.router.navigate(['login']);
-    }
-    this.role = localStorage.getItem('userRole')??'';
+    // const token = localStorage.getItem("token");
+    // this.showToolbar = (token && this.isTokenValid(token.split(' ')[1])) || false;
+    // if(!this.showToolbar)
+    // {
+    //   this.router.navigate(['login']);
+    // }
+    // this.role = localStorage.getItem('userRole')??'';
     this.suscribeLogin();
   }
 
@@ -32,7 +32,7 @@ export class AppComponent implements OnInit {
   logout(){
     localStorage.clear();
     this.showToolbar=false;
-    this.router.navigate(['login']);
+    this.router.navigate(['main/login']);
   }
 
   suscribeLogin(){

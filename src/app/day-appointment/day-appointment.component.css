@@ -17,7 +17,7 @@
   padding: 0 1em;
   align-items: center;
   height: 2.6em;
-  margin: 0.2em 0 0;
+  margin: 0.2em 0 10px 0;
 }
 .cal-agenda-date-date-number {
   margin: 0 0.1em 0 0;
@@ -71,3 +71,8 @@
 }
 
 
+@media only screen and (max-width: 600px)  {
+  .appointments-container{
+    padding: 0 1.6em
+  }
+}

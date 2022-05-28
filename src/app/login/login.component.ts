@@ -35,7 +35,14 @@ export class LoginComponent implements OnInit {
     ,private notificationService: NotificationService
     ,private appsettingsService: AppSettingsService
     ,private loaderService:LoadingService
-  ) { }
+  ) {
+    const token = localStorage.getItem("token");
+    const isLoggedIn = (token && this.isTokenValid(token.split(' ')[1])) || false;
+    if(isLoggedIn){
+      this.router.navigate(["main/dashboard"]);
+    }
+
+   }
 
   ngOnInit(): void {
     this.formGroup = new FormGroup({
@@ -118,12 +125,17 @@ export class LoginComponent implements OnInit {
     localStorage.setItem('userName',data.userName);
     localStorage.setItem('userRole',info.role);
     localStorage.setItem('token','Bearer '+ data.token);
-     this.router.navigate(['dashboard']);
+     this.router.navigate(['main/dashboard']);
      LoginComponent.logginSuccess.next(data);
   }
 
   showRegistrationForm(){
     this.showRegister = !this.showRegister;
+  }
+  isTokenValid(token:string):boolean{
+    let info  = jwt_decode(token) as any;
+    const exp = info.exp;
+    return Date.now() < exp * 1000;
   }
 
 }

@@ -1,26 +1,5 @@
 <mat-drawer-container style="height: 91%;">
-  <mat-drawer #drawer [opened]="shouldDrawerBeOppened()" [mode]="'side'">
-    <div class="side-calendar">
-      <mat-calendar [(selected)]="selectedDay" [minDate]="minDate" [maxDate]="maxDate" [dateClass]="setAppointments"
-        [dateFilter]="removeDates"></mat-calendar>
-      <p>Selected date: {{selectedDay}}</p>
-      <p>Selected utc date: {{getUtc()}}</p>
-
-      <div class="actions">
-        <mat-divider></mat-divider>
-        <mat-list role="list">
-          <mat-list-item>
-            <mat-divider></mat-divider>
-            {{"log_out"|translate}}
-          </mat-list-item>
-        </mat-list>
-      </div>
-    </div>
-  </mat-drawer>
   <mat-drawer-content>
     <app-agenda [selectedDay]="selectedDay"></app-agenda>
   </mat-drawer-content>
 </mat-drawer-container>
-<button mat-icon-button color="primary" class="calendar-button">
-  <mat-icon (click)="drawer.toggle()">calendar_today</mat-icon>
-</button>

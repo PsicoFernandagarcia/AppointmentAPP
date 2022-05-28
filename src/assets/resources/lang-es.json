@@ -22,6 +22,7 @@
   "cancel":"Canceclar",
   "availability":"Horarios Disponibles",
   "new_appointment":"Nuevo",
+  "new_appointment_button":"Nueva Cita",
   "assign_appointment":"Asignar turno",
   "Monday":"Lunes",
   "Tuesday":"Martes",
@@ -43,6 +44,7 @@
   "November":"Noviembre",
   "December":"Diciembre",
   "write_user": "Selecciona un usuario creado",
-  "patient": "Paciente"
+  "patient": "Paciente",
+  "no_appointment_configured":"No hay citas configuradas aun"
 
 }

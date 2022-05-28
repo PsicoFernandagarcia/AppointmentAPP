@@ -37,7 +37,7 @@ export class RequestInterceptor implements HttpInterceptor {
           this.loadingService.hide();
           if(error.status === 401){
             errorMsg = error.error.message;
-            this.router.navigate(['/login']);
+            this.router.navigate(['main/login']);
           }
           if(error.status === 400){
             this.notificationService.error(error.error.message);

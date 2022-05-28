@@ -15,8 +15,9 @@ import { UserService } from '../_services/users.service';
   styleUrls: ['./new-appointment.component.css']
 })
 export class NewAppointmentComponent implements OnInit {
-
-  selectedDay: Date | null = new Date();
+  today: Date = new Date();
+  nextMonthDate: Date = new Date();
+  selectedDay: Date = new Date();
   prevSelectedDay: Date | null = new Date();
   currentYear: number = this.selectedDay?.getFullYear() ?? new Date().getFullYear();
   selectedMonthAvailabilities: any[] = [];
@@ -33,6 +34,7 @@ export class NewAppointmentComponent implements OnInit {
   disableSelectUser = new FormControl(false);
   userToAssignSelected: User = new User(0, '-', '');
   timezoneOffsetSelected: number = 0;
+  hasAvailabilities:boolean = false;
 
   constructor(
     private availabilityService: AvailabilityService
@@ -40,7 +42,9 @@ export class NewAppointmentComponent implements OnInit {
     , private notificationService: NotificationService
     , private loadingService:LoadingService
     , private userService: UserService
-  ) { }
+  ) {
+    this.nextMonthDate.setMonth(this.today.getMonth() + 1);
+   }
 
   ngOnInit(): void {
     this.isHost = localStorage.getItem('userRole') === "HOST";
@@ -104,6 +108,7 @@ export class NewAppointmentComponent implements OnInit {
     this.loadingService.show();
     this.availabilityService.getAvailabilities(this.hosts[0].id, this.firstDayInMonth, this.lastDayInMonth, true).subscribe(res => {
       res = res.filter(r => r.dateOfAvailability >= new Date());
+      this.hasAvailabilities = res.length > 0;
       for (let i = 1 ?? 1; i <= this.daysInMonth; i++) {
         this.selectedMonthAvailabilities[i - 1] = [];
         const availabilities = res.filter(r => r.dateOfAvailability.getDate() === i);
@@ -124,6 +129,12 @@ export class NewAppointmentComponent implements OnInit {
   onDateChange($event: Date | null) {
     if (this.prevSelectedDay?.getMonth() === this.selectedDay?.getMonth()) return;
     this.prevSelectedDay = this.selectedDay;
+    this.loadDates();
+  }
+  
+  changeDate(newDate:Date){
+    this.prevSelectedDay = this.selectedDay;
+    this.selectedDay = newDate;
     this.loadDates();
   }
 

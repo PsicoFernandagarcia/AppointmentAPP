@@ -43,9 +43,9 @@
 }
 
 .cal-agenda-date-text{
-  top: 33%;
-    height: fit-content;
-    position: relative;
+  height: fit-content;
+  position: relative;
+  font-size: large;
 }
 
 .b-cal-event-bar-container {
@@ -64,6 +64,7 @@
     align-items: flex-start;
     color: #606060;
     display: flex;
+    padding: 5px 20px 5px 20px;
 }
 .b-cal-agenda-event-time {
   flex: 0 0 12em;
@@ -106,4 +107,31 @@
 }
 .host-assignment{
   margin-left:10px;
+}
+.change-month-container{
+  width: 100%;
+  margin: 5px 10px 5px 10px;
+  
+}
+.change-month-btn{
+  width: 50%;
+  max-width: 300px;
+}
+
+
+@media only screen and (max-width: 600px)  {
+  .b-calendar-cell{
+    padding: 0px;
+  }
+
+  .cal-agenda-date-text{
+    height: fit-content;
+    position: relative;
+    font-size: medium;
+  }
+  .change-month-container{
+    width: 100%;
+    margin: 5px 10px 5px 10px;
+    text-align: center;
+  }
 }
