@@ -1,0 +1,78 @@
+
+.container{
+    padding: 20px;
+}
+.filter{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.filter h2{
+    margin: 5px;
+
+}
+
+.panel-item{
+    margin-bottom:10px;
+    margin-top:5px;
+}
+
+.canceled-chip{
+    background-color: #ec5c5c!important;
+  }
+  
+  .canceled{
+    text-decoration: line-through;
+  }
+
+  .b-cal-agenda-date {
+    display: flex;
+    flex-flow: row nowrap;
+    flex: 0 0 14em;
+    padding: 0 1em;
+    align-items: center;
+    height: 2.6em;
+    margin: 0.2em 0 10px 0;
+  }
+  .b-cal-event-bar-container {
+    flex: 1;
+    flex-flow: column;
+  }
+  .b-cal-agenda-event-row {
+    flex: 1;
+    display: flex;
+    flex-flow: row nowrap;
+    align-self: stretch;
+    justify-content: start;
+  }
+  .b-calendar-cell{
+    flex: 1 1 100%;
+      padding: 1.5em 0;
+      align-items: flex-start;
+      color: #606060;
+      display: flex;
+      flex-wrap: wrap;
+  }
+  .b-cal-agenda-event-time {
+    flex: 0 0 9em;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    margin-right:5px;
+  }
+  .cal-agenda-date-date-number:hover{
+    background-color: #f0f0f0;
+  }
+  .patient-filter{
+    display:flex;
+    justify-content: space-between;
+  }
+  .patient-list{
+    width:50%;
+  }
+
+  @media only screen and (max-width: 600px)  {
+    .b-cal-agenda-event-row {
+        justify-content: space-between;
+    }  
+}

@@ -25,6 +25,21 @@ export class AppointmentService {
     );;
   }
 
+  get(year:number):Observable<Appointment[]>{
+    const options =   {
+      params: new HttpParams().set('year',year)
+    };
+    return this.http.get<Appointment[]>('/appointments',options).pipe(
+      map( response => {
+        response.forEach(a => {
+          a.dateFrom = new Date(a.dateFrom),
+          a.dateTo = new Date(a.dateTo)
+        })
+        return response;
+      })
+    );;
+  }
+
   save(appointment:Appointment,availabilityId:number):Observable<Appointment>{
     return this.http.post<Appointment>('/appointments',{
       title: appointment.title,

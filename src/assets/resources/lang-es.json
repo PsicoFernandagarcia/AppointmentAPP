@@ -45,6 +45,8 @@
   "December":"Diciembre",
   "write_user": "Selecciona un usuario creado",
   "patient": "Paciente",
-  "no_appointment_configured":"No hay citas configuradas aun"
-
+  "no_appointment_configured":"No hay citas configuradas aun",
+  "menu":"Menu",
+"history_appointments":"Historial",
+"year_search":"Historial del año: "
 }

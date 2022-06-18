@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { LoginComponent } from '../login/login.component';
 
 import jwt_decode from 'jwt-decode';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { BottomMenuComponent } from '../bottom-menu/bottom-menu.component';
 
 @Component({
   selector: 'app-main',
@@ -15,7 +17,7 @@ export class MainComponent implements OnInit {
   role:string='';
   constructor(
     private router: Router
-
+    ,private _bottomSheet: MatBottomSheet
   ) { }
 
   ngOnInit(): void {
@@ -43,9 +45,19 @@ export class MainComponent implements OnInit {
         }
     });
   }
+
   isTokenValid(token:string):boolean{
     let info  = jwt_decode(token) as any;
     const exp = info.exp;
     return Date.now() < exp * 1000;
+  }
+
+  openBottomMenu(){
+    var ref = this._bottomSheet.open(BottomMenuComponent,{
+      data:{role:this.role}
+    });
+    ref.afterDismissed().subscribe(res => {
+      if(res === 'logout') this.logout();
+    })
   }
 }

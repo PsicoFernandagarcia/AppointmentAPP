@@ -36,6 +36,14 @@ const routes: Routes = [
           role: 'ADMIN,HOST,COMMON'
         }
       },
+      {
+        path: 'history', loadChildren: () => import('../history/history.module')
+          .then(m => m.HistoryModule),
+        canActivate: [AuthGuard],
+        data: {
+          role: 'ADMIN,HOST,COMMON'
+        }
+      },
     ]
   },
 

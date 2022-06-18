@@ -1,0 +1,30 @@
+<mat-nav-list>
+    <a *ngIf="role === 'HOST'" mat-list-item routerLink="/main/my-time"(click)="close()">
+      <mat-icon class="material-icons color_blue">access_time</mat-icon>
+      <span style = "margin-left: 10px;">{{"my_time"|translate}}</span>
+    </a>
+  
+    <a *ngIf="role !== 'HOST'" mat-list-item routerLink="/main/new-appointment" (click)="close()">
+        <mat-icon class="material-icons color_blue" >add</mat-icon>
+        <span style = "margin-left: 10px;">{{"new_appointment"|translate}}</span>
+    </a>
+  
+    <a *ngIf="role === 'HOST'" mat-list-item routerLink="/main/new-appointment" (click)="close()">
+        <mat-icon class="material-icons color_blue">add</mat-icon>
+        <span style = "margin-left: 10px;">{{"assign_appointment"|translate}}</span>
+    </a>
+  
+    <a routerLink="/main/dashboard" mat-list-item (click)="close()" >
+        <mat-icon class="material-icons color_blue">calendar_today</mat-icon>
+          <span style = "margin-left: 10px;">{{"my_appointments"|translate}}</span>
+    </a>
+    <a routerLink="/main/history" mat-list-item (click)="close()" >
+      <mat-icon class="material-icons color_blue">history</mat-icon>
+        <span style = "margin-left: 10px;">{{"history_appointments"|translate}}</span>
+  </a>
+    <a mat-list-item (click)="logout()" >
+        <mat-icon class="material-icons color_blue">exit_to_app</mat-icon>
+        <span style = "margin-left: 10px;">{{"log_out"|translate}}</span>
+    </a>
+  </mat-nav-list>
+  

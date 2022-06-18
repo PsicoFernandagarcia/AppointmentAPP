@@ -11,7 +11,7 @@
     </div>
   </div>
   <div class="appointments-container">
-    <div *ngFor="let appointment of day.appointments" class="b-cal-event-bar-container b-cal-agenda-event-row"
+    <div *ngFor="let appointment of pendingAppointments" class="b-cal-event-bar-container b-cal-agenda-event-row"
       style="margin-bottom: 8px;">
       <div class="b-cal-agenda-event-time">{{appointment.dateFrom | date:'shortTime'}} - {{appointment.dateTo |
         date:'shortTime'}}</div>
@@ -26,7 +26,23 @@
                 <mat-icon>cancel</mat-icon>
               </button>
             </mat-chip>
-            <mat-chip *ngIf="appointment.status === 'CANCELED'" class="canceled-chip" selected>
+          </mat-chip-list>
+        </div>
+        <div class="b-end-arrow" style="border-width: 12.5px 0px 12.5px 8.33333px;">
+        </div>
+      </div>
+    </div>
+
+    <div *ngFor="let appointment of cancelledAppointments" class="b-cal-event-bar-container b-cal-agenda-event-row"
+      style="margin-bottom: 8px;">
+      <div class="b-cal-agenda-event-time">{{appointment.dateFrom | date:'shortTime'}} - {{appointment.dateTo |
+        date:'shortTime'}}</div>
+      <div class="b-cal-agenda-event-time" tabindex="0" data-event-id="1"
+        class="b-cal-event-wrap b-allday b-past-event b-cal-color-green b-continues-right">
+        <div class="b-start-arrow" style="border-width: 12.5px 8.33333px 12.5px 0px;"></div>
+        <div class="b-cal-event" style="width: max-content;">
+          <mat-chip-list>
+            <mat-chip  class="canceled-chip" selected>
               <span class="canceled">
                 {{appointment.patientId === currentUser.id ? appointment.hostName :appointment.patientName}}
               </span> - {{"canceled"|translate}}
