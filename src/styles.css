@@ -26,3 +26,13 @@ td.mat-calendar-body-cell.custom-date-class{
   background: rgb(192, 37, 37);
   color:white;
 }
+
+@media only screen and (max-width: 600px)  {
+
+span.mat-button-wrapper{
+  width: 100%;
+}
+
+  
+  
+}

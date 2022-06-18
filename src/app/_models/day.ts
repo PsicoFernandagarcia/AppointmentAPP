@@ -10,4 +10,6 @@ export class Day{
     this.appointments= _appointments;
     this.isSelectedInCalendar=_isSelectedInCalendar;
   }
+
+  
 }

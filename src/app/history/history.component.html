@@ -1,0 +1,87 @@
+<div class="container">
+    <div class="filter">
+        <button mat-icon-button color="primary" aria-label="Example icon button with a menu icon"
+            (click)="changeYear(yearHistory-1)">
+            <mat-icon>navigate_before</mat-icon>
+        </button>
+        <h2>{{"year_search"|translate}} {{yearHistory}}</h2>
+        <button [disabled]="yearHistory === currentYear" (click)="changeYear(yearHistory+1)" mat-icon-button
+            color="primary" aria-label="Example icon button with a menu icon">
+            <mat-icon>navigate_next</mat-icon>
+        </button>
+    </div>
+    <hr>
+    <div class="panel-container">
+        <div *ngIf="history.length === 0">
+            <h3>No hay datos de ese año seleccionado</h3>
+        </div>
+        <div class="patient-filter" *ngIf="history.length > 0 && isHost" >
+           <p>Filtrar por paciente:</p>
+           <mat-select class="patient-list"  (valueChange)="onPatientChange($event)">
+            <mat-option *ngFor="let p of patients" [value]="p.patientId" >
+                {{p.patientName}}
+              </mat-option>
+          </mat-select>
+        </div>
+        <mat-accordion *ngFor="let h of historyFiltered">
+            <mat-expansion-panel hideToggle class="panel-item">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        {{h.month}}
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Total de citas del mes: {{h.appointments.length}} -
+                        Canceladas: {{h.cancelledAppointments.length}}
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div>
+                    <div *ngFor="let appointment of h.appointments"
+                        class="b-cal-event-bar-container b-cal-agenda-event-row" style="margin-bottom: 8px;">
+                        <div class="b-cal-agenda-event-time">
+                            {{appointment.dateFrom | date:'dd'}} 
+                            {{appointment.dateFrom | date:'EEEE' |translate}} -
+                            {{appointment.dateFrom | date:'shortTime'}}</div>
+                        <div class="b-cal-agenda-event-time" tabindex="0" data-event-id="1"
+                            class="b-cal-event-wrap b-allday b-past-event b-cal-color-green b-continues-right">
+                            <div class="b-start-arrow" style="border-width: 12.5px 8.33333px 12.5px 0px;"></div>
+                            <div class="b-cal-event" style="width: max-content;">
+                                <mat-chip-list>
+                                    <mat-chip *ngIf="appointment.status !== 'CANCELED'" color="primary" selected>
+                                        {{appointment.patientId === currentUser.id ? appointment.hostName
+                                        :appointment.patientName}}
+                                    </mat-chip>
+                                </mat-chip-list>
+                            </div>
+                            <div class="b-end-arrow" style="border-width: 12.5px 0px 12.5px 8.33333px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngFor="let appointment of h.cancelledAppointments"
+                        class="b-cal-event-bar-container b-cal-agenda-event-row" style="margin-bottom: 8px;">
+                        <div class="b-cal-agenda-event-time">
+                            {{appointment.dateFrom | date:'dd'}} 
+                            {{appointment.dateFrom | date:'EEEE' |translate}} -
+                            {{appointment.dateFrom | date:'shortTime'}}
+                        </div>
+                        <div class="b-cal-agenda-event-time" tabindex="0" data-event-id="1"
+                            class="b-cal-event-wrap b-allday b-past-event b-cal-color-green b-continues-right">
+                            <div class="b-start-arrow" style="border-width: 12.5px 8.33333px 12.5px 0px;"></div>
+                            <div class="b-cal-event" style="width: max-content;">
+                                <mat-chip-list>
+                                    <mat-chip class="canceled-chip" selected>
+                                        <span class="canceled">
+                                            {{appointment.patientId === currentUser.id ? appointment.hostName
+                                            :appointment.patientName}}
+                                        </span> - {{"canceled"|translate}}
+                                    </mat-chip>
+                                </mat-chip-list>
+                            </div>
+                            <div class="b-end-arrow" style="border-width: 12.5px 0px 12.5px 8.33333px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+</div>
