@@ -20,6 +20,7 @@ export class HistoryComponent implements OnInit {
   currentUser:any = JSON.parse(localStorage.getItem('currentUser')??'{}');
   patients:any[] = [];
   patientSelected:any;
+  patientSelectedCombo:number = 0;
   months = ["Enero", "Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
   constructor(
     private appointmentService:AppointmentService
@@ -97,6 +98,8 @@ export class HistoryComponent implements OnInit {
 
   changeYear(newYear:number){
     this.yearHistory = newYear;
+    this.patientSelected = 0;
+    this.patientSelectedCombo=0;
     this.search();
   }
 

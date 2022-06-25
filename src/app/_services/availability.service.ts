@@ -14,8 +14,8 @@ export class AvailabilityService {
   getAvailabilities(hostId:number,dateFrom :Date,dateTo :Date, showOnlyAvailables: boolean):Observable<Availability[]>{
     const options =   {
       params: new HttpParams().set('hostId',hostId)
-                              .set('dateFrom',dateFrom.toUTCString())
-                              .set('dateTo',dateTo.toUTCString())
+                              .set('dateFrom',dateFrom.toDateString())
+                              .set('dateTo',dateTo.toDateString())
                               .set('showOnlyAvailable',showOnlyAvailables)
     };
     return this.http.get<Availability[]>('/availabilities',options).pipe(

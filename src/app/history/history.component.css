@@ -63,16 +63,19 @@
   .cal-agenda-date-date-number:hover{
     background-color: #f0f0f0;
   }
-  .patient-filter{
-    display:flex;
-    justify-content: space-between;
-  }
   .patient-list{
-    width:50%;
+    width:max-content;
   }
 
   @media only screen and (max-width: 600px)  {
     .b-cal-agenda-event-row {
         justify-content: space-between;
-    }  
+    }
+    .patient-filter{
+      display:flex;
+      justify-content: space-between;
+    } 
+    .patient-list{
+      width:50%;
+    } 
 }

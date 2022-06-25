@@ -58,7 +58,6 @@ export class NewAppointmentComponent implements OnInit {
 
   removeDates = (d: Date | null): boolean => {
     const day = (d || new Date()).getDay();
-    // Prevent Saturday and Sunday from being selected.
     return day !== 0 && day !== 6;
   };
 
@@ -106,7 +105,10 @@ export class NewAppointmentComponent implements OnInit {
 
   loadAvailabilities() {
     this.loadingService.show();
-    this.availabilityService.getAvailabilities(this.hosts[0].id, this.firstDayInMonth, this.lastDayInMonth, true).subscribe(res => {
+    let tomorrowsDate = new Date();
+     tomorrowsDate.setDate(tomorrowsDate.getDate()+1);
+     tomorrowsDate.setHours(0,0,0,0);
+    this.availabilityService.getAvailabilities(this.hosts[0].id, this.isHost ? this.firstDayInMonth :  tomorrowsDate, this.lastDayInMonth, true).subscribe(res => {
       res = res.filter(r => r.dateOfAvailability >= new Date());
       this.hasAvailabilities = res.length > 0;
       for (let i = 1 ?? 1; i <= this.daysInMonth; i++) {

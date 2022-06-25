@@ -17,7 +17,7 @@
         </div>
         <div class="patient-filter" *ngIf="history.length > 0 && isHost" >
            <p>Filtrar por paciente:</p>
-           <mat-select class="patient-list"  (valueChange)="onPatientChange($event)">
+           <mat-select class="patient-list" [(value)]="patientSelectedCombo" (valueChange)="onPatientChange($event)" >
             <mat-option *ngFor="let p of patients" [value]="p.patientId" >
                 {{p.patientName}}
               </mat-option>
