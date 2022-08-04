@@ -1,51 +1,55 @@
-<mat-drawer-container style="height: 91%;" > 
-  <mat-drawer-content >
-    <div data-column="_agendacolumn2" data-column-id="agendaColumn"
-      class="b-grid-cell b-calendar-cell b-nonworking-day b-sticky-cell" style="min-width: 60px;">
-      <div style="width: 100%;">
-        <mat-accordion>
-          <mat-expansion-panel hideToggle *ngFor="let availability of selectedMonthAvailabilities; let index = index;">
-            <mat-expansion-panel-header class="panel-header" *ngIf="availability.length > 0">
-              <mat-panel-title>
-                <div class="cal-agenda-date-date-number" [ngClass]="'day-selected'">
-                  {{index+1}}
-                </div>
-              </mat-panel-title>
-              <mat-panel-description>
-                <div class="cal-agenda-date-text">
-                  {{getIndexDate(index+1) | date:'EEEE'| translate}} -
-                  {{getIndexDate(index+1) | date:'MMMM' | translate}} {{getIndexDate(index+1) | date:'yyyy'}}
-                </div>
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-            <div class="time-selection">
-              <mat-chip-list aria-label="Fish selection">
-                <mat-chip
-                  class="example-margin"
-                  *ngFor="let hour of availability"
-                  [ngClass]="!hour.availability ? 'enable' : 'disable'"
-                  (click)="changeAvailabilityHour(index+1,hour)"
-                  >
-                  {{hour.hour}}
-                </mat-chip>
-              </mat-chip-list>
-            </div>
-            <mat-action-row>
-              <button mat-button color="primary" (click)="saveAvailabilities(availability)">{{'save'|translate}}</button>
-            </mat-action-row>
-          </mat-expansion-panel>
-        </mat-accordion>
-        <div class ="change-month-container">
-          <button 
-          class ="change-month-btn"
-            mat-raised-button color="primary"
-            (click)="changeDate((selectedDay.getMonth() === today.getMonth() ? nextMonthDate : today ))">
-              {{"view"|translate}} {{(selectedDay.getMonth() === today.getMonth() ? nextMonthDate : today )| date:'MMMM' | translate}}
+<div class="container">
+  <div class="header">
+    <h2>Mis Horarios </h2>
+  </div>
+  <hr>
+  <mat-drawer-container style="height: 91%;">
+    <mat-drawer-content>
+      <div data-column="_agendacolumn2" data-column-id="agendaColumn"
+        class="b-grid-cell b-calendar-cell b-nonworking-day b-sticky-cell" style="min-width: 60px;">
+        <div style="width: 100%;">
+          <mat-accordion>
+            <mat-expansion-panel hideToggle
+              *ngFor="let availability of selectedMonthAvailabilities; let index = index;">
+              <mat-expansion-panel-header class="panel-header" *ngIf="availability.length > 0">
+                <mat-panel-title>
+                  <div class="cal-agenda-date-date-number" [ngClass]="'day-selected'">
+                    {{index+1}}
+                  </div>
+                </mat-panel-title>
+                <mat-panel-description>
+                  <div class="cal-agenda-date-text">
+                    {{getIndexDate(index+1) | date:'EEEE'| translate}} -
+                    {{getIndexDate(index+1) | date:'MMMM' | translate}} {{getIndexDate(index+1) | date:'yyyy'}}
+                  </div>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <div class="time-selection">
+                <mat-chip-list aria-label="Fish selection">
+                  <mat-chip class="example-margin" *ngFor="let hour of availability"
+                    [ngClass]="!hour.availability ? 'enable' : 'disable'"
+                    (click)="changeAvailabilityHour(index+1,hour)">
+                    {{hour.hour}}
+                  </mat-chip>
+                </mat-chip-list>
+              </div>
+              <mat-action-row>
+                <button mat-button color="primary"
+                  (click)="saveAvailabilities(availability)">{{'save'|translate}}</button>
+              </mat-action-row>
+            </mat-expansion-panel>
+          </mat-accordion>
+          <div class="change-month-container">
+            <button class="change-month-btn" mat-raised-button color="primary"
+              (click)="changeDate((selectedDay.getMonth() === today.getMonth() ? nextMonthDate : today ))">
+              {{"view"|translate}} {{(selectedDay.getMonth() === today.getMonth() ? nextMonthDate : today )| date:'MMMM'
+              | translate}}
             </button>
+          </div>
         </div>
+
       </div>
 
-    </div>
-
-  </mat-drawer-content>
-</mat-drawer-container>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>

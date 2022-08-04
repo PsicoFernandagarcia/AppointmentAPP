@@ -1,0 +1,38 @@
+.container{
+    padding: 20px;
+}
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.filter h2{
+    margin: 5px;
+
+}
+.panel-item{
+    margin-bottom:10px;
+    margin-top:5px;
+}
+.patient-list{
+    width:max-content;
+  }
+  .patient-filter{
+    margin-bottom: 10px;
+  }
+
+@media only screen and (max-width: 600px)  {
+   .description-text,.chip-text{
+    font-size: small;
+   }
+   .patient-filter{
+    display:flex;
+    justify-content: space-between;
+  } 
+  .patient-list{
+    width:50%;
+  } 
+  .list-payment-item, .chip-text, .patient-name{
+    font-size: smaller;
+  }
+}

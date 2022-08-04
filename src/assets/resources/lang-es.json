@@ -19,7 +19,7 @@
   "last_name":"apellidos",
   "my_time":"Mis Horarios",
   "save":"Guardar",
-  "cancel":"Canceclar",
+  "cancel":"Cancelar",
   "availability":"Horarios Disponibles",
   "new_appointment":"Nuevo",
   "new_appointment_button":"Nueva Cita",
@@ -48,5 +48,11 @@
   "no_appointment_configured":"No hay citas configuradas aun",
   "menu":"Menu",
 "history_appointments":"Historial",
-"year_search":"Historial del año: "
+"year_search":"Historial del año: ",
+"payments":"Pagos",
+"new_payment":"Nuevo Pago",
+"new_payment_for":"Registrar nuevo pago del paciente ",
+"sessions_to_pay":"Sesiones a abonar",
+"amount":"Monto",
+"currency":"Moneda"
 }

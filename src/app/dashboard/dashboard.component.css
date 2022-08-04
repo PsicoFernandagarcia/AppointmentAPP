@@ -9,3 +9,12 @@
 .mat-list-base{
   padding: 0px;
 }
+
+.container{
+  padding: 20px;
+}
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

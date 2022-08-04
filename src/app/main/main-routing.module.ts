@@ -44,6 +44,14 @@ const routes: Routes = [
           role: 'ADMIN,HOST,COMMON'
         }
       },
+      {
+        path: 'payments', loadChildren: () => import('../payments/payments.module')
+          .then(p => p.PaymentsModule),
+        canActivate: [AuthGuard],
+        data: {
+          role: 'ADMIN,HOST'
+        }
+      },
     ]
   },
 

@@ -19,13 +19,17 @@ import { HomeComponent } from './home/home.component';
 import { BottomMenuComponent } from './bottom-menu/bottom-menu.component';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import { MatListModule } from '@angular/material/list';
+import { AddPaymentDialog } from './payments/add-payment-dialog.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
     AppComponent,
     ConfirmationDialog,
     AlertDialog,
-    BottomMenuComponent
+    BottomMenuComponent,
+    AddPaymentDialog
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,9 @@ import { MatListModule } from '@angular/material/list';
     MatDialogModule,
     LoaderModule,
     MatBottomSheetModule,
-    MatListModule
+    MatListModule,
+    MatInputModule,
+    MatSelectModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
