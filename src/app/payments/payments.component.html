@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="header">
+        <h2>Historico de pagos </h2>
+    </div>
+    <hr>
+    <div class="panel-container">
+        <div class="patient-filter" *ngIf=" isHost">
+            <p>Filtrar por paciente:</p>
+            <mat-select class="patient-list" [(value)]="patientSelectedCombo" (valueChange)="onPatientChange($event)">
+                <mat-option *ngFor="let p of patients" [value]="p.patientId">
+                    {{p.patientName}} 
+                </mat-option>
+            </mat-select>
+        </div>
+        <div >
+            <mat-accordion  >
+                <mat-expansion-panel *ngFor="let p of paymentsFiltered" (click)="loadPaymentsFromPatient(p)">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title class="patient-name">
+                            {{p.patient.name}}
+                        </mat-panel-title>
+                        <mat-panel-description class="description-text">
+                            Ultimo pago realizado {{p.paidAt | date}}
+                        </mat-panel-description>
+                        <mat-chip-list style ="margin-right: 5px;" (click)="addPayment($event,p)">
+                            <mat-chip class="chip-text" *ngIf="p.sessionsLeft >= 0" color="primary" selected>No debe
+                            </mat-chip>
+                            <mat-chip class="chip-text" *ngIf="p.sessionsLeft < 0" color="warn" selected>Debe
+                                {{p.sessionsLeft * (-1)}} {{p.sessionsLeft === -1 ? 'sesion' : 'sesiones'}}</mat-chip>
+                        </mat-chip-list>
+                    </mat-expansion-panel-header>
+                    <mat-list role="list">
+                        <div *ngFor="let pu of paymentsFromUserSelected">
+                            <mat-list-item role="listitem" class="list-payment-item">{{pu.paidAt |date}} pagó {{pu.sessionsPaid}} sesiones Total: {{pu.amount|currency}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                        </div>
+                    </mat-list>
+                        
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+    </div>
+
+</div>

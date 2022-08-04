@@ -1,3 +1,11 @@
+.container{
+  padding: 20px;
+}
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .round-button{
   height: 80px;
   width: 80px;

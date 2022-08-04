@@ -1,4 +1,11 @@
-
+.container{
+  padding: 20px;
+}
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .calendar-button{
   z-index: 100;
   position: fixed;

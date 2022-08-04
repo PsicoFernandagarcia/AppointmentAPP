@@ -1,0 +1,24 @@
+<h1 mat-dialog-title>{{"new_payment"|translate}} </h1>
+<div mat-dialog-content>
+  <p> {{"new_payment_for"|translate}}{{previousPayment.patient.name}} {{previousPayment.patient.lastName}}</p>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>{{"sessions_to_pay"|translate}}</mat-label>
+    <input matInput type="number" placeholder="2" [(ngModel)]="newPayment.sessionsPaid">
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>{{"amount"|translate}}</mat-label>
+    <input matInput type="number" placeholder="1500" [(ngModel)]="newPayment.amount">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>{{"currency"|translate}}</mat-label>
+    <mat-select matNativeControl [(value)]="newPayment.currency">
+        <mat-option value="EUR">EUR</mat-option>
+        <mat-option value="USD">USD</mat-option>
+        <mat-option value="$">$</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancelClick()">{{"cancel"|translate}}</button>
+  <button mat-button color="primary"  cdkFocusInitial (click)="savePayment()">{{"save"|translate}}</button>
+</div>
