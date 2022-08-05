@@ -35,4 +35,8 @@
   .list-payment-item, .chip-text, .patient-name{
     font-size: smaller;
   }
+  .container{
+    padding: 5px;
+    height: 89%;
+  }
 }
