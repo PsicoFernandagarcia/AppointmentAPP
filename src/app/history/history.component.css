@@ -1,6 +1,7 @@
 
 .container{
     padding: 20px;
+    padding-bottom: 64px;
 }
 .filter{
     display: flex;
@@ -80,6 +81,6 @@
     } 
     .container{
       padding: 5px;
-      height: 89%;
+      padding-bottom: 56px;
     }
 }
