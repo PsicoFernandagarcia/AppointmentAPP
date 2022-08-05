@@ -1,5 +1,6 @@
 .container{
   padding: 20px;
+  padding-bottom: 64px;
 }
 .header{
   display: flex;
@@ -143,6 +144,9 @@
   }
   .container{
     padding: 5px;
-    height: 89%;
+    padding-bottom: 56px;
+  }
+  .user-list h2{
+    font-size: small;
   }
 }

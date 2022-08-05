@@ -1,5 +1,6 @@
 .container{
     padding: 20px;
+    padding-bottom: 64px;
 }
 .header{
     display: flex;
@@ -20,7 +21,13 @@
   .patient-filter{
     margin-bottom: 10px;
   }
+  .mat-content{
+    flex-grow: 4;
+  }
 
+  .patient-name{
+    width: 80px;
+  }
 @media only screen and (max-width: 600px)  {
    .description-text,.chip-text{
     font-size: small;
@@ -37,6 +44,20 @@
   }
   .container{
     padding: 5px;
-    height: 89%;
+    padding-bottom: 56px;
+  }
+ 
+
+  .chip-list{
+    flex-grow: 1;
+  }
+  .patient-name{
+    width: 40px;
+  }
+
+  .expansion-pannel-payment{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: fit-content;
   }
 }

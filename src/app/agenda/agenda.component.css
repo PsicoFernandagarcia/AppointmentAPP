@@ -2,6 +2,7 @@
 .mat-list-item.mat-focus-indicator{
   height: auto;
   min-height: 50px;
+  overflow: overlay;
 }
 
 .no-appointment{

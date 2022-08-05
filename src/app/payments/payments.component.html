@@ -15,14 +15,14 @@
         <div >
             <mat-accordion  >
                 <mat-expansion-panel *ngFor="let p of paymentsFiltered" (click)="loadPaymentsFromPatient(p)">
-                    <mat-expansion-panel-header>
+                    <mat-expansion-panel-header class="expansion-pannel-payment">
                         <mat-panel-title class="patient-name">
                             {{p.patient.name}}
                         </mat-panel-title>
                         <mat-panel-description class="description-text">
                             Ultimo pago realizado {{p.paidAt | date}}
                         </mat-panel-description>
-                        <mat-chip-list style ="margin-right: 5px;" (click)="addPayment($event,p)">
+                        <mat-chip-list class="chip-list" style ="flex-grow: 1; margin-right: 5px; white-space: nowrap;" (click)="addPayment($event,p)">
                             <mat-chip class="chip-text" *ngIf="p.sessionsLeft >= 0" color="primary" selected>No debe
                             </mat-chip>
                             <mat-chip class="chip-text" *ngIf="p.sessionsLeft < 0" color="warn" selected>Debe

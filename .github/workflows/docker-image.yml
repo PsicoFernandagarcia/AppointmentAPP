@@ -52,7 +52,10 @@ jobs:
             docker stop psicofer_ui
             echo "Remove psicofer_ui container"
             docker rm psicofer_ui
+            echo "Running prune"
+            docker image prune -a -f
             echo "Run Docker psicofer_ui"
             docker run -d --restart=unless-stopped \
             --mount type=bind,source=/opt/certs,target=/etc/nginx/certs \
             --name psicofer_ui -p 443:443 -p 80:8088/tcp joacoferroni/${{ secrets.DOCKER_IMAGE }}:latest
+            
