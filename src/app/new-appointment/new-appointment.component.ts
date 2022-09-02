@@ -46,10 +46,23 @@ export class NewAppointmentComponent implements OnInit {
     this.nextMonthDate.setMonth(this.today.getMonth() + 1);
    }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.isHost = localStorage.getItem('userRole') === "HOST";
     this.loadingService.show();
+    this.hosts = await this.loadHosts();
+    this.patients = await this.loadPatients();
+    this.checkIfUserHasAnyPreviousAppointment();
     this.loadDates();
+  }
+
+  checkIfUserHasAnyPreviousAppointment(){
+    if(this.isHost) return;
+    const currentUser = JSON.parse(localStorage.getItem("currentUser") ?? '{}');
+    this.appointmentService.hasAnyPreviousAppointment(currentUser.id,this.hosts[0].id).subscribe(
+      hasAnyPreviousAppointment=>{
+        if(!hasAnyPreviousAppointment)
+          this.notificationService.alert("Recuerde contactar a la psicóloga previo a la obtención de su primera cita","Atención");
+    })
   }
 
   shouldDrawerBeOppened(): boolean {
@@ -71,8 +84,7 @@ export class NewAppointmentComponent implements OnInit {
     this.firstDayInMonth = new Date(year, month, 1);
     this.lastDayInMonth = new Date(year, month + 1, 1);
     this.loadDays();
-    this.hosts = await this.loadHosts();
-    this.patients = await this.loadPatients();
+    
     this.loadAvailabilities();
   }
 
@@ -105,10 +117,8 @@ export class NewAppointmentComponent implements OnInit {
 
   loadAvailabilities() {
     this.loadingService.show();
-    let tomorrowsDate = new Date();
-     tomorrowsDate.setDate(tomorrowsDate.getDate()+1);
-     tomorrowsDate.setHours(0,0,0,0);
-    this.availabilityService.getAvailabilities(this.hosts[0].id, this.isHost ? this.firstDayInMonth :  tomorrowsDate, this.lastDayInMonth, true).subscribe(res => {
+    let dateFrom =  this.getDateToFilter();
+    this.availabilityService.getAvailabilities(this.hosts[0].id, dateFrom, this.lastDayInMonth, true).subscribe(res => {
       res = res.filter(r => r.dateOfAvailability >= new Date());
       this.hasAvailabilities = res.length > 0;
       for (let i = 1 ?? 1; i <= this.daysInMonth; i++) {
@@ -126,6 +136,16 @@ export class NewAppointmentComponent implements OnInit {
     }, err => {
       console.table(err);
     })
+  }
+
+  getDateToFilter():Date{
+    if(this.today.getMonth() !== this.selectedDay.getMonth()){
+      return this.firstDayInMonth;
+    }
+    let tomorrowsDate =  new Date();
+     tomorrowsDate.setDate(tomorrowsDate.getDate()+1);
+     tomorrowsDate.setHours(0,0,0,0);
+     return tomorrowsDate;
   }
 
   onDateChange($event: Date | null) {
