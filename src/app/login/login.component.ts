@@ -13,6 +13,7 @@ import { createApi } from 'unsplash-js';
 import { Random } from 'unsplash-js/dist/methods/photos/types';
 import { LoadingService } from '../_services/loading.service';
 import { GoogleLoginProvider, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
+import { Encrypt } from '../_services/crypt';
 const unsplash = createApi({ accessKey: 'HrgmLTUUM2pk2xwmYDoAxgn4dh1L7SZdF_3o4fjf-os' });
 
 @Component({
@@ -84,7 +85,8 @@ export class LoginComponent implements OnInit {
     if(!this.formGroup.valid) return;
     this.loaderService.show();
     const timezoneOffset = (new Date().getTimezoneOffset()*-1);
-    const auth = new Auth(this.formGroup.get('userName')?.value,this.formGroup.get('password')?.value,timezoneOffset);
+    const password = Encrypt.encrypt(this.formGroup.get('password')?.value);
+    const auth = new Auth(this.formGroup.get('userName')?.value,password,timezoneOffset);
     this.authService.auth(auth).subscribe(data=>{
       this.onLoginSuccess(data);
       this.loaderService.hide();
@@ -98,6 +100,7 @@ export class LoginComponent implements OnInit {
     const newUser = this.formGroupRegister.value as NewUser;
     newUser.email = newUser.userName;
     newUser.timezoneOffset = (new Date().getTimezoneOffset()*-1);
+    newUser.password = Encrypt.encrypt(newUser.password);
     this.authService.createUser(newUser).subscribe(data=>{
       this.notificationService.success("Usuario creado correctamente");
       this.showRegistrationForm();

@@ -61,4 +61,11 @@ export class AppointmentService {
   cancelAppointment(appointmentId:number, userId:number):Observable<boolean>{
     return this.http.post<boolean>(`/appointments/${appointmentId}/Cancel`,{userId:userId})
   }
+  hasAnyPreviousAppointment(patientId:number, hostId:number):Observable<boolean>{
+    const options =   {
+      params: new HttpParams().set('patientId',patientId)
+                              .set('hostId',hostId)
+    };
+    return this.http.get<boolean>(`/appointments/Any`,options)
+  }
 }

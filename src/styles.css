@@ -29,10 +29,10 @@ td.mat-calendar-body-cell.custom-date-class{
 
 @media only screen and (max-width: 600px)  {
 
-span.mat-button-wrapper{
-  width: 100%;
-}
-
-  
-  
+  span.mat-button-wrapper{
+    width: 100%;
+  }
+  .cal-agenda-date-date-number{
+    font-size: 2em!important;
+  }
 }
