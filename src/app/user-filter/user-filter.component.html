@@ -1,0 +1,26 @@
+<div class="patient-filter">
+    <div *ngIf="patientsSelected.length >=1">
+        <mat-chip *ngFor="let patient of patientsSelected" (removed)="removeFilter(patient)">
+            {{patient.patientName}}
+            <button matChipRemove>
+                <mat-icon>cancel</mat-icon>
+            </button>
+        </mat-chip>
+    </div>
+    <form class="example-form" *ngIf="patientsSelected.length === 0">
+        <mat-form-field class="example-full-width" appearance="standard">
+            <mat-label>Filtrar por paciente:</mat-label>
+            <input type="text" 
+                aria-label="Paciente" 
+                matInput #patientsInput 
+                [formControl]="patientFormControl"
+                [matAutocomplete]="auto"
+                >
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="selected($event)">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option.patientName">
+                    {{option.patientName}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+    </form>
+</div>

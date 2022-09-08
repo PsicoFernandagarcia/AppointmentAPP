@@ -107,4 +107,5 @@ export class PaymentsComponent implements OnInit {
       this.loadPayments();
     });
   }
+
 }

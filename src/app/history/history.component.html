@@ -16,12 +16,8 @@
             <h3>No hay datos de ese año seleccionado</h3>
         </div>
         <div class="patient-filter" *ngIf="history.length > 0 && isHost" >
-           <p>Filtrar por paciente:</p>
-           <mat-select class="patient-list" [(value)]="patientSelectedCombo" (valueChange)="onPatientChange($event)" >
-            <mat-option *ngFor="let p of patients" [value]="p.patientId" >
-                {{p.patientName}}
-              </mat-option>
-          </mat-select>
+            <app-user-filter [patients]="patients" (onPatientSelectedEvent)="onPatientChange($event)">
+            </app-user-filter>
         </div>
         <mat-accordion *ngFor="let h of historyFiltered">
             <mat-expansion-panel hideToggle class="panel-item">

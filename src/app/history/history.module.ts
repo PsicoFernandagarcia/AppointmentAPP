@@ -9,6 +9,7 @@ import { TranslateModule } from '../_pipes/resource.module';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSelectModule } from '@angular/material/select';
+import { UserFilterModule } from '../user-filter/user-filter.module';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { MatSelectModule } from '@angular/material/select';
     TranslateModule,
     MatExpansionModule,
     MatChipsModule,
-    MatSelectModule
+    MatSelectModule,
+    UserFilterModule
   ]
 })
 export class HistoryModule { }

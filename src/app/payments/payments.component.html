@@ -4,13 +4,9 @@
     </div>
     <hr>
     <div class="panel-container">
-        <div class="patient-filter" *ngIf=" isHost">
-            <p>Filtrar por paciente:</p>
-            <mat-select class="patient-list" [(value)]="patientSelectedCombo" (valueChange)="onPatientChange($event)">
-                <mat-option *ngFor="let p of patients" [value]="p.patientId">
-                    {{p.patientName}} 
-                </mat-option>
-            </mat-select>
+        <div class="patient-filter" *ngIf=" isHost && patients.length >0">
+            <app-user-filter [patients]="patients" (onPatientSelectedEvent)="onPatientChange($event)">
+            </app-user-filter>
         </div>
         <div >
             <mat-accordion  >

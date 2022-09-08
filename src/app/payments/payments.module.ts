@@ -7,6 +7,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
 import { FormsModule } from '@angular/forms';
+import { UserFilterModule } from '../user-filter/user-filter.module';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { FormsModule } from '@angular/forms';
     MatChipsModule,
     MatSelectModule,
     MatListModule,
-    FormsModule
+    FormsModule,
+    UserFilterModule
   ]
 })
 export class PaymentsModule { }
