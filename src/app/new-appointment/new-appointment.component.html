@@ -57,13 +57,27 @@
               </mat-expansion-panel-header>
               <div class="time-selection">
                 <h3>{{'availability'|translate}}:</h3>
-                <mat-chip-list aria-label="Fish selection">
-                  <mat-chip class="time-chip" *ngFor="let hour of availability"
+                <h3 style="font-weight: 500;">{{"in_the_morning"|translate}}</h3>
+                <mat-chip-list aria-label="hour selection">
+                  <div *ngFor="let hour of availability">
+                    <mat-chip class="time-chip" *ngIf="hour.hour <= 12"
                     [ngClass]="!hour.availability ? 'enable' : 'disable'"
                     [class.chip-selected]="hour.availability.id== availabilitySelected.id"
                     (click)="selectAvailability(hour.availability)">
                     {{hour.hour}}
-                  </mat-chip>
+                    </mat-chip>
+                  </div>
+                </mat-chip-list>
+                <h3 style="font-weight: 500;">{{"in_the_afternoon"|translate}}</h3>
+                <mat-chip-list aria-label="hour selection">
+                  <div *ngFor="let hour of availability">
+                    <mat-chip class="time-chip" *ngIf="hour.hour > 12"
+                    [ngClass]="!hour.availability ? 'enable' : 'disable'"
+                    [class.chip-selected]="hour.availability.id== availabilitySelected.id"
+                    (click)="selectAvailability(hour.availability)">
+                    {{hour.hour}}
+                    </mat-chip>
+                  </div>
                 </mat-chip-list>
               </div>
               <mat-action-row>

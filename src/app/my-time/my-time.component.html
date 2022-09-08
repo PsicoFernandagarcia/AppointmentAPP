@@ -25,12 +25,25 @@
                 </mat-panel-description>
               </mat-expansion-panel-header>
               <div class="time-selection">
-                <mat-chip-list aria-label="Fish selection">
-                  <mat-chip class="example-margin" *ngFor="let hour of availability"
-                    [ngClass]="!hour.availability ? 'enable' : 'disable'"
-                    (click)="changeAvailabilityHour(index+1,hour)">
-                    {{hour.hour}}
-                  </mat-chip>
+                <h3 style="font-weight: 500;">{{"in_the_morning"|translate}}</h3>
+                <mat-chip-list aria-label="hour selection">
+                  <div *ngFor="let hour of availability">
+                    <mat-chip class="example-margin" *ngIf="hour.hour <= 12"
+                      [ngClass]="!hour.availability ? 'enable' : 'disable'"
+                      (click)="changeAvailabilityHour(index+1,hour)">
+                      {{hour.hour}}
+                    </mat-chip>
+                  </div>
+                </mat-chip-list>
+                <h3 style="font-weight: 500; margin-top: 10px">{{"in_the_afternoon"|translate}}</h3>
+                <mat-chip-list aria-label="hour selection">
+                  <div *ngFor="let hour of availability">
+                    <mat-chip class="example-margin" *ngIf="hour.hour > 12"
+                      [ngClass]="!hour.availability ? 'enable' : 'disable'"
+                      (click)="changeAvailabilityHour(index+1,hour)">
+                      {{hour.hour}}
+                    </mat-chip>
+                  </div>
                 </mat-chip-list>
               </div>
               <mat-action-row>

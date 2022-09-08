@@ -54,5 +54,7 @@
 "new_payment_for":"Registrar nuevo pago del paciente ",
 "sessions_to_pay":"Sesiones a abonar",
 "amount":"Monto",
-"currency":"Moneda"
+"currency":"Moneda",
+"in_the_morning":"Por la mañana:",
+"in_the_afternoon":"Por la tarde:"
 }

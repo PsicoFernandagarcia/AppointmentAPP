@@ -107,4 +107,10 @@ export class PaymentsComponent implements OnInit {
       this.loadPayments();
     });
   }
+
+  onPatientSelected(patient:any){
+    if(patient.patientId === 0 ){
+
+    }
+  }
 }
