@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Appointment } from '../_models/appointment';
 import { HistoryAppointment }  from '../_models/history';
+import { User } from '../_models/user';
 import { AppointmentService } from '../_services/appointment.service';
 import { LoadingService } from '../_services/loading.service';
 import { NotificationService } from '../_services/notification.service';
@@ -18,7 +19,7 @@ export class HistoryComponent implements OnInit {
   historyFiltered : HistoryAppointment[] = [];
   isHost: boolean = false;
   currentUser:any = JSON.parse(localStorage.getItem('currentUser')??'{}');
-  patients:any[] = [];
+  patients:User[] = [];
   patientSelected:any;
   patientSelectedCombo:number = 0;
   months = ["Enero", "Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
@@ -62,17 +63,14 @@ export class HistoryComponent implements OnInit {
   }
   fillPatients(){
     this.patients = [];
-    this.patients.push({patientId:0,patientName:" - Todos"});
     this.appointments.forEach(a =>{
-      let p = this.patients.filter( pat => a.patientId === pat.patientId);
+      let p = this.patients.filter( pat => a.patientId === pat.id);
       if(p.length === 0){
-        this.patients.push({patientId: a.patientId, patientName:a.patientName});
+        let u =new User(a.patientId,'','');
+        u.name = '';
+        u.lastName = a.patientName;
+        this.patients.push(u);
       }
-    });
-    this.patients.sort((a,b)=>{
-      if(a.patientName > b.patientName)
-        return 1;
-      return -1;
     });
   }
 

@@ -49,8 +49,7 @@ export class NewAppointmentComponent implements OnInit {
   async ngOnInit() {
     this.isHost = localStorage.getItem('userRole') === "HOST";
     this.loadingService.show();
-    this.hosts = await this.loadHosts();
-    this.patients = await this.loadPatients();
+    [this.hosts,this.patients] = await Promise.all([this.loadHosts(), this.loadPatients()]);
     this.checkIfUserHasAnyPreviousAppointment();
     this.loadDates();
   }
@@ -101,7 +100,6 @@ export class NewAppointmentComponent implements OnInit {
     if (!this.isHost) return [];
     return new Promise((resolve, reject) => {
       this.userService.getPatients().subscribe(users => {
-        users.unshift(new User(0, '-', ''));
         resolve(users);
       });
     });
@@ -228,6 +226,10 @@ export class NewAppointmentComponent implements OnInit {
   }
 
   onUserChange(value: number) {
+    if(value === 0){
+      this.userToAssignSelected = new User(0,'','');
+      return;
+    }
     this.userToAssignSelected = this.patients.filter(x => x.id === value)[0];
   }
 

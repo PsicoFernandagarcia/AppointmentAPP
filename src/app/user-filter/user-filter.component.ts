@@ -11,34 +11,42 @@ import { User } from '../_models/user';
   styleUrls: ['./user-filter.component.css']
 })
 export class UserFilterComponent implements OnInit {
-  @Input() patients:any[] = [];
+  @Input() patients:User[] = [];
   @Output() onPatientSelectedEvent = new EventEmitter<any>(); 
   patientSelected :any;
-  patientsSelected :any[]=[];
+  patientsSelected :User[]=[];
   patientFormControl = new FormControl('');
-  filteredOptions!: Observable<any[]>;
+  filteredOptions!: Observable<User[]>;
 
   @ViewChild('patientsInput') patientsInput!: ElementRef<HTMLInputElement>;
 
   constructor() { }
 
   ngOnInit(): void {
+   this.sortPatients();
    this.setFilter(); 
+  } 
+  sortPatients(){
+     this.patients.sort((a,b)=>{
+      if(this.getUserFullName(a).toLowerCase() >this.getUserFullName(b).toLowerCase())
+        return 1;
+      return -1;
+    });
   }
   setFilter(){
     this.filteredOptions = this.patientFormControl.valueChanges.pipe(
       startWith(''),
       map(value => {
-        return this._filter(value )
+        return this._filter(value?.toLowerCase() ?? '')
       }),
     );
   }
 
   private _filter(value: any): any[] {
-    const filterValue = value?.patientName?.toLowerCase() ?? value;
-    return this.patients.filter(p => p.patientName.toLowerCase().includes(filterValue));
+    const filterValue = this.getUserFullName(value).toLowerCase() ?? value;
+    return this.patients.filter(p => this.getUserFullName(p).toLowerCase().includes(filterValue));
   }
-  removeFilter(patient:any){
+  removeFilter(patient:User){
     this.onPatientSelectedEvent.emit(0);
     const index = this.patientsSelected.indexOf(patient);
     if (index >= 0) {
@@ -48,10 +56,15 @@ export class UserFilterComponent implements OnInit {
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
-    const itemSelected =this.patients.filter(p => p.patientName.trim() === event.option.viewValue)[0];
+    const itemSelected =this.patients.filter(p => this.getUserFullName(p) === event.option.viewValue)[0];
     this.patientsSelected.push(itemSelected);
-    this.onPatientSelectedEvent.emit(itemSelected.patientId);
+    this.onPatientSelectedEvent.emit(itemSelected.id);
     this.patientsInput.nativeElement.value = '';
     this.patientFormControl.setValue(null);
+  }
+
+  getUserFullName(u:User):string{
+    if(!u?.lastName) return u.toString();
+    return `${u.lastName}  ${u.name}`.trim();
   }
 }

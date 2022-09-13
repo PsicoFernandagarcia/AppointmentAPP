@@ -18,10 +18,10 @@
                         <mat-panel-description class="description-text">
                             Ultimo pago realizado {{p.paidAt | date}}
                         </mat-panel-description>
-                        <mat-chip-list class="chip-list" style ="flex-grow: 1; margin-right: 5px; white-space: nowrap;" (click)="addPayment($event,p)">
-                            <mat-chip class="chip-text" *ngIf="p.sessionsLeft >= 0" color="primary" selected>No debe
+                        <mat-chip-list class="chip-list" style ="flex-grow: 1; margin-right: 5px; white-space: nowrap;" >
+                            <mat-chip class="chip-text" *ngIf="p.sessionsLeft >= 0" color="primary" selected (click)="addPayment($event,p)">No debe
                             </mat-chip>
-                            <mat-chip class="chip-text" *ngIf="p.sessionsLeft < 0" color="warn" selected>Debe
+                            <mat-chip class="chip-text" *ngIf="p.sessionsLeft < 0" color="warn" selected (click)="addPayment($event,p)">Debe
                                 {{p.sessionsLeft * (-1)}} {{p.sessionsLeft === -1 ? 'sesion' : 'sesiones'}}</mat-chip>
                         </mat-chip-list>
                     </mat-expansion-panel-header>

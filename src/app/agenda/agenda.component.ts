@@ -35,11 +35,13 @@ export class AgendaComponent implements OnInit, OnChanges {
   }
 
   loadAppointments(){
+    this.loadingService.show();
     this.appointmentService.myAppointments(this.selectedDay??new Date()).subscribe(data=>{
       this.days= [];
       this.appointments = [];
       this.appointments = data;
       this.loadDays();
+      this.loadingService.hide();
     })
   }
 

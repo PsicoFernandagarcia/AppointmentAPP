@@ -13,6 +13,7 @@ export class User {
       this.id =_id;
       this.email = _email;
   }
+
 }
 
 
