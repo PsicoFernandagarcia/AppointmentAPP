@@ -18,6 +18,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
+import { UserFilterModule } from '../user-filter/user-filter.module';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { FormsModule } from '@angular/forms';
     MatCheckboxModule,
     MatSelectModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    UserFilterModule
   ]
 })
 export class NewAppointmentModule { }

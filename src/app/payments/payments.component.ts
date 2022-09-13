@@ -16,7 +16,7 @@ export class PaymentsComponent implements OnInit {
   payments: Array<Payment> = [];
   paymentsFiltered: Array<Payment> = [];
   isHost: boolean = false;
-  patients:any[] = [];
+  patients:User[] = [];
   patientSelected:any;
   patientSelectedCombo:number = 0;
   patientSelectedToLoadPayment = 0;
@@ -47,18 +47,13 @@ export class PaymentsComponent implements OnInit {
 
   fillPatients(){
     this.patients = [];
-    this.patients.push({patientId:0,patientName:" - Todos"});
     this.payments.forEach(a =>{
-      let p = this.patients.filter( pat => a.patientId === pat.patientId);
+      let p = this.patients.filter( pat => a.patientId === pat.id);
       if(p.length === 0){
-        this.patients.push({patientId: a.patientId, patientName:a.patient.name + " "+ a.patient.lastName });
+        this.patients.push(a.patient);
       }
     });
-    this.patients.sort((a,b)=>{
-      if(a.patientName > b.patientName)
-        return 1;
-      return -1;
-    });
+   
   }
 
   onPatientChange(p:any){

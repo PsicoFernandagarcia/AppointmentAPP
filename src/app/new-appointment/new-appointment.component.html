@@ -7,33 +7,30 @@
 
     <mat-drawer-content>
       <div class="host-assignment">
-        <div class="user-list" *ngIf="isHost">
+        <div class="user-list" *ngIf="isHost ">
           <mat-list role="list">
             <h2>Selecciona un usuario del listado o escribe su email y nombre </h2>
           </mat-list>
-          <mat-form-field appearance="fill">
-            <mat-label>{{"patient"|translate}}</mat-label>
-            <mat-select (valueChange)="onUserChange($event)">
-              <mat-option *ngFor="let p of patients" [value]="p.id">
-                {{p.name}} {{p.lastName}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-select (valueChange)="onCountryChange($event)">
-              <mat-option [value]="-180">AR</mat-option>
-              <mat-option [value]="60">ESP</mat-option>
-            </mat-select>
-          </mat-form-field>
 
-          <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>{{"Email"|translate}}</mat-label>
-            <input matInput [(ngModel)]="userToAssignSelected.email">
-          </mat-form-field>
-          <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>{{"Name"|translate}}</mat-label>
-            <input matInput [(ngModel)]="userToAssignSelected.name">
-          </mat-form-field>
+          <div class="information">
+            <app-user-filter *ngIf="patients.length>0" [patients]="patients" (onPatientSelectedEvent)="onUserChange($event)">
+            </app-user-filter>
+            <mat-form-field appearance="standard" class="country">
+              <mat-select (valueChange)="onCountryChange($event)">
+                <mat-option [value]="-180">AR</mat-option>
+                <mat-option [value]="60">ESP</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="standard">
+              <mat-label>{{"Email"|translate}}</mat-label>
+              <input matInput [(ngModel)]="userToAssignSelected.email">
+            </mat-form-field>
+            <mat-form-field class="example-full-width" style="margin-left:10px;" appearance="standard">
+              <mat-label>{{"Name"|translate}}</mat-label>
+              <input matInput [(ngModel)]="userToAssignSelected.name">
+            </mat-form-field>
+          </div>
         </div>
       </div>
 

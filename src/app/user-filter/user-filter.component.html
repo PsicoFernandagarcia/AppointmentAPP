@@ -1,7 +1,7 @@
 <div class="patient-filter">
     <div *ngIf="patientsSelected.length >=1">
         <mat-chip *ngFor="let patient of patientsSelected" (removed)="removeFilter(patient)">
-            {{patient.patientName}}
+            {{getUserFullName(patient)}}
             <button matChipRemove>
                 <mat-icon>cancel</mat-icon>
             </button>
@@ -17,8 +17,8 @@
                 [matAutocomplete]="auto"
                 >
             <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="selected($event)">
-                <mat-option *ngFor="let option of filteredOptions | async" [value]="option.patientName">
-                    {{option.patientName}}
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="getUserFullName(option)">
+                    {{getUserFullName(option)}}
                 </mat-option>
             </mat-autocomplete>
         </mat-form-field>
