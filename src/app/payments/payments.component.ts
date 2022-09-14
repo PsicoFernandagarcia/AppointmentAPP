@@ -40,7 +40,7 @@ export class PaymentsComponent implements OnInit {
     this.paymentService.getLatestPayments().subscribe(res => {
       this.payments = res;
       this.fillPatients();
-      this.onPatientChange(this.patientSelectedCombo);
+      this.onPatientChange(this.patientSelected);
       this.loadingService.hide();
     });
   }
@@ -88,10 +88,13 @@ export class PaymentsComponent implements OnInit {
       this.loadingService.hide();
     });
   }
-  addPayment(e:Event,payment:Payment){
+  addPayment(e:Event,payment:Payment,edit:boolean){
     e.stopPropagation();
     const dialogRef = this.dialog.open(AddPaymentDialog, {
-      data:payment
+      data:{
+        payment,
+        editPayment:edit
+      }
     });
 
     dialogRef.afterClosed().subscribe(payment => {
@@ -102,5 +105,7 @@ export class PaymentsComponent implements OnInit {
       this.loadPayments();
     });
   }
-
+  getIndexDate(index: number,payment:Payment) {
+    return new Date(payment.paidAt.toString() ?? '').setDate(index);
+  }
 }

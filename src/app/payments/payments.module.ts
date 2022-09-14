@@ -8,6 +8,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
 import { FormsModule } from '@angular/forms';
 import { UserFilterModule } from '../user-filter/user-filter.module';
+import { TranslateModule } from '../_pipes/resource.module';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 
 @NgModule({
@@ -22,7 +25,10 @@ import { UserFilterModule } from '../user-filter/user-filter.module';
     MatSelectModule,
     MatListModule,
     FormsModule,
-    UserFilterModule
+    UserFilterModule,
+    TranslateModule,
+    MatButtonModule,
+    MatDatepickerModule
   ]
 })
 export class PaymentsModule { }

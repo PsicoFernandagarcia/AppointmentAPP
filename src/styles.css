@@ -17,10 +17,11 @@ td.mat-calendar-body-cell.custom-date-class{
   border-radius: 100% !important;
 }
 
-.success-snackbar {
-  background: rgb(42, 161, 42);
-  color:white;
+.success-snackbar,.mat-success.mat-chip.mat-standard-chip {
+  background: #28a745!important;
+  color: white !important;;
 }
+
 
 .error-snackbar {
   background: rgb(192, 37, 37);

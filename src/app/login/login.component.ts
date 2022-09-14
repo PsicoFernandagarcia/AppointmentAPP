@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import jwt_decode from 'jwt-decode';
 import { BehaviorSubject } from 'rxjs';
@@ -14,6 +14,8 @@ import { Random } from 'unsplash-js/dist/methods/photos/types';
 import { LoadingService } from '../_services/loading.service';
 import { GoogleLoginProvider, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { Encrypt } from '../_services/crypt';
+import { AppComponent } from '../app.component';
+import { MainComponent } from '../main/main.component';
 const unsplash = createApi({ accessKey: 'HrgmLTUUM2pk2xwmYDoAxgn4dh1L7SZdF_3o4fjf-os' });
 
 @Component({
@@ -22,8 +24,8 @@ const unsplash = createApi({ accessKey: 'HrgmLTUUM2pk2xwmYDoAxgn4dh1L7SZdF_3o4fj
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  formGroup!: FormGroup;
-  formGroupRegister!: FormGroup;
+  formGroup!: UntypedFormGroup;
+  formGroupRegister!: UntypedFormGroup;
   socialUser!: SocialUser;
   showRegister: boolean = false;
   urlImage:string='';
@@ -31,7 +33,7 @@ export class LoginComponent implements OnInit {
   constructor(
     public authService: AuthService
     ,private router: Router
-    ,private formBuilder: FormBuilder
+    ,private formBuilder: UntypedFormBuilder
     ,private socialAuthService: SocialAuthService
     ,private notificationService: NotificationService
     ,private appsettingsService: AppSettingsService
@@ -46,25 +48,26 @@ export class LoginComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.formGroup = new FormGroup({
-      userName: new FormControl('', [
+    this.subscribeGoogleAuth();
+    this.formGroup = new UntypedFormGroup({
+      userName: new UntypedFormControl('', [
         Validators.required,
       ]),
-      password: new FormControl('', [
+      password: new UntypedFormControl('', [
         Validators.required,
       ])
     });
-    this.formGroupRegister = new FormGroup({
-      userName: new FormControl('', [
+    this.formGroupRegister = new UntypedFormGroup({
+      userName: new UntypedFormControl('', [
         Validators.required,
       ]),
-      lastName: new FormControl('', [
+      lastName: new UntypedFormControl('', [
         Validators.required,
       ]),
-      name: new FormControl('', [
+      name: new UntypedFormControl('', [
         Validators.required,
       ]),
-      password: new FormControl('', [
+      password: new UntypedFormControl('', [
         Validators.required,
       ])
     });
@@ -80,6 +83,23 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  subscribeGoogleAuth(){
+    MainComponent.logout.subscribe(data =>{
+      if(data){
+        this.socialAuthService.signOut();
+      }
+    })
+    this.socialAuthService.authState.subscribe((user) => {
+      const timezoneOffset = (new Date().getTimezoneOffset()*-1);
+      this.authService.authExternal(new AuthExternal(user.email,user.firstName,user.lastName,user.idToken,user.provider,timezoneOffset))
+      .subscribe(res=>{
+        this.onLoginSuccess(res);
+      })
+    },err=>{
+      console.log("error");
+      console.log(err);
+    });
+  }
 
   login(){
     if(!this.formGroup.valid) return;

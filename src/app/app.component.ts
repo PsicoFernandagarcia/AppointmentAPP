@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import jwt_decode from 'jwt-decode';
+import { SocialAuthService } from '@abacritt/angularx-social-login';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -12,19 +14,13 @@ export class AppComponent implements OnInit {
   title = 'Appointment-App';
   showToolbar: boolean=false;
   role:string='';
+
   constructor(
     private router: Router
   ) {
 
   }
   ngOnInit(): void {
-    // const token = localStorage.getItem("token");
-    // this.showToolbar = (token && this.isTokenValid(token.split(' ')[1])) || false;
-    // if(!this.showToolbar)
-    // {
-    //   this.router.navigate(['login']);
-    // }
-    // this.role = localStorage.getItem('userRole')??'';
     this.suscribeLogin();
   }
 
@@ -32,6 +28,7 @@ export class AppComponent implements OnInit {
   logout(){
     localStorage.clear();
     this.showToolbar=false;
+    debugger;
     this.router.navigate(['main/login']);
   }
 

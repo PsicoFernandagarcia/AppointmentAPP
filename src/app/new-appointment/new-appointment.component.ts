@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { Appointment, HostAppointment } from '../_models/appointment';
 import { Availability } from '../_models/availability';
 import { User } from '../_models/user';
@@ -31,7 +31,7 @@ export class NewAppointmentComponent implements OnInit {
   hosts: User[] = [];
   patients: User[] = [];
   isHost: boolean = false;
-  disableSelectUser = new FormControl(false);
+  disableSelectUser = new UntypedFormControl(false);
   userToAssignSelected: User = new User(0, '-', '');
   timezoneOffsetSelected: number = 0;
   hasAvailabilities:boolean = false;

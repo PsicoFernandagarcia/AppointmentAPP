@@ -115,5 +115,7 @@
       }
     }
   },
-  "defaultProject": "Appointment-App"
+  "cli": {
+    "analytics": false
+  }
 }
