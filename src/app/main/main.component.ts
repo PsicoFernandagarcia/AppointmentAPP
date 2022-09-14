@@ -5,6 +5,7 @@ import { LoginComponent } from '../login/login.component';
 import jwt_decode from 'jwt-decode';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { BottomMenuComponent } from '../bottom-menu/bottom-menu.component';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-main',
@@ -15,6 +16,8 @@ export class MainComponent implements OnInit {
   title = 'Appointment-App';
   showToolbar: boolean=false;
   role:string='';
+  public static logout = new BehaviorSubject<boolean>(false);
+
   constructor(
     private router: Router
     ,private _bottomSheet: MatBottomSheet
@@ -34,6 +37,8 @@ export class MainComponent implements OnInit {
   logout(){
     localStorage.clear();
     this.showToolbar=false;
+    MainComponent.logout.next(true);
+
     this.router.navigate(['main/login']);
   }
 

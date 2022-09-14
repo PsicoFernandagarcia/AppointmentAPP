@@ -69,7 +69,6 @@ export class AgendaComponent implements OnInit, OnChanges {
 
   onCancelAppointment(appointmentId:number){
     this.notificationService.confirmation("Está seguro que desea cancelar la cita?",()=>{
-      debugger;
       const currentUser = JSON.parse(localStorage.getItem("currentUser") ?? '{}');
       this.loadingService.show();
       this.appointmentService.cancelAppointment(appointmentId,currentUser.id).subscribe(res=>{

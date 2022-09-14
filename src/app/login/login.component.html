@@ -76,10 +76,11 @@
           
           <p style="padding-left: 16px;">{{'external_login'|translate}}</p>
           <div id="gSignInWrapper" style="display: flex;" (click)="loginWithGoogle()">
-            <div id="customBtn" class="customGPlusSignIn" style="max-height: 44px;">
+            <asl-google-signin-button type='standard' size='large'></asl-google-signin-button>
+            <!-- <div id="customBtn" class="customGPlusSignIn" style="max-height: 44px;">
               <span class="icon"></span>
               <span class="buttonText">Google</span>
-            </div>
+            </div> -->
             <div>
 
               <img  class ="full-logo" src="../../assets/images/full-logo-min.webp">

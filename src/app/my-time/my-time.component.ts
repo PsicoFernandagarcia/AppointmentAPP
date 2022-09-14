@@ -94,7 +94,6 @@ export class MyTimeComponent implements OnInit {
   }
 
   changeAvailabilityHour(dayNumber: number, hour: any) {
-    debugger;
     if (hour.availability) {
       if (hour.availability.id)
         this.availabilitiesToRemove.push(hour.availability);

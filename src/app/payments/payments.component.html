@@ -10,24 +10,39 @@
         </div>
         <div >
             <mat-accordion  >
-                <mat-expansion-panel *ngFor="let p of paymentsFiltered" (click)="loadPaymentsFromPatient(p)">
+                <mat-expansion-panel *ngFor="let p of paymentsFiltered ; let indexPayment = index;" (click)="loadPaymentsFromPatient(p)">
                     <mat-expansion-panel-header class="expansion-pannel-payment">
                         <mat-panel-title class="patient-name">
                             {{p.patient.name}}
                         </mat-panel-title>
                         <mat-panel-description class="description-text">
-                            Ultimo pago realizado {{p.paidAt | date}}
+                            Ultimo pago realizado {{getIndexDate(indexPayment+1,p) | date:'MMMM' | translate}} {{p.paidAt | date:'dd yyyy'}}
                         </mat-panel-description>
                         <mat-chip-list class="chip-list" style ="flex-grow: 1; margin-right: 5px; white-space: nowrap;" >
-                            <mat-chip class="chip-text" *ngIf="p.sessionsLeft >= 0" color="primary" selected (click)="addPayment($event,p)">No debe
+                            <mat-chip class="chip-text" *ngIf="p.sessionsLeft > 0" color="success" selected (click)="addPayment($event,p,false)">
+                                Tiene {{p.sessionsLeft}} {{p.sessionsLeft === 1 ? 'sesion' : 'sesiones'}}
                             </mat-chip>
-                            <mat-chip class="chip-text" *ngIf="p.sessionsLeft < 0" color="warn" selected (click)="addPayment($event,p)">Debe
-                                {{p.sessionsLeft * (-1)}} {{p.sessionsLeft === -1 ? 'sesion' : 'sesiones'}}</mat-chip>
+                            <mat-chip class="chip-text" *ngIf="p.sessionsLeft === 0" color="primary" selected (click)="addPayment($event,p,false)">No debe
+                            </mat-chip>
+                            <mat-chip class="chip-text" *ngIf="p.sessionsLeft < 0" color="warn" selected (click)="addPayment($event,p,false)">
+                                Debe {{p.sessionsLeft * (-1)}} {{p.sessionsLeft === -1 ? 'sesion' : 'sesiones'}}</mat-chip>
                         </mat-chip-list>
                     </mat-expansion-panel-header>
                     <mat-list role="list">
-                        <div *ngFor="let pu of paymentsFromUserSelected">
-                            <mat-list-item role="listitem" class="list-payment-item">{{pu.paidAt |date}} pagó {{pu.sessionsPaid}} sesiones Total: {{pu.amount|currency}}</mat-list-item>
+                        <div *ngFor="let pu of paymentsFromUserSelected; let indexPu = index;">
+                            <mat-list-item role="listitem" class="list-payment-item">
+                                <div class="payment-information">
+                                    <p>
+                                        {{getIndexDate(indexPu+1,pu) | date:'MMMM' | translate}} {{pu.paidAt | date:'dd yyyy'}}
+                                    pagó {{pu.sessionsPaid}} sesiones Total: {{pu.amount|currency}}
+                                    </p>
+                                </div>
+                                <div class="payment-actions">
+                                    <button mat-stroked-button color="primary" (click)="addPayment($event,pu,true)">
+                                        {{'edit'|translate}}
+                                    </button>
+                                </div>
+                            </mat-list-item>
                             <mat-divider></mat-divider>
                         </div>
                     </mat-list>

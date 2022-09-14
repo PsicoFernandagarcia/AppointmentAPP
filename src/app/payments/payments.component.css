@@ -29,6 +29,13 @@
     min-width: 35%;
     max-width: 35%;
   }
+  .payment-information{
+    width: 100%;
+  }
+  .payment-actions{
+    width: 100%;
+    position: sticky;
+  }
 @media only screen and (max-width: 600px)  {
    .description-text,.chip-text{
     font-size: small;
@@ -62,5 +69,8 @@
     margin-top: 5px;
     margin-bottom: 5px;
     height: fit-content;
+  }
+  .payment-actions{
+    text-align-last: right;
   }
 }

@@ -1,5 +1,5 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { map, Observable, startWith } from 'rxjs';
@@ -15,7 +15,7 @@ export class UserFilterComponent implements OnInit {
   @Output() onPatientSelectedEvent = new EventEmitter<any>(); 
   patientSelected :any;
   patientsSelected :User[]=[];
-  patientFormControl = new FormControl('');
+  patientFormControl = new UntypedFormControl('');
   filteredOptions!: Observable<User[]>;
 
   @ViewChild('patientsInput') patientsInput!: ElementRef<HTMLInputElement>;

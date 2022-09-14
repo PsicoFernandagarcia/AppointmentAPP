@@ -13,7 +13,9 @@ export class PaymentService {
   save(payment:Payment):Observable<Payment>{
     return this.http.post<Payment>('/payments',payment);
   }
-
+  edit(payment:Payment):Observable<Payment>{
+    return this.http.put<Payment>('/payments',payment);
+  }
 
   getLatestPayments():Observable<Payment[]>{
     return this.http.get<Payment[]>('/payments/latest')

@@ -22,6 +22,27 @@ import { MatListModule } from '@angular/material/list';
 import { AddPaymentDialog } from './payments/add-payment-dialog.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+
+import * as _moment from 'moment';
+// tslint:disable-next-line:no-duplicate-imports
+import {default as _rollupMoment} from 'moment';
+const moment = _rollupMoment || _moment;
+moment.locale('es');
+
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'DD/MM/yyyy',
+  },
+  display: {
+    dateInput: 'DD/MM/yyyy',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'DD/MM/yyyy',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 
 @NgModule({
   declarations: [
@@ -49,9 +70,19 @@ import { MatSelectModule } from '@angular/material/select';
     MatBottomSheetModule,
     MatListModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDatepickerModule
   ],
-  providers: [httpInterceptorProviders],
+  providers: [
+    httpInterceptorProviders,
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
+    },
+
+    {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
