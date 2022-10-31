@@ -43,7 +43,7 @@ export class NewAppointmentComponent implements OnInit {
     , private loadingService:LoadingService
     , private userService: UserService
   ) {
-    this.nextMonthDate.setMonth(this.today.getMonth() + 1);
+    this.nextMonthDate = new Date(this.today.getFullYear(),this.today.getMonth()+1);
    }
 
   async ngOnInit() {
