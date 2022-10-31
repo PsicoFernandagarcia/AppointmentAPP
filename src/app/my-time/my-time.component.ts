@@ -28,7 +28,7 @@ export class MyTimeComponent implements OnInit {
     , private loadingService: LoadingService
   ) {
 
-    this.nextMonthDate.setMonth(this.today.getMonth() + 1);
+    this.nextMonthDate = new Date(this.today.getFullYear(),this.today.getMonth()+1);
   }
 
   ngOnInit(): void {
