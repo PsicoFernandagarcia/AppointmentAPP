@@ -1,0 +1,35 @@
+<div class="contentsss">
+<h1 mat-dialog-title>Pagos {{yearShown}} </h1>
+<button mat-button *ngIf="yearShown <= data.year" (click)="changeYear(yearShown -1)">Ver año anterior</button>
+<button mat-button *ngIf="yearShown < data.year" (click)="changeYear(yearShown +1)">Ver año siguiente</button>
+
+<div mat-dialog-content>
+  <mat-card *ngIf="information.length===0">
+    <mat-card-content>
+      No hay datos para mostrar
+    </mat-card-content>
+  </mat-card>
+  <mat-accordion>
+    <mat-expansion-panel hideToggle *ngFor="let p of information" > 
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{p.month | translate}}
+        </mat-panel-title>
+        <mat-panel-description style="font-size: small;">
+          {{"EUR: " + p.totalAmountEur}}
+          {{" Pesos: " + p.totalAmountPeso}}
+          {{" USD: " + p.totalAmountUSD}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-list *ngFor="let payment of p.paymentsArray">
+        <mat-list-item>{{payment.patientFullName}} - <span><strong>{{payment.currency}} {{payment.total}} </strong></span></mat-list-item>
+        <mat-divider></mat-divider>
+      </mat-list>
+      
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancelClick()">{{"cancel"|translate}}</button>
+</div>
+</div>

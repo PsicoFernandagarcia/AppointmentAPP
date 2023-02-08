@@ -137,12 +137,11 @@ export class NewAppointmentComponent implements OnInit {
   }
 
   getDateToFilter():Date{
-    if(this.today.getMonth() !== this.selectedDay.getMonth()){
+    if(this.today.getMonth() !== this.selectedDay.getMonth() || this.isHost){
       return this.firstDayInMonth;
     }
     let tomorrowsDate =  new Date();
      tomorrowsDate.setDate(tomorrowsDate.getDate()+1);
-     tomorrowsDate.setHours(0,0,0,0);
      return tomorrowsDate;
   }
 

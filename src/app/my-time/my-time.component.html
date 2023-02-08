@@ -9,48 +9,54 @@
         class="b-grid-cell b-calendar-cell b-nonworking-day b-sticky-cell" style="min-width: 60px;">
         <div style="width: 100%;">
           <mat-accordion>
-            <mat-expansion-panel hideToggle
-              *ngFor="let availability of selectedMonthAvailabilities; let index = index;">
-              <mat-expansion-panel-header class="panel-header" *ngIf="availability.length > 0">
-                <mat-panel-title>
-                  <div class="cal-agenda-date-date-number" [ngClass]="'day-selected'">
-                    {{index+1}}
-                  </div>
-                </mat-panel-title>
-                <mat-panel-description>
-                  <div class="cal-agenda-date-text">
-                    {{getIndexDate(index+1) | date:'EEEE'| translate}} -
-                    {{getIndexDate(index+1) | date:'MMMM' | translate}} {{getIndexDate(index+1) | date:'yyyy'}}
-                  </div>
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-              <div class="time-selection">
-                <h3 style="font-weight: 500;">{{"in_the_morning"|translate}}</h3>
-                <mat-chip-list aria-label="hour selection">
-                  <div *ngFor="let hour of availability">
-                    <mat-chip class="example-margin" *ngIf="hour.hour <= 12"
-                      [ngClass]="!hour.availability ? 'enable' : 'disable'"
-                      (click)="changeAvailabilityHour(index+1,hour)">
-                      {{hour.hour}}
-                    </mat-chip>
-                  </div>
-                </mat-chip-list>
-                <h3 style="font-weight: 500; margin-top: 10px">{{"in_the_afternoon"|translate}}</h3>
-                <mat-chip-list aria-label="hour selection">
-                  <div *ngFor="let hour of availability">
-                    <mat-chip class="example-margin" *ngIf="hour.hour > 12"
-                      [ngClass]="!hour.availability ? 'enable' : 'disable'"
-                      (click)="changeAvailabilityHour(index+1,hour)">
-                      {{hour.hour}}
-                    </mat-chip>
-                  </div>
-                </mat-chip-list>
-              </div>
-              <mat-action-row>
-                <button mat-button color="primary"
-                  (click)="saveAvailabilities(availability)">{{'save'|translate}}</button>
-              </mat-action-row>
-            </mat-expansion-panel>
+            <div *ngFor="let availability of selectedMonthAvailabilities; let index = index;">
+              <mat-expansion-panel 
+                hideToggle 
+                *ngIf="index+1 >= today.getDate() 
+                || selectedDay.getMonth()!== today.getMonth()"
+              >
+                <mat-expansion-panel-header class="panel-header" *ngIf="availability.length > 0">
+                  <mat-panel-title>
+                    <div class="cal-agenda-date-date-number" [ngClass]="'day-selected'">
+                      {{index+1}}
+                    </div>
+                  </mat-panel-title>
+                  <mat-panel-description>
+                    <div class="cal-agenda-date-text">
+                      {{getIndexDate(index+1) | date:'EEEE'| translate}} -
+                      {{getIndexDate(index+1) | date:'MMMM' | translate}} {{getIndexDate(index+1) | date:'yyyy'}}
+                    </div>
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div class="time-selection">
+                  <h3 style="font-weight: 500;">{{"in_the_morning"|translate}}</h3>
+                  <mat-chip-list aria-label="hour selection">
+                    <div *ngFor="let hour of availability">
+                      <mat-chip class="example-margin" *ngIf="hour.hour <= 12"
+                        [ngClass]="!hour.availability ? 'enable' : 'disable'"
+                        (click)="changeAvailabilityHour(index+1,hour)">
+                        {{hour.hour}}
+                      </mat-chip>
+                    </div>
+                  </mat-chip-list>
+                  <h3 style="font-weight: 500; margin-top: 10px">{{"in_the_afternoon"|translate}}</h3>
+                  <mat-chip-list aria-label="hour selection">
+                    <div *ngFor="let hour of availability">
+                      <mat-chip class="example-margin" *ngIf="hour.hour > 12"
+                        [ngClass]="!hour.availability ? 'enable' : 'disable'"
+                        (click)="changeAvailabilityHour(index+1,hour)">
+                        {{hour.hour}}
+                      </mat-chip>
+                    </div>
+                  </mat-chip-list>
+                </div>
+                <mat-action-row>
+                  <button mat-button color="primary"
+                    (click)="saveAvailabilities(availability)">{{'save'|translate}}</button>
+                </mat-action-row>
+              </mat-expansion-panel>
+
+            </div>
           </mat-accordion>
           <div class="change-month-container">
             <button class="change-month-btn" mat-raised-button color="primary"

@@ -1,76 +1,114 @@
-.container{
-    padding: 20px;
-    padding-bottom: 64px;
+.container {
+  padding: 20px;
+  padding-bottom: 64px;
 }
-.header{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.filter h2{
-    margin: 5px;
+
+.filter h2 {
+  margin: 5px;
 
 }
-.panel-item{
-    margin-bottom:10px;
-    margin-top:5px;
-}
-.patient-list{
-    width:max-content;
-  }
-  .patient-filter{
-    margin-bottom: 10px;
-  }
-  .mat-content{
-    flex-grow: 4;
-  }
 
-  .patient-name{
-    min-width: 35%;
-    max-width: 35%;
-  }
-  .payment-information{
-    width: 100%;
-  }
-  .payment-actions{
-    width: 100%;
-    position: sticky;
-  }
-@media only screen and (max-width: 600px)  {
-   .description-text,.chip-text{
+.panel-item {
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+.patient-list {
+  width: max-content;
+}
+
+.patient-filter {
+  margin-bottom: 10px;
+}
+
+.mat-content {
+  flex-grow: 4;
+}
+
+.patient-name {
+  min-width: 35%;
+  max-width: 35%;
+}
+
+.payment-information {
+  width: 100%;
+}
+
+.payment-actions {
+  width: 100%;
+  position: sticky;
+}
+
+.mat-chip.mat-chip.mat-focus-indicator.chip-text.mat-standard-chip.mat-warn.mat-chip-selected.ng-star-inserted {
+  cursor: pointer;
+}
+
+.fab-container {
+  position: fixed;
+  bottom: 70px;
+  right: 20px;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+
+  .description-text,
+  .chip-text {
     font-size: small;
-   }
-   .patient-filter{
-    display:flex;
+  }
+
+  .patient-filter {
+    display: flex;
     justify-content: space-between;
-  } 
-  .patient-list{
-    width:50%;
-  } 
-  .list-payment-item, .chip-text, .patient-name{
+  }
+
+  .patient-list {
+    width: 50%;
+  }
+
+  .list-payment-item,
+  .chip-text,
+  .patient-name {
     font-size: smaller;
   }
-  .container{
+
+  .container {
     padding: 5px;
     padding-bottom: 56px;
   }
- 
 
-  .chip-list{
+
+  .chip-list {
     flex-grow: 1;
   }
-  .patient-name{
+
+  .patient-name {
     width: 40px;
     min-width: 40px;
     max-width: 40px;
+    overflow: auto;
   }
 
-  .expansion-pannel-payment{
+  .expansion-pannel-payment {
     margin-top: 5px;
     margin-bottom: 5px;
     height: fit-content;
   }
-  .payment-actions{
+
+  .payment-actions {
     text-align-last: right;
+  }
+
+  .fab-container {
+    position: fixed;
+    bottom: 60px;
+    right: 20px;
+    cursor: pointer;
   }
 }

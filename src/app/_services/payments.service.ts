@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
-import { Payment } from '../_models/payment';
+import { Payment, PaymentInformation } from '../_models/payment';
 
 @Injectable({
   providedIn: 'root'
@@ -44,5 +44,13 @@ export class PaymentService {
           return response;
         })
       );
+  }
+
+  getPaymentInformation(year:number, hostId:number):Observable<PaymentInformation[]>{
+    const options =   {
+      params: new HttpParams().set('hostId',hostId)
+                              .set('year',year)
+    };
+    return this.http.get<PaymentInformation[]>('/payments/report',options);
   }
 }
