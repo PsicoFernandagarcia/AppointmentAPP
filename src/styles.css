@@ -27,6 +27,9 @@ td.mat-calendar-body-cell.custom-date-class{
   background: rgb(192, 37, 37);
   color:white;
 }
+.cdk-overlay-pane{
+  overflow: auto;
+}
 
 @media only screen and (max-width: 600px)  {
 
