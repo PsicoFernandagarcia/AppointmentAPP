@@ -6,6 +6,7 @@ import { LoadingService } from '../_services/loading.service';
 import { NotificationService } from '../_services/notification.service';
 import { PaymentService } from '../_services/payments.service';
 import { AddPaymentDialog } from './add-payment-dialog.component';
+import { PaymentReportDialog } from './payment-report-dialog.component';
 
 @Component({
   selector: 'app-payments',
@@ -16,6 +17,7 @@ export class PaymentsComponent implements OnInit {
   payments: Array<Payment> = [];
   paymentsFiltered: Array<Payment> = [];
   isHost: boolean = false;
+  hostId: number = 0;
   patients:User[] = [];
   patientSelected:any;
   patientSelectedCombo:number = 0;
@@ -24,7 +26,6 @@ export class PaymentsComponent implements OnInit {
 
   constructor(
             private paymentService :PaymentService
-            ,private notificationService:NotificationService
             ,private loadingService:LoadingService
             ,public dialog: MatDialog
     ) {
@@ -32,6 +33,8 @@ export class PaymentsComponent implements OnInit {
 
   ngOnInit(): void {
     this.isHost = localStorage.getItem('userRole') === "HOST";
+    this.hostId = JSON.parse(localStorage.getItem('currentUser') || '').id;
+
     this.loadPayments();
   }
 
@@ -88,6 +91,7 @@ export class PaymentsComponent implements OnInit {
       this.loadingService.hide();
     });
   }
+
   addPayment(e:Event,payment:Payment,edit:boolean){
     e.stopPropagation();
     const dialogRef = this.dialog.open(AddPaymentDialog, {
@@ -105,6 +109,16 @@ export class PaymentsComponent implements OnInit {
       this.loadPayments();
     });
   }
+
+  showPaymentInformation(){
+    const dialogRef = this.dialog.open(PaymentReportDialog, {
+      data:{
+        hostId: this.hostId,
+        year: (new Date()).getFullYear()
+      }
+    });
+  }
+
   getIndexDate(index: number,payment:Payment) {
     return new Date(payment.paidAt.toString() ?? '').setDate(index);
   }

@@ -11,11 +11,15 @@ import { UserFilterModule } from '../user-filter/user-filter.module';
 import { TranslateModule } from '../_pipes/resource.module';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { PaymentReportDialog } from './payment-report-dialog.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
   declarations: [
-    PaymentsComponent
+    PaymentsComponent,
+    PaymentReportDialog
   ],
   imports: [
     PaymentsRoutingModule,
@@ -28,7 +32,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     UserFilterModule,
     TranslateModule,
     MatButtonModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatCardModule,
+    MatIconModule
   ]
 })
 export class PaymentsModule { }

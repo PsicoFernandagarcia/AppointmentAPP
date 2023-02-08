@@ -10,7 +10,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSelectModule } from '@angular/material/select';
 import { UserFilterModule } from '../user-filter/user-filter.module';
-
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,8 @@ import { UserFilterModule } from '../user-filter/user-filter.module';
     MatExpansionModule,
     MatChipsModule,
     MatSelectModule,
-    UserFilterModule
+    UserFilterModule,
+    MatDividerModule
   ]
 })
 export class HistoryModule { }

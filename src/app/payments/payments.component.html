@@ -13,7 +13,7 @@
                 <mat-expansion-panel *ngFor="let p of paymentsFiltered ; let indexPayment = index;" (click)="loadPaymentsFromPatient(p)">
                     <mat-expansion-panel-header class="expansion-pannel-payment">
                         <mat-panel-title class="patient-name">
-                            {{p.patient.name}}
+                            {{p.patient.name}} {{p.patient.lastName}}
                         </mat-panel-title>
                         <mat-panel-description class="description-text">
                             Ultimo pago realizado {{getIndexDate(indexPayment+1,p) | date:'MMMM' | translate}} {{p.paidAt | date:'dd yyyy'}}
@@ -51,5 +51,10 @@
             </mat-accordion>
         </div>
     </div>
-
+    <div class="fab-container">
+        <button mat-raised-button color="primary" (click)="showPaymentInformation()">
+            Ver Informe Anual
+        </button>
+    </div>
+    
 </div>

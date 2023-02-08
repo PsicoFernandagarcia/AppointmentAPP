@@ -13,4 +13,13 @@ export class Payment {
   currency!:string;
 }
 
+export class PaymentInformation{
+   patientId!:number;
+   hostId!:number;
+   total!:number;
+   currency!:string;
+   month!: number;
+   patientFullName!: string;
+}
+
 

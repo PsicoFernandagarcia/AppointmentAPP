@@ -36,4 +36,9 @@ td.mat-calendar-body-cell.custom-date-class{
   .cal-agenda-date-date-number{
     font-size: 2em!important;
   }
+  .cdk-overlay-pane{
+    max-width: 100% !important;
+    position: static;
+    overflow: auto;
+  }
 }
