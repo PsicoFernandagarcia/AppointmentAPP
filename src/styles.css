@@ -41,7 +41,6 @@ td.mat-calendar-body-cell.custom-date-class{
   }
   .cdk-overlay-pane{
     max-width: 100% !important;
-    position: static;
     overflow: auto;
   }
 }
