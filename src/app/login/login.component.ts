@@ -74,7 +74,8 @@ export class LoginComponent implements OnInit {
 
     unsplash.photos.getRandom(
       { 
-        query:"training,brain"
+        query:"sport",
+        orientation:'landscape'
        },
       { headers: { 'X-Custom-Header-2': 'bar' } },
     ).then(res=>{
