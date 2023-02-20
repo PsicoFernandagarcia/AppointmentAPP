@@ -125,7 +125,6 @@ export class HistoryComponent implements OnInit {
   }
 
   cancelAppointment(appointmentId:number){
-    debugger;
     this.notificationService.confirmation("Esta es una cita pasada, está seguro que desea cancelarla?",()=>{
       const currentUser = JSON.parse(localStorage.getItem("currentUser") ?? '{}');
       this.loadingService.show();
