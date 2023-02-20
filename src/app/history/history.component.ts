@@ -123,4 +123,20 @@ export class HistoryComponent implements OnInit {
       return 1;
     })
   }
+
+  cancelAppointment(appointmentId:number){
+    this.notificationService.confirmation("Esta es una cita pasada, está seguro que desea cancelarla?",()=>{
+      const currentUser = JSON.parse(localStorage.getItem("currentUser") ?? '{}');
+      this.loadingService.show();
+      this.appointmentService.cancelAppointment(appointmentId,currentUser.id).subscribe(res=>{
+        this.notificationService.success("Se ha cancelado la cita con exito");
+        this.search();
+        this.loadingService.hide();
+      },erro=>{
+        this.notificationService.error("Ocurrión un error al cancelar la cita");
+        this.loadingService.hide();
+      });
+    },"Cancelar Cita",()=>{
+    });
+  }
 }

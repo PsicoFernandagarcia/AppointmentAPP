@@ -45,6 +45,9 @@
                                     <mat-chip *ngIf="appointment.status !== 'CANCELED'" color="primary" selected>
                                         {{appointment.patientId === currentUser.id ? appointment.hostName
                                         :appointment.patientName}}
+                                        <button *ngIf="isHost" matChipRemove (click)="cancelAppointment(appointment.id)">
+                                            <mat-icon>cancel</mat-icon>
+                                          </button>
                                     </mat-chip>
                                 </mat-chip-list>
                             </div>
