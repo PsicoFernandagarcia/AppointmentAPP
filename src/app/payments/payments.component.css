@@ -73,6 +73,7 @@
   }
   .list-payment-item{
     display: flex;
+    width:100%;
   }
 
   .payment-information{
