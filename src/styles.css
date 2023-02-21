@@ -43,4 +43,19 @@ td.mat-calendar-body-cell.custom-date-class{
     max-width: 100% !important;
     overflow: auto;
   }
+
+  .header>h2{
+    margin:0px;
+  }
+  .mat-list-item-content{
+    padding:0px !important;
+  }
+
+  .b-cal-agenda-event-time{
+    font-size: smaller;
+  }
+  mat-chip {
+    font-size: smaller !important;
+    font-weight: 400 !important;
+  }
 }

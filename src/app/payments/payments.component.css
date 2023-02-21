@@ -71,6 +71,13 @@
   .patient-list {
     width: 50%;
   }
+  .list-payment-item{
+    display: flex;
+  }
+
+  .payment-information{
+    flex:3;
+  }
 
   .list-payment-item,
   .chip-text,
@@ -102,6 +109,7 @@
   }
 
   .payment-actions {
+    flex:1;
     text-align-last: right;
   }
 

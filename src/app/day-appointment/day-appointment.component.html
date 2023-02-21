@@ -1,9 +1,11 @@
 <div data-column="_agendacolumn2" data-column-id="agendaColumn"
   class="b-grid-cell b-calendar-cell b-nonworking-day b-sticky-cell" style="min-width: 60px;">
   <div class="b-cal-agenda-date">
-    <div class="cal-agenda-date-date-number" [ngClass]="day.isSelectedInCalendar ? 'day-selected': ''">
-      {{day.appointmentDate | date:'d'}}
-
+    <div class="day-container">
+      <div class="cal-agenda-date-date-number" [ngClass]="day.isSelectedInCalendar ? 'day-selected': ''">
+        {{day.appointmentDate | date:'d'}}
+  
+      </div>
     </div>
     <div class="cal-agenda-date-date-text">
       <div>{{day.appointmentDate | date:'EEEE'| translate}}</div>

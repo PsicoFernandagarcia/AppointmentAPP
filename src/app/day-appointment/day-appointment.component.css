@@ -30,6 +30,13 @@
   height: 1.5em;
   border-radius: 50%;
 }
+.day-container{
+  display: flex;
+  flex-grow: 1;
+  flex-basis: 0;
+  margin-right: 16px;
+  align-items: center;
+}
 .b-cal-event-bar-container {
   flex: 1;
   flex-flow: column;
