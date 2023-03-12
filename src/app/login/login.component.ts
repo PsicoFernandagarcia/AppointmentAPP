@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import jwt_decode from 'jwt-decode';
 import { BehaviorSubject } from 'rxjs';
 import { Auth, AuthExternal, AuthResponse } from '../_models/auth';
-import { User } from '../_models/user';
 import { NewUser } from '../_models/user-new';
 import { AppSettingsService } from '../_services/app-settings.service';
 import { AuthService } from '../_services/auth.service';
@@ -12,9 +11,8 @@ import { NotificationService } from '../_services/notification.service';
 import { createApi } from 'unsplash-js';
 import { Random } from 'unsplash-js/dist/methods/photos/types';
 import { LoadingService } from '../_services/loading.service';
-import { GoogleInitOptions, GoogleLoginProvider, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
+import { GoogleLoginProvider, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { Encrypt } from '../_services/crypt';
-import { AppComponent } from '../app.component';
 import { MainComponent } from '../main/main.component';
 const unsplash = createApi({ accessKey: 'HrgmLTUUM2pk2xwmYDoAxgn4dh1L7SZdF_3o4fjf-os' });
 
