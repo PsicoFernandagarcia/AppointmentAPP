@@ -102,6 +102,15 @@
   width: 50%;
   max-width: 300px;
 }
+.my-g-calendar{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.event-g-calendar{
+  margin-left: 10px;
+  font-size: smaller;
+}
 
 @media only screen and (max-width: 600px)  {
   .b-calendar-cell{

@@ -10,11 +10,8 @@
         <div style="width: 100%;">
           <mat-accordion>
             <div *ngFor="let availability of selectedMonthAvailabilities; let index = index;">
-              <mat-expansion-panel 
-                hideToggle 
-                *ngIf="index+1 >= today.getDate() 
-                || selectedDay.getMonth()!== today.getMonth()"
-              >
+              <mat-expansion-panel hideToggle *ngIf="index+1 >= today.getDate() 
+                || selectedDay.getMonth()!== today.getMonth()">
                 <mat-expansion-panel-header class="panel-header" *ngIf="availability.length > 0">
                   <mat-panel-title>
                     <div class="cal-agenda-date-date-number" [ngClass]="'day-selected'">
@@ -46,6 +43,14 @@
                         [ngClass]="!hour.availability ? 'enable' : 'disable'"
                         (click)="changeAvailabilityHour(index+1,hour)">
                         {{hour.hour}}
+                      </mat-chip>
+                    </div>
+                  </mat-chip-list>
+                  <h5 style="font-weight: 500; margin-top: 10px">{{"my_google_calendar"|translate}}</h5>
+                  <mat-chip-list class="my-g-calendar">
+                    <div *ngFor="let e of calendarEvents">
+                      <mat-chip class="event-g-calendar" *ngIf="e.date.getDate() == index+1">
+                        <span><strong>{{e.date | date:'shortTime'}}</strong> {{e.description}}</span>
                       </mat-chip>
                     </div>
                   </mat-chip-list>

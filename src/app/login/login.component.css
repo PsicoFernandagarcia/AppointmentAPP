@@ -48,7 +48,7 @@ span.label {
   font-weight: normal;
 }
 span.icon {
-  background: url('./../../assets/resources/g-normal.png') transparent 5px 50% no-repeat;
+  background: url('./../../assets/resources/g-normal.webp') transparent 5px 50% no-repeat;
   display: inline-block;
   vertical-align: middle;
   width: 42px;

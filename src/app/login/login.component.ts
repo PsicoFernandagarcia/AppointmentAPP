@@ -12,7 +12,7 @@ import { NotificationService } from '../_services/notification.service';
 import { createApi } from 'unsplash-js';
 import { Random } from 'unsplash-js/dist/methods/photos/types';
 import { LoadingService } from '../_services/loading.service';
-import { GoogleLoginProvider, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
+import { GoogleInitOptions, GoogleLoginProvider, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { Encrypt } from '../_services/crypt';
 import { AppComponent } from '../app.component';
 import { MainComponent } from '../main/main.component';
@@ -129,7 +129,7 @@ export class LoginComponent implements OnInit {
       this.notificationService.error("Error al registrar el usuario");
     });
   }
-
+ 
   loginWithGoogle(): void {
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(data=>{
       const timezoneOffset = (new Date().getTimezoneOffset()*-1);
