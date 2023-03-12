@@ -1,20 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { Availability } from '../_models/availability';
+import { CalendarEvent } from '../_models/calendarEvent';
 import { AvailabilityService } from '../_services/availability.service';
+import { CalendarService } from '../_services/calendar.service';
 import { LoadingService } from '../_services/loading.service';
 import { NotificationService } from '../_services/notification.service';
 
 @Component({
   selector: 'app-my-time',
   templateUrl: './my-time.component.html',
-  styleUrls: ['./my-time.component.css']
+  styleUrls: ['./my-time.component.css'],
 })
 export class MyTimeComponent implements OnInit {
   today: Date = new Date();
   nextMonthDate: Date = new Date();
   selectedDay: Date = new Date();
   prevSelectedDay: Date | null = new Date();
-  currentYear: number = this.selectedDay?.getFullYear() ?? new Date().getFullYear();
+  currentYear: number =
+    this.selectedDay?.getFullYear() ?? new Date().getFullYear();
   selectedMonthAvailabilities: any[] = [];
   daysInMonth: number = 0;
   firstDayInMonth: Date = new Date();
@@ -22,17 +25,22 @@ export class MyTimeComponent implements OnInit {
   minDate!: Date;
   maxDate!: Date;
   availabilitiesToRemove: Availability[] = [];
+  calendarEvents: CalendarEvent[] = [];
   constructor(
-    private availabilityService: AvailabilityService
-    , private notificationService: NotificationService
-    , private loadingService: LoadingService
+    private availabilityService: AvailabilityService,
+    private notificationService: NotificationService,
+    private loadingService: LoadingService,
+    private calendarService: CalendarService
   ) {
-
-    this.nextMonthDate = new Date(this.today.getFullYear(),this.today.getMonth()+1);
+    this.nextMonthDate = new Date(
+      this.today.getFullYear(),
+      this.today.getMonth() + 1
+    );
   }
 
   ngOnInit(): void {
     this.loadDates();
+    this.loadCalendarEvents();    
   }
 
   loadDates() {
@@ -48,8 +56,13 @@ export class MyTimeComponent implements OnInit {
     this.loadAvailabilities();
   }
 
-  loadDays() {
+  loadCalendarEvents() {
+    this.calendarService.getEvents(this.selectedDay).subscribe((events) => {
+      this.calendarEvents = events;
+    });
+  }
 
+  loadDays() {
     this.selectedMonthAvailabilities = [];
     for (let d = 0; d < this.daysInMonth; d++) {
       this.selectedMonthAvailabilities.push([]);
@@ -58,25 +71,31 @@ export class MyTimeComponent implements OnInit {
 
   loadAvailabilities() {
     this.loadingService.show();
-    this.availabilityService.myAvailabilities(this.firstDayInMonth, this.lastDayInMonth).subscribe(res => {
-      for (let i = 1 ?? 1; i <= this.daysInMonth; i++) {
-        this.selectedMonthAvailabilities[i - 1] = [];
-        for (let hours = 1; hours < 24; hours++) {
-          const availability = res.filter(r =>
-            r.dateOfAvailability.getDate() === i
-            && r.dateOfAvailability.getHours() === hours
-          );
-          this.selectedMonthAvailabilities[i - 1].push({
-            "hour": hours,
-            "availability": availability.length > 0 ? availability[0] : null
-          });
+    this.availabilityService
+      .myAvailabilities(this.firstDayInMonth, this.lastDayInMonth)
+      .subscribe(
+        (res) => {
+          for (let i = 1 ?? 1; i <= this.daysInMonth; i++) {
+            this.selectedMonthAvailabilities[i - 1] = [];
+            for (let hours = 1; hours < 24; hours++) {
+              const availability = res.filter(
+                (r) =>
+                  r.dateOfAvailability.getDate() === i &&
+                  r.dateOfAvailability.getHours() === hours
+              );
+              this.selectedMonthAvailabilities[i - 1].push({
+                hour: hours,
+                availability: availability.length > 0 ? availability[0] : null,
+              });
+            }
+          }
+          this.loadingService.hide();
+        },
+        (err) => {
+          console.table(err);
+          this.loadingService.hide();
         }
-      }
-      this.loadingService.hide();
-    }, err => {
-      console.table(err);
-      this.loadingService.hide();
-    })
+      );
   }
 
   shouldDrawerBeOppened(): boolean {
@@ -99,10 +118,16 @@ export class MyTimeComponent implements OnInit {
         this.availabilitiesToRemove.push(hour.availability);
       hour.availability = null;
     } else {
-      const availabilityRemoved = this.availabilitiesToRemove.filter(x => x.dateOfAvailability.getDate() === dayNumber && x.dateOfAvailability.getHours() === hour.hour);
+      const availabilityRemoved = this.availabilitiesToRemove.filter(
+        (x) =>
+          x.dateOfAvailability.getDate() === dayNumber &&
+          x.dateOfAvailability.getHours() === hour.hour
+      );
       if (availabilityRemoved.length > 0) {
         hour.availability = availabilityRemoved[0];
-        this.availabilitiesToRemove = this.availabilitiesToRemove.filter(x => x.id === hour.availability.id);
+        this.availabilitiesToRemove = this.availabilitiesToRemove.filter(
+          (x) => x.id === hour.availability.id
+        );
         return;
       }
       const date = new Date();
@@ -118,28 +143,42 @@ export class MyTimeComponent implements OnInit {
 
   saveAvailabilities(availabilitiesInDay: any[]) {
     this.loadingService.show();
-    const itemsInDay = availabilitiesInDay.filter(a => a.availability && !a.availability.id);
+    const itemsInDay = availabilitiesInDay.filter(
+      (a) => a.availability && !a.availability.id
+    );
     const availabilities: Availability[] = [];
-    itemsInDay.forEach(i => {
+    itemsInDay.forEach((i) => {
       availabilities.push(i.availability);
     });
-    this.availabilityService.setAvailabilities(availabilities, this.availabilitiesToRemove.map(a => a.id)).subscribe(res => {
-      this.notificationService.success("Se ha configurado tu horario correctamente");
-      this.loadAvailabilities();
-    }, err => {
-      console.log("err");
-      this.loadingService.hide();
-    });
+    this.availabilityService
+      .setAvailabilities(
+        availabilities,
+        this.availabilitiesToRemove.map((a) => a.id)
+      )
+      .subscribe(
+        (res) => {
+          this.notificationService.success(
+            'Se ha configurado tu horario correctamente'
+          );
+          this.loadAvailabilities();
+        },
+        (err) => {
+          console.log('err');
+          this.loadingService.hide();
+        }
+      );
   }
 
   onDateChange($event: Date | null) {
-    if (this.prevSelectedDay?.getMonth() === this.selectedDay?.getMonth()) return;
+    if (this.prevSelectedDay?.getMonth() === this.selectedDay?.getMonth())
+      return;
     this.prevSelectedDay = this.selectedDay;
     this.loadDates();
   }
-  changeDate(newDate:Date){
+  changeDate(newDate: Date) {
     this.prevSelectedDay = this.selectedDay;
     this.selectedDay = newDate;
     this.loadDates();
+    this.loadCalendarEvents();
   }
 }
