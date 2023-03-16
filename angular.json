@@ -26,7 +26,8 @@
               "src/favicon.ico",
               "src/assets",
               "src/sitemap.xml",
-              "src/robots.txt"
+              "src/robots.txt",
+              "src/703efa02945a48b28768e861a079c241.txt"
             ],
             "styles": [
               "src/custom-theme.scss",
