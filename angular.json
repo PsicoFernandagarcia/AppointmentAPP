@@ -102,15 +102,8 @@
             ],
             "scripts": [
               "src/assets/js/jquery-3.3.1.min.js"
-              ,"src/assets/js/popper.min.js"
               ,"src/assets/js/bootstrap.min4.3.1.js"
               ,"src/assets/js/swiper.min.js"
-              ,"src/assets/js/owl.carousel.min.js"
-              ,"src/assets/js/jquery.magnific-popup.min.js"
-              ,"src/assets/js/custom-gallery.js"
-              ,"src/assets/js/scrollreveal.min.js"
-              ,"src/assets/js/particles.js"
-              ,"src/assets/js/particle-nasa.js"
               ,"src/assets/js/custom-javascript.js"
             ]
           }
