@@ -14,12 +14,15 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { PaymentReportDialog } from './payment-report-dialog.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
+import { PaymentDebtDialog } from './payment-debt-dialog.component';
 
 
 @NgModule({
   declarations: [
     PaymentsComponent,
-    PaymentReportDialog
+    PaymentReportDialog,
+    PaymentDebtDialog
   ],
   imports: [
     PaymentsRoutingModule,
@@ -34,7 +37,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatButtonModule,
     MatDatepickerModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatMenuModule
   ]
 })
 export class PaymentsModule { }
