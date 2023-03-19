@@ -1,6 +1,25 @@
 
-@media only screen and (max-width: 600px)  {
-   .contentsss{
-    width: 100%;
+
+.success {
+   margin-right: 3px;
+   width: 10px;
+   height: 10px;
+   background-color: #28a745 !important;
+   border-radius: 50px;
+   color: white !important;
+}
+
+.wrong {
+   margin-right: 3px;
+   width: 10px;
+   height: 10px;
+   background-color: #f44336 !important;
+   color: white !important;
+   border-radius: 50px
+}
+
+@media only screen and (max-width: 600px) {
+   .contentsss {
+      width: 100%;
    }
 }

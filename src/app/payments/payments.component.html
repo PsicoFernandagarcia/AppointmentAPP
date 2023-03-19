@@ -28,10 +28,6 @@
                             <mat-chip class="chip-text" *ngIf="p.sessionsLeft === 0" color="primary" selected
                                 (click)="addPayment($event,p,false)">No debe
                             </mat-chip>
-                            <!-- <mat-chip class="chip-text" *ngIf="p.sessionsLeft < 0" color="warn" selected
-                                (click)="addPayment($event,p,false)">
-                                Debe {{p.sessionsLeft * (-1)}} {{p.sessionsLeft === -1 ? 'sesion' :
-                                'sesiones'}}</mat-chip> -->
                             <mat-chip class="chip-text" *ngIf="p.sessionsLeft < 0" color="warn" selected
                                 (click)="sp($event)" [matMenuTriggerFor]="menu">
                                 Debe {{p.sessionsLeft * (-1)}} {{p.sessionsLeft === -1 ? 'sesion' :

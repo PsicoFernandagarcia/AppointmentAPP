@@ -8,6 +8,8 @@
   </mat-card>
   <mat-list role="list">
     <mat-list-item role="listitem" *ngFor="let appointment of appointments">
+      <div class="success"  *ngIf="appointment.dateFrom > today"></div>
+      <div class="wrong" *ngIf="appointment.dateFrom <= today"></div>
       {{appointment.dateFrom | date:'EEEE' |translate}}
       {{appointment.dateFrom | date:'dd'}} 
       {{appointment.dateFrom | date:'MMMM' |translate}}
@@ -16,25 +18,6 @@
     </mat-list-item>
     <mat-divider></mat-divider>
   </mat-list>
-  <!-- <mat-accordion>
-    <mat-expansion-panel hideToggle *ngFor="let p of information" > 
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          {{p.month | translate}}
-        </mat-panel-title>
-        <mat-panel-description style="font-size: small;">
-          {{"EUR: " + p.totalAmountEur}}
-          {{" Pesos: " + p.totalAmountPeso}}
-          {{" USD: " + p.totalAmountUSD}}
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <mat-list *ngFor="let payment of p.paymentsArray">
-        <mat-list-item>{{payment.patientFullName}} - <span><strong>{{payment.currency}} {{payment.total}} </strong></span></mat-list-item>
-        <mat-divider></mat-divider>
-      </mat-list>
-      
-    </mat-expansion-panel>
-  </mat-accordion> -->
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onCancelClick()">{{"cancel"|translate}}</button>
