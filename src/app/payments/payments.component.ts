@@ -6,6 +6,7 @@ import { LoadingService } from '../_services/loading.service';
 import { NotificationService } from '../_services/notification.service';
 import { PaymentService } from '../_services/payments.service';
 import { AddPaymentDialog } from './add-payment-dialog.component';
+import { PaymentDebtDialog } from './payment-debt-dialog.component';
 import { PaymentReportDialog } from './payment-report-dialog.component';
 
 @Component({
@@ -92,6 +93,10 @@ export class PaymentsComponent implements OnInit {
     });
   }
 
+  sp(e:Event){
+    e.stopPropagation();
+  }
+
   addPayment(e:Event,payment:Payment,edit:boolean){
     e.stopPropagation();
     const dialogRef = this.dialog.open(AddPaymentDialog, {
@@ -121,5 +126,16 @@ export class PaymentsComponent implements OnInit {
 
   getIndexDate(index: number,payment:Payment) {
     return new Date(payment.paidAt.toString() ?? '').setDate(index);
+  }
+
+  showPaymentsDebt(e:Event,totalDebt:number, patientId:number){
+    e.stopPropagation();
+    const dialogRef = this.dialog.open(PaymentDebtDialog, {
+      data:{
+        hostId: this.hostId,
+        totalDebt,
+        patientId
+      }
+    });
   }
 }

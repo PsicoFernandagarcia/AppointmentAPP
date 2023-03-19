@@ -8,24 +8,38 @@
             <app-user-filter [patients]="patients" (onPatientSelectedEvent)="onPatientChange($event)">
             </app-user-filter>
         </div>
-        <div >
-            <mat-accordion  >
-                <mat-expansion-panel *ngFor="let p of paymentsFiltered ; let indexPayment = index;" (click)="loadPaymentsFromPatient(p)">
+        <div>
+            <mat-accordion>
+                <mat-expansion-panel *ngFor="let p of paymentsFiltered ; let indexPayment = index;"
+                    (click)="loadPaymentsFromPatient(p)">
                     <mat-expansion-panel-header class="expansion-pannel-payment">
                         <mat-panel-title class="patient-name">
                             {{p.patient.name}} {{p.patient.lastName}}
                         </mat-panel-title>
                         <mat-panel-description class="description-text">
-                            Ultimo pago realizado {{getIndexDate(indexPayment+1,p) | date:'MMMM' | translate}} {{p.paidAt | date:'dd yyyy'}}
+                            Ultimo pago realizado {{getIndexDate(indexPayment+1,p) | date:'MMMM' | translate}}
+                            {{p.paidAt | date:'dd yyyy'}}
                         </mat-panel-description>
-                        <mat-chip-list class="chip-list" style ="flex-grow: 1; margin-right: 5px; white-space: nowrap;" >
-                            <mat-chip class="chip-text" *ngIf="p.sessionsLeft > 0" color="success" selected (click)="addPayment($event,p,false)">
+                        <mat-chip-list class="chip-list" style="flex-grow: 1; margin-right: 5px; white-space: nowrap;">
+                            <mat-chip class="chip-text" *ngIf="p.sessionsLeft > 0" color="success" selected
+                                (click)="addPayment($event,p,false)">
                                 Tiene {{p.sessionsLeft}} {{p.sessionsLeft === 1 ? 'sesion' : 'sesiones'}}
                             </mat-chip>
-                            <mat-chip class="chip-text" *ngIf="p.sessionsLeft === 0" color="primary" selected (click)="addPayment($event,p,false)">No debe
+                            <mat-chip class="chip-text" *ngIf="p.sessionsLeft === 0" color="primary" selected
+                                (click)="addPayment($event,p,false)">No debe
                             </mat-chip>
-                            <mat-chip class="chip-text" *ngIf="p.sessionsLeft < 0" color="warn" selected (click)="addPayment($event,p,false)">
-                                Debe {{p.sessionsLeft * (-1)}} {{p.sessionsLeft === -1 ? 'sesion' : 'sesiones'}}</mat-chip>
+                            <!-- <mat-chip class="chip-text" *ngIf="p.sessionsLeft < 0" color="warn" selected
+                                (click)="addPayment($event,p,false)">
+                                Debe {{p.sessionsLeft * (-1)}} {{p.sessionsLeft === -1 ? 'sesion' :
+                                'sesiones'}}</mat-chip> -->
+                            <mat-chip class="chip-text" *ngIf="p.sessionsLeft < 0" color="warn" selected
+                                (click)="sp($event)" [matMenuTriggerFor]="menu">
+                                Debe {{p.sessionsLeft * (-1)}} {{p.sessionsLeft === -1 ? 'sesion' :
+                                'sesiones'}}</mat-chip>
+                                <mat-menu #menu="matMenu">
+                                    <button mat-menu-item (click)="addPayment($event,p,false)">{{"new_payment"|translate}}</button>
+                                    <button mat-menu-item (click)="showPaymentsDebt($event, p.sessionsLeft,p.patientId)">{{"view_debt_payment"|translate}}</button>
+                                  </mat-menu>
                         </mat-chip-list>
                     </mat-expansion-panel-header>
                     <mat-list role="list">
@@ -34,7 +48,7 @@
                                 <div class="payment-information">
                                     <p>
                                         {{getIndexDate(indexPu+1,pu) | date:'MMMM' | translate}} {{pu.paidAt | date:'dd yyyy'}}
-                                    pagó {{pu.sessionsPaid}} sesiones Total: {{pu.amount|currency}}
+                                        pagó {{pu.sessionsPaid}} sesiones Total: {{pu.amount|currency}}
                                     </p>
                                 </div>
                                 <div class="payment-actions">
@@ -46,7 +60,7 @@
                             <mat-divider></mat-divider>
                         </div>
                     </mat-list>
-                        
+
                 </mat-expansion-panel>
             </mat-accordion>
         </div>
@@ -56,5 +70,5 @@
             Ver Informe Anual
         </button>
     </div>
-    
+
 </div>
