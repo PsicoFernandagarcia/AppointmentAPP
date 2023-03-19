@@ -18,6 +18,7 @@ export class PaymentDebtInput {
 })
 export class PaymentDebtDialog {
   appointments: Appointment[] = [];
+  today = new Date();
   
   constructor(
     private appointmentService: AppointmentService,
