@@ -15,7 +15,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { LoaderModule } from './loader/loader.module';
 import { AlertDialog, ConfirmationDialog } from './_services/notification.service';
 import {MatTooltipModule} from '@angular/material/tooltip';
-import { HomeComponent } from './home/home.component';
 import { BottomMenuComponent } from './bottom-menu/bottom-menu.component';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import { MatListModule } from '@angular/material/list';

@@ -1,0 +1,165 @@
+.owl-item{
+    margin-top:10px;
+    width: 30%;
+}
+.navbar{
+    background-color: #00012b;
+}
+.content{
+    margin-top: 100px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    text-indent: 0;
+}
+
+h1 {
+    color: black;
+    font-family: Arial, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 13.5pt  !important;
+}
+
+.p,
+p {
+    color: black;
+    font-family: Arial, sans-serif !important;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+    font-size: 11.5pt;
+    margin: 0pt;
+}
+
+h2 {
+    color: black;
+    font-family: Arial, sans-serif !important;
+    font-style: normal;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 11.5pt !important;
+}
+
+.s1 {
+    color: black;
+    font-family: Arial, sans-serif !important;
+    font-style: normal;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 11.5pt !important;
+}
+
+.s3 {
+    color: #008AE1;
+    font-family: Arial, sans-serif !important;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+    font-size: 11.5pt !important;
+}
+
+.a,
+a {
+    color: black;
+    font-family: Arial, sans-serif !important;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+    font-size: 11.5pt !important;
+}
+
+li {
+    display: block;
+}
+
+#l1 {
+    padding-left: 0pt;
+    counter-reset: c1 1;
+}
+
+#l1>li>*:first-child:before {
+    counter-increment: c1;
+    content: counter(c1, decimal)". ";
+    color: black;
+    font-family: Arial, sans-serif !important;
+    font-style: normal;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 11.5pt !important;
+}
+
+#l1>li:first-child>*:first-child:before {
+    counter-increment: c1 0;
+}
+
+#l2 {
+    padding-left: 0pt;
+}
+
+#l2>li>*:first-child:before {
+    content: " ";
+    color: black;
+    font-family: Symbol, serif;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+    font-size: 10pt;
+}
+
+#l3 {
+    padding-left: 0pt;
+}
+
+#l3>li>*:first-child:before {
+    content: " ";
+    color: black;
+    font-family: Symbol, serif;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+    font-size: 10pt;
+}
+
+#l4 {
+    padding-left: 0pt;
+}
+
+#l4>li>*:first-child:before {
+    content: " ";
+    color: black;
+    font-family: Symbol, serif;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+    font-size: 10pt;
+}
+
+#l5 {
+    padding-left: 0pt;
+}
+
+#l5>li>*:first-child:before {
+    content: " ";
+    color: black;
+    font-family: Symbol, serif;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+    font-size: 10pt;
+}
+@media only screen and (max-width: 700px)  {
+    .owl-item{
+        margin-top:10px;
+        width: 50%;
+    }
+    .content{
+        margin-top: 80px;
+    }
+  }
