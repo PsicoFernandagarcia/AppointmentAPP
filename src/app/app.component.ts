@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
     localStorage.clear();
     this.showToolbar=false;
     debugger;
-    this.router.navigate(['main/login']);
+    this.router.navigate(['home']);
   }
 
   suscribeLogin(){
