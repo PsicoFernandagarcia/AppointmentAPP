@@ -55,74 +55,6 @@ $(document).ready(function () {
         width: "90%"
     }, 1500);
 
-
-    // Owl Carousel
-
-
-    // $("#owl-team").owlCarousel({
-    //     items: 3,
-    //     itemsCustom: false,
-    //     itemsDesktop: [1199, 2],
-    //     itemsDesktopSmall: [991, 2],
-    //     itemsTablet: [768, 1],
-    //     itemsTabletSmall: [600, 1],
-    //     itemsMobile: [479, 1],
-    //     singleItem: false,
-    //     itemsScaleUp: false,
-
-    //     //Autoplay
-    //     autoPlay: true,
-    //     stopOnHover: true,
-
-    //     // Navigation
-    //     navigation: false,
-    //     navigationText: false,
-    //     rewindNav: true,
-    //     scrollPerPage: false,
-
-    //     //Pagination
-    //     pagination: true,
-    //     paginationNumbers: false,
-
-    //     // Responsive 
-    //     responsive: true,
-    //     responsiveRefreshRate: 200,
-    //     responsiveBaseWidth: window,
-    // });
-
-    // $("#owl-tst").owlCarousel({
-    //     items: 1,
-    //     itemsCustom: false,
-    //     itemsDesktop: [1199, 1],
-    //     itemsDesktopSmall: [991, 1],
-    //     itemsTablet: [768, 1],
-    //     itemsTabletSmall: [600, 1],
-    //     itemsMobile: [479, 1],
-    //     singleItem: false,
-    //     itemsScaleUp: false,
-
-    //     //Autoplay
-    //     autoPlay: true,
-    //     stopOnHover: true,
-
-    //     // Navigation
-    //     navigation: false,
-    //     navigationText: false,
-    //     rewindNav: true,
-    //     scrollPerPage: false,
-
-    //     //Pagination
-    //     pagination: true,
-    //     paginationNumbers: false,
-
-    //     // Responsive 
-    //     responsive: true,
-    //     responsiveRefreshRate: 200,
-    //     responsiveBaseWidth: window,
-    // });
-
-
-
     // Example starter JavaScript for disabling form submissions if there are invalid fields
     (function () {
         'use strict';
@@ -146,23 +78,7 @@ $(document).ready(function () {
 
     // ============================ScrollReveal=======================
 
-    // window.sr = ScrollReveal();
-
-    // sr.reveal('.top30', {
-    //     duration: 1000,
-    //     origin: 'top',
-    //     distance: '30px'
-    // });
-
-
-    // sr.reveal('.bottom30', {
-    //     duration: 1000,
-    //     origin: 'bottom',
-    //     distance: '30px'
-    // });
-
-
-
+   
     /* Color Panel Js starts */
 
 

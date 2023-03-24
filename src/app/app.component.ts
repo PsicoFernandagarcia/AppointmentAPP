@@ -22,6 +22,25 @@ export class AppComponent implements OnInit {
   }
   ngOnInit(): void {
     this.suscribeLogin();
+    let cc = window as any;
+       cc.cookieconsent.initialise({
+         palette: {
+           popup: {
+             background: "#002D54"
+           },
+           button: {
+             background: "#FF533D",
+             text: "#FFFFFF"
+           }
+         },
+         theme: "classic",
+         content: {
+           message: "Esta página utiliza cookies para mejorar su experiencia de navegación. Para más información visita nuestra",
+           dismiss: "OK",
+           link: "Politica de privacidad",
+           href: "https://www.psicofernandagarcia.com/privacy-policies" 
+         }
+       });
   }
 
 
