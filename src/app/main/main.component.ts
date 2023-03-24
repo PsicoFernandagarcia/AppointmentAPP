@@ -39,7 +39,7 @@ export class MainComponent implements OnInit {
     this.showToolbar=false;
     MainComponent.logout.next(true);
 
-    this.router.navigate(['main/login']);
+    this.router.navigate(['home']);
   }
 
   suscribeLogin(){
