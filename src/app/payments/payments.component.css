@@ -56,11 +56,33 @@
   cursor: pointer;
 }
 
+.description-text{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.payment-information{
+  display: flex;
+  flex-direction: column;
+}
+.observations{
+  color: grey
+}
+
 @media only screen and (max-width: 600px) {
+
+
+  .description-text{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 
   .description-text,
   .chip-text {
     font-size: small;
+   
   }
 
   .patient-filter {
@@ -120,4 +142,10 @@
     right: 20px;
     cursor: pointer;
   }
+  p, mat-card-content, mat-panel-title, button, span{
+    font-size: small!important;
+ }
+ .payment-detail p{
+  margin-bottom: 0px;
+ }
 }

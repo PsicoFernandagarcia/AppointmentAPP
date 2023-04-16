@@ -38,7 +38,7 @@ export class AppComponent implements OnInit {
            message: "Esta página utiliza cookies para mejorar su experiencia de navegación. Para más información visita nuestra",
            dismiss: "OK",
            link: "Politica de privacidad",
-           href: "https://www.psicofernandagarcia.com/privacy-policies" 
+           href: "https://psicofernandagarcia.com/privacy-policies" 
          }
        });
   }

@@ -1,6 +1,14 @@
 
-@media only screen and (max-width: 600px)  {
+@media only screen and (max-width: 600px) {
    .contentsss{
-    width: 100%;
+      width: 100%;
+     }
+   h1{
+      font-size: larger;
+      font-weight: 500;
    }
+   p, mat-card-content, mat-panel-title, button{
+      font-size: small;
+   }
+   
 }

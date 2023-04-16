@@ -15,6 +15,7 @@ export class AddPaymentData{
 @Component({
   selector: 'add-payment',
   templateUrl: 'add-payment-dialog.html',
+  styleUrls: ['add-payment-dialog.css']
 })
 export class AddPaymentDialog {
   newPayment:Payment = new Payment();
@@ -37,7 +38,7 @@ export class AddPaymentDialog {
   }
 
   savePayment(){
-    if(this.newPayment.sessionsPaid <= 0
+    if(this.newPayment.sessionsPaid < 0
         || !this.newPayment.currency 
       ){
         this.notificationService.alert("Debe completar todos los datos");

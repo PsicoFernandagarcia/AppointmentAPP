@@ -7,7 +7,7 @@
     </mat-card-content>
   </mat-card>
   <mat-list role="list">
-    <mat-list-item role="listitem" *ngFor="let appointment of appointments">
+    <mat-list-item class="item" role="listitem" *ngFor="let appointment of appointments">
       <div class="success"  *ngIf="appointment.dateFrom > today"></div>
       <div class="wrong" *ngIf="appointment.dateFrom <= today"></div>
       {{appointment.dateFrom | date:'EEEE' |translate}}

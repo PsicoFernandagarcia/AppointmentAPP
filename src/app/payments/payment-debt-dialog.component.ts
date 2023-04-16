@@ -1,10 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Appointment } from '../_models/appointment';
-import { Payment } from '../_models/payment';
 import { AppointmentService } from '../_services/appointment.service';
 import { LoadingService } from '../_services/loading.service';
-import { PaymentService } from '../_services/payments.service';
 
 export class PaymentDebtInput {
   hostId!: number;

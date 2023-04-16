@@ -19,7 +19,19 @@
 }
 
 @media only screen and (max-width: 600px) {
-   .contentsss {
+   .contentsss{
       width: 100%;
+     }
+   h1{
+      font-size: larger;
+      font-weight: 500;
+      margin-bottom: 0px;
    }
+   p, mat-card-content, mat-panel-title, button, span{
+      font-size: small!important;
+   }
+   .item{
+      font-size: small!important;
+   }
+   
 }

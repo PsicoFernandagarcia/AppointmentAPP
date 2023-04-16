@@ -13,12 +13,10 @@
                 <mat-expansion-panel *ngFor="let p of paymentsFiltered ; let indexPayment = index;"
                     (click)="loadPaymentsFromPatient(p)">
                     <mat-expansion-panel-header class="expansion-pannel-payment">
-                        <mat-panel-title class="patient-name">
-                            {{p.patient.name}} {{p.patient.lastName}}
-                        </mat-panel-title>
                         <mat-panel-description class="description-text">
-                            Ultimo pago realizado {{getIndexDate(indexPayment+1,p) | date:'MMMM' | translate}}
-                            {{p.paidAt | date:'dd yyyy'}}
+                            <span ><strong>{{p.patient.name}} {{p.patient.lastName}}</strong></span>
+                            <span class="last-payment">Ultimo pago realizado {{getIndexDate(indexPayment+1,p) | date:'MMMM' | translate}}
+                            {{p.paidAt | date:'dd yyyy'}}</span>
                         </mat-panel-description>
                         <mat-chip-list class="chip-list" style="flex-grow: 1; margin-right: 5px; white-space: nowrap;">
                             <mat-chip class="chip-text" *ngIf="p.sessionsLeft > 0" color="success" selected
@@ -42,10 +40,16 @@
                         <div *ngFor="let pu of paymentsFromUserSelected; let indexPu = index;">
                             <mat-list-item role="listitem" class="list-payment-item">
                                 <div class="payment-information">
-                                    <p>
-                                        {{getIndexDate(indexPu+1,pu) | date:'MMMM' | translate}} {{pu.paidAt | date:'dd yyyy'}}
-                                        pagó {{pu.sessionsPaid}} sesiones Total: {{pu.amount|currency}}
-                                    </p>
+                                    <div class="payment-detail">
+                                        <p>
+                                            {{getIndexDate(indexPu+1,pu) | date:'MMMM' | translate}} {{pu.paidAt | date:'dd yyyy'}}
+                                            pagó {{pu.sessionsPaid}} sesiones Total: {{pu.amount|currency}}
+                                        </p>
+                                    </div>
+                                    <div class="observations">
+                                        {{pu.observations}}
+                                    </div>
+                                    
                                 </div>
                                 <div class="payment-actions">
                                     <button mat-stroked-button color="primary" (click)="addPayment($event,pu,true)">
