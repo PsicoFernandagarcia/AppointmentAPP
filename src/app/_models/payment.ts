@@ -11,6 +11,7 @@ export class Payment {
   sessionsPaid!: number;
   sessionsLeft!: number;
   currency!:string;
+  observations!:string;
 }
 
 export class PaymentInformation{
