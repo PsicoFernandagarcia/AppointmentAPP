@@ -70,6 +70,10 @@
   color: grey
 }
 
+.list-payment-item{
+  height: auto!important;
+}
+
 @media only screen and (max-width: 600px) {
 
 
@@ -96,6 +100,7 @@
   .list-payment-item{
     display: flex;
     width:100%;
+    height: auto!important;
   }
 
   .payment-information{
