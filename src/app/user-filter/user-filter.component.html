@@ -16,8 +16,8 @@
                 [formControl]="patientFormControl"
                 [matAutocomplete]="auto"
                 >
-            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="selected($event)">
-                <mat-option *ngFor="let option of filteredOptions | async" [value]="getUserFullName(option)">
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="clearInput()">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="getUserFullName(option)" (onSelectionChange)="onSelected(option)">
                     {{getUserFullName(option)}}
                 </mat-option>
             </mat-autocomplete>
