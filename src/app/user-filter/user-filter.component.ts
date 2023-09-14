@@ -55,10 +55,14 @@ export class UserFilterComponent implements OnInit {
     this.setFilter();
   }
 
-  selected(event: MatAutocompleteSelectedEvent): void {
-    const itemSelected =this.patients.filter(p => this.getUserFullName(p) === event.option.viewValue)[0];
+  onSelected(u: User): void {
+    const itemSelected =this.patients.filter(p => p.id === u.id)[0];
     this.patientsSelected.push(itemSelected);
     this.onPatientSelectedEvent.emit(itemSelected.id);
+    this.clearInput();
+  }
+
+  clearInput(): void {
     this.patientsInput.nativeElement.value = '';
     this.patientFormControl.setValue(null);
   }
