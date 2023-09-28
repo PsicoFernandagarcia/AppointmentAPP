@@ -88,6 +88,12 @@
   background-color:#3f51b5;
   color: white;
 }
+
+.full{
+  background-color:#c22517;
+  color: white;
+}
+
 .panel-header{
   height: fit-content;
   margin:10px;

@@ -27,7 +27,7 @@ export class NewAppointmentComponent implements OnInit {
   minDate!: Date;
   maxDate!: Date;
   availabilitiesToRemove: Availability[] = [];
-  availabilitySelected: Availability = new Availability(-1, 0, new Date(), 0, false);
+  availabilitySelected: Availability = new Availability(-1, 0, new Date(), 0, false, 0 , '');
   hosts: User[] = [];
   patients: User[] = [];
   isHost: boolean = false;

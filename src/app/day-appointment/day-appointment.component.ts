@@ -31,7 +31,6 @@ export class DayAppointmentComponent implements OnInit {
       this.notificationService.alert("No es posible eliminar una cita que esté dentro de las próximas 24 horas. Por favor, contacte con la profesional.","Atención");
       return;
     } 
-    debugger;
 
     this.onCancelEvent.emit(appointment.id);
   }

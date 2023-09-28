@@ -63,7 +63,7 @@ export class NotificationService {
       cancelCallback: () => any = () => { }
     ) {
       const dialogRef = this.dialog.open(ConfirmationDialog, {
-        width: '250px',
+        width: '350px',
         data: { message: message, title: title }
       });
 
@@ -131,7 +131,7 @@ export interface DialogData {
   template: `
     <h1 mat-dialog-title>{{data.title}}</h1>
     <div mat-dialog-content>
-      <p>{{data.message}}</p>
+      <p [innerHTML]=data.message></p>
      </div>
      <div mat-dialog-actions>
       <button mat-raised-button  (click)="onNoClick()">Cancelar</button>

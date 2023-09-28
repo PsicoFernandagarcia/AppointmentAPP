@@ -30,7 +30,7 @@
                   <mat-chip-list aria-label="hour selection">
                     <div *ngFor="let hour of availability">
                       <mat-chip class="example-margin" *ngIf="hour.hour <= 12"
-                        [ngClass]="!hour.availability ? 'enable' : 'disable'"
+                        [ngClass]="hour.availability?.appointmentId > 0 ? 'full' : !hour.availability ? 'enable' : 'disable'"
                         (click)="changeAvailabilityHour(index+1,hour)">
                         {{hour.hour}}
                       </mat-chip>
@@ -40,7 +40,7 @@
                   <mat-chip-list aria-label="hour selection">
                     <div *ngFor="let hour of availability">
                       <mat-chip class="example-margin" *ngIf="hour.hour > 12"
-                        [ngClass]="!hour.availability ? 'enable' : 'disable'"
+                        [ngClass]="hour.availability?.appointmentId > 0 ? 'full' : !hour.availability ? 'enable' : 'disable'"
                         (click)="changeAvailabilityHour(index+1,hour)">
                         {{hour.hour}}
                       </mat-chip>
@@ -57,8 +57,8 @@
                 </div>
                 <mat-action-row>
                   <button mat-button color="primary"
-                    (click)="saveAvailabilities(availability)">{{'save'|translate}}</button>
-                </mat-action-row>
+                    (click)="validateAppointmentsAndSetAvailabilities(availability)">{{'save'|translate}}</button>
+                </mat-action-row> 
               </mat-expansion-panel>
 
             </div>

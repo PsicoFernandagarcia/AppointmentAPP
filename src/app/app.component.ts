@@ -47,7 +47,6 @@ export class AppComponent implements OnInit {
   logout(){
     localStorage.clear();
     this.showToolbar=false;
-    debugger;
     this.router.navigate(['home']);
   }
 
