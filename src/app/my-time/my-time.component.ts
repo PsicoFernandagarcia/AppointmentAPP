@@ -128,7 +128,7 @@ export class MyTimeComponent implements OnInit {
       if (availabilityRemoved.length > 0) {
         hour.availability = availabilityRemoved[0];
         this.availabilitiesToRemove = this.availabilitiesToRemove.filter(
-          (x) => x.id === hour.availability.id
+          (x) => x.id !== hour.availability.id
         );
         return;
       }
@@ -176,7 +176,7 @@ export class MyTimeComponent implements OnInit {
       var appointmets = '';
       this.availabilitiesToRemove.forEach(av => {
         if(av.appointmentId>0)
-          appointmets += `<br>${av.dateOfAvailability.getHours()}hs ${av.appointmentWith}`;
+          appointmets += `<strong><br>${av.dateOfAvailability.getHours()}hs ${av.appointmentWith}</strong>`;
       });
       this.notificationService.confirmation(
         `Está por cancelar horarios con turnos asignados.
