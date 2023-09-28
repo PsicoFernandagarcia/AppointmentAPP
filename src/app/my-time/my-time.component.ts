@@ -5,6 +5,7 @@ import { AvailabilityService } from '../_services/availability.service';
 import { CalendarService } from '../_services/calendar.service';
 import { LoadingService } from '../_services/loading.service';
 import { NotificationService } from '../_services/notification.service';
+import { AppointmentService } from '../_services/appointment.service';
 
 @Component({
   selector: 'app-my-time',
@@ -28,6 +29,7 @@ export class MyTimeComponent implements OnInit {
   calendarEvents: CalendarEvent[] = [];
   constructor(
     private availabilityService: AvailabilityService,
+    private appointmentService: AppointmentService,
     private notificationService: NotificationService,
     private loadingService: LoadingService,
     private calendarService: CalendarService
@@ -40,7 +42,7 @@ export class MyTimeComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadDates();
-    this.loadCalendarEvents();    
+    this.loadCalendarEvents();
   }
 
   loadDates() {
@@ -137,7 +139,7 @@ export class MyTimeComponent implements OnInit {
       date.setHours(hour.hour);
       date.setMinutes(0);
       date.setMilliseconds(0);
-      hour.availability = new Availability(0, 0, date, 60, true);
+      hour.availability = new Availability(0, 0, date, 60, true, 0, '');
     }
   }
 
@@ -169,6 +171,36 @@ export class MyTimeComponent implements OnInit {
       );
   }
 
+  validateAppointmentsAndSetAvailabilities(availabilitiesInDay: any[]) {
+    if (this.availabilitiesToRemove.filter(a => a.appointmentId > 0).length > 0) {
+      var appointmets = '';
+      this.availabilitiesToRemove.forEach(av => {
+        if(av.appointmentId>0)
+          appointmets += `<br>${av.dateOfAvailability.getHours()}hs ${av.appointmentWith}`;
+      });
+      this.notificationService.confirmation(
+        `Está por cancelar horarios con turnos asignados.
+        ${appointmets}
+        `,
+        () => {
+          this.cancellAppointments(this.availabilitiesToRemove.filter(a => a.appointmentId > 0).map(a => a.appointmentId));
+          this.saveAvailabilities(availabilitiesInDay);
+        },
+        'Atención!'
+      );
+    } else {
+      this.saveAvailabilities(availabilitiesInDay);
+    }
+  }
+
+  cancellAppointments(appointmentIdsToRemove: number[]){
+    const currentUser = JSON.parse(localStorage.getItem("currentUser") ?? '{}');
+    appointmentIdsToRemove.forEach(app => {
+      this.appointmentService.cancelAppointment(app,currentUser.id).subscribe(res =>{
+        console.log("cita cancelada con éxito");
+      })
+    });
+  }
   onDateChange($event: Date | null) {
     if (this.prevSelectedDay?.getMonth() === this.selectedDay?.getMonth())
       return;
