@@ -115,6 +115,7 @@ export class MyTimeComponent implements OnInit {
   }
 
   changeAvailabilityHour(dayNumber: number, hour: any) {
+    debugger;
     if (hour.availability) {
       if (hour.availability.id)
         this.availabilitiesToRemove.push(hour.availability);
@@ -128,7 +129,7 @@ export class MyTimeComponent implements OnInit {
       if (availabilityRemoved.length > 0) {
         hour.availability = availabilityRemoved[0];
         this.availabilitiesToRemove = this.availabilitiesToRemove.filter(
-          (x) => x.id === hour.availability.id
+          (x) => x.id !== hour.availability.id
         );
         return;
       }
