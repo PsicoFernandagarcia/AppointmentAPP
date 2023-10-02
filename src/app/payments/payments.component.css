@@ -1,13 +1,4 @@
-.container {
-  padding: 20px;
-  padding-bottom: 64px;
-}
 
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
 .filter h2 {
   margin: 5px;

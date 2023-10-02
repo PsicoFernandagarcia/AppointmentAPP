@@ -63,5 +63,9 @@
 "paid_at":"Fecha de pago",
 "my_google_calendar": "Mis citas agendadas en G-Calendar",
 "view_debt_payment":"Ver Deuda",
-"observations":"Observaciones"
+"observations":"Observaciones",
+"users":"Usuarios",
+"delete": "Eliminar",
+"select_reassign_user":"Usuario a reasignar",
+"reassign_user":"Reasignar información del usuario: "
 }

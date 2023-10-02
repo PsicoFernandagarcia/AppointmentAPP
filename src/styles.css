@@ -34,6 +34,17 @@ td.mat-calendar-body-cell.custom-date-class{
   overflow: auto;
 }
 
+.container {
+  padding: 20px;
+  padding-bottom: 64px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @media only screen and (max-width: 600px)  {
 
   span.mat-button-wrapper{
@@ -64,4 +75,11 @@ td.mat-calendar-body-cell.custom-date-class{
   .mat-option-text{
     font-size: small;
   }
+
+  .patient-filter {
+    display: flex;
+    justify-content: space-between;
+  }
+
+
 }

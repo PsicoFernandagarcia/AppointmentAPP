@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import jwt_decode from 'jwt-decode';
-import { SocialAuthService } from '@abacritt/angularx-social-login';
-import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-root',

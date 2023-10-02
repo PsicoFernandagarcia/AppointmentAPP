@@ -7,6 +7,7 @@ export class User {
   lastName!: string;
   email: string;
   password!: string;
+  fullName!:string;
 
   constructor(_id: number,_userName: string, _email: string) {
       this.userName = _userName;

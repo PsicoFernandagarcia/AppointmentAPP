@@ -26,6 +26,10 @@
       <mat-icon class="material-icons color_blue">payment</mat-icon>
         <span style = "margin-left: 10px;">{{"payments"|translate}}</span>
     </a>
+    <a  *ngIf="role === 'HOST'" routerLink="/main/users" mat-list-item (click)="close()" >
+      <mat-icon class="material-icons color_blue">people_outline</mat-icon>
+        <span style = "margin-left: 10px;">{{"users"|translate}}</span>
+    </a>
     <a mat-list-item (click)="logout()" >
         <mat-icon class="material-icons color_blue">exit_to_app</mat-icon>
         <span style = "margin-left: 10px;">{{"log_out"|translate}}</span>
