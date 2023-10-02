@@ -52,6 +52,14 @@ const routes: Routes = [
           role: 'ADMIN,HOST'
         }
       },
+      {
+        path: 'users', loadChildren: () => import('../users/users.module')
+          .then(u => u.UsersModule),
+        canActivate: [AuthGuard],
+        data: {
+          role: 'ADMIN,HOST'
+        }
+      },
     ]
   },
 

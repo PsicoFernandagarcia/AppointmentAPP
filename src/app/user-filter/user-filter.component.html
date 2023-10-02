@@ -1,11 +1,13 @@
 <div class="patient-filter">
     <div *ngIf="patientsSelected.length >=1">
-        <mat-chip *ngFor="let patient of patientsSelected" (removed)="removeFilter(patient)">
-            {{getUserFullName(patient)}}
-            <button matChipRemove>
-                <mat-icon>cancel</mat-icon>
-            </button>
-        </mat-chip>
+        <mat-chip-list>
+            <mat-chip *ngFor="let patient of patientsSelected" (removed)="removeFilter(patient)">
+                {{getUserFullName(patient)}}
+                <button matChipRemove>
+                    <mat-icon>cancel</mat-icon>
+                </button>
+            </mat-chip>
+        </mat-chip-list>
     </div>
     <form class="example-form" *ngIf="patientsSelected.length === 0">
         <mat-form-field class="example-full-width" appearance="standard">

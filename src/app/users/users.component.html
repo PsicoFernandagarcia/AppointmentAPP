@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="header">
+        <h2>{{'users'|translate}} </h2>
+    </div>
+    <hr>
+    <div class="panel-container">
+        <div class="patient-filter" *ngIf=" isHost && users.length > 0">
+            <mat-form-field class="example-form-field">
+                <mat-label>Filtrar</mat-label>
+                <input matInput type="text" 
+                        [(ngModel)]="userFilter"
+                        (ngModelChange)="onFilterChange($event)">
+                <button *ngIf="userFilter" matSuffix mat-icon-button aria-label="Clear" (click)="onFilterChange('')">
+                  <mat-icon>close</mat-icon>
+                </button>
+              </mat-form-field>
+        </div>
+
+        <div class="list" >
+            <div class="items" *ngFor="let u of usersInView">
+                <mat-card>
+                    <mat-card-header>
+                      <mat-card-title>{{u.fullName}}</mat-card-title>
+                      <mat-card-subtitle>{{u.email}}</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-actions  align="end">
+                      <button mat-button color="warn" (click)="onDeleteClick(u)">{{'delete'|translate}}</button>    
+                    </mat-card-actions>
+                  </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

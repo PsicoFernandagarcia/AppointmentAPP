@@ -20,7 +20,7 @@ import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import { MatListModule } from '@angular/material/list';
 import { AddPaymentDialog } from './payments/add-payment-dialog.component';
 import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
+import {  MAT_SELECT_SCROLL_STRATEGY_PROVIDER, MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
@@ -28,6 +28,10 @@ import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/
 import * as _moment from 'moment';
 // tslint:disable-next-line:no-duplicate-imports
 import {default as _rollupMoment} from 'moment';
+import { MAT_AUTOCOMPLETE_SCROLL_STRATEGY } from '@angular/material/autocomplete';
+import { CloseScrollStrategy, Overlay } from '@angular/cdk/overlay';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+
 const moment = _rollupMoment || _moment;
 moment.locale('es');
 
@@ -42,6 +46,10 @@ export const MY_FORMATS = {
     monthYearA11yLabel: 'MMMM YYYY',
   },
 };
+
+export function scrollFactory(overlay: Overlay): () => CloseScrollStrategy {
+	return () => overlay.scrollStrategies.close();
+}
 
 @NgModule({
   declarations: [
@@ -70,9 +78,11 @@ export const MY_FORMATS = {
     MatListModule,
     MatInputModule,
     MatSelectModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    ScrollingModule
   ],
   providers: [
+    { provide: MAT_AUTOCOMPLETE_SCROLL_STRATEGY, useFactory: scrollFactory, deps: [Overlay] },
     httpInterceptorProviders,
     {
       provide: DateAdapter,
