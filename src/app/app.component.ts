@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import jwt_decode from 'jwt-decode';
+import 'src/app/_pipes/prototypes';
 
 @Component({
   selector: 'app-root',

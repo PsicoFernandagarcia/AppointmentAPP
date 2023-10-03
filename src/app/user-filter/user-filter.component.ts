@@ -1,7 +1,5 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
-import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
-import { MatChipInputEvent } from '@angular/material/chips';
 import { map, Observable, startWith } from 'rxjs';
 import { User } from '../_models/user';
 
@@ -43,8 +41,8 @@ export class UserFilterComponent implements OnInit {
   }
 
   private _filter(value: any): any[] {
-    const filterValue = this.getUserFullName(value).toLowerCase() ?? value;
-    return this.patients.filter(p => this.getUserFullName(p).toLowerCase().includes(filterValue));
+    const filterValue = this.getUserFullName(value).removeAccents().toLowerCase() ?? value;
+    return this.patients.filter(p => this.getUserFullName(p).removeAccents().toLowerCase().includes(filterValue));
   }
   removeFilter(patient:User){
     this.onPatientSelectedEvent.emit(0);
@@ -67,7 +65,7 @@ export class UserFilterComponent implements OnInit {
     this.patientFormControl.setValue(null);
   }
 
-  getUserFullName(u:User):string{
+  getUserFullName(u:User):String{
     if(!u?.lastName) return u.toString();
     return `${u.lastName}  ${u.name}`.trim();
   }

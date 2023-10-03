@@ -2,7 +2,6 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 import { Appointment } from '../_models/appointment';
 import { Day } from '../_models/day';
 import { AppointmentService } from '../_services/appointment.service';
-import '../_pipes/prototypes';
 import { NotificationService } from '../_services/notification.service';
 import { LoadingService } from '../_services/loading.service';
 import { Router } from '@angular/router';

@@ -39,17 +39,17 @@ export class UsersComponent implements OnInit {
                     });
   }
 
-  onFilterChange(filter:string){
+  onFilterChange(filter:String){
     if(!filter){
      this.userFilter = '';
     }
-    this.usersInView = this.users.filter(u => u.fullName.toLowerCase().includes(filter.toLowerCase()));
+    this.usersInView = this.users.filter(u => u.fullName.removeAccents().toLowerCase().includes(filter.toLowerCase()));
   }
 
   onDeleteClick(user: User){
     const dialogRef = this.dialog.open(DeleteUserDialog, {
       data:{
-        users: this.users,
+        users: this.users.filter(u => u.id !== user.id),
         selectedUserToDelete:user
       }
     });
@@ -60,7 +60,7 @@ export class UsersComponent implements OnInit {
       }
       this.loadingService.show();
       this.userService.deletePatients(user.id,userToReassign.id).subscribe(_ =>{
-        this.loadingService.hide();
+        this.loadUsers();
         this.notificationService.success("Los datos del usuario han sido reasignados correctamente");
       })
     });
