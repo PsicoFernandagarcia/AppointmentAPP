@@ -5,6 +5,10 @@ declare global{
     equalTo(compareTo:Date): boolean;
     diffInHours(compareTo:Date):number;
   }
+
+  interface String{
+    removeAccents(): string;
+  }
 }
 
 // Add the implementation
@@ -18,4 +22,8 @@ Date.prototype.diffInHours = function( compareTo: Date){
   var diff =(this.getTime() - compareTo.getTime()) / 1000;
   diff /= (60 * 60);
   return Math.abs(Math.round(diff));
+}
+
+String.prototype.removeAccents = function() {
+    return this.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 }
