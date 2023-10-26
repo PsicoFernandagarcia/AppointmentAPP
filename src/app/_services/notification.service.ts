@@ -118,7 +118,8 @@ export class NotificationService {
     ) {
       this.snackBar.open(message, action, {
         duration: duration,
-        panelClass: [className]
+        panelClass: [className],
+        verticalPosition:'top'
       });
     }
 }
