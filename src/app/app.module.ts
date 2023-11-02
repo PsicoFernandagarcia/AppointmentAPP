@@ -31,6 +31,8 @@ import {default as _rollupMoment} from 'moment';
 import { MAT_AUTOCOMPLETE_SCROLL_STRATEGY } from '@angular/material/autocomplete';
 import { CloseScrollStrategy, Overlay } from '@angular/cdk/overlay';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 const moment = _rollupMoment || _moment;
 moment.locale('es');
@@ -79,7 +81,13 @@ export function scrollFactory(overlay: Overlay): () => CloseScrollStrategy {
     MatInputModule,
     MatSelectModule,
     MatDatepickerModule,
-    ScrollingModule
+    ScrollingModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [
     { provide: MAT_AUTOCOMPLETE_SCROLL_STRATEGY, useFactory: scrollFactory, deps: [Overlay] },

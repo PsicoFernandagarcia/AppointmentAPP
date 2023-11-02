@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   secretKey: "psicoe84ad660c4721ae0e84ad660c4721ae0fer",
-  apiUrl:"https://psicofernandagarcia.com:8443/api"
-  //apiUrl:"https://localhost:5004/api"
+ //apiUrl:"https://psicofernandagarcia.com:8443/api"
+apiUrl:"https://localhost:5004/api"
 };
 
 /*
@@ -17,3 +17,4 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/plugins/zone-error';  // Included with Angular CLI.
+ 
