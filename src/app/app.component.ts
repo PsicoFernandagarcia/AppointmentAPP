@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.suscribeLogin();
     let cc = window as any;
-       cc.cookieconsent.initialise({
+       cc.cookieconsent?.initialise({
          palette: {
            popup: {
              background: "#002D54"
