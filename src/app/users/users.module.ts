@@ -2,18 +2,18 @@ import { NgModule } from '@angular/core';
 import { UsersRoutingModule } from './users-routing.module';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '../_pipes/resource.module';
-import { MatListModule } from '@angular/material/list';
-import { MatChipsModule } from '@angular/material/chips';
+import { MatLegacyListModule as MatListModule } from '@angular/material/legacy-list';
+import { MatLegacyChipsModule as MatChipsModule } from '@angular/material/legacy-chips';
 import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
+import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
+import { MatLegacyCardModule as MatCardModule } from '@angular/material/legacy-card';
 import { UserFilterModule } from '../user-filter/user-filter.module';
 import { UsersComponent } from './users.component';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
+import { MatLegacyFormFieldModule as MatFormFieldModule } from '@angular/material/legacy-form-field';
+import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
 import { FormsModule } from '@angular/forms';
 import { DeleteUserDialog } from './delete-user-dialog.component';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatLegacyAutocompleteModule as MatAutocompleteModule } from '@angular/material/legacy-autocomplete';
 
 
 

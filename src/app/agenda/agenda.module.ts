@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AgendaComponent } from './agenda.component';
 import {MatDividerModule} from '@angular/material/divider';
-import {MatListModule} from '@angular/material/list';
-import {MatChipsModule} from '@angular/material/chips';
+import {MatLegacyListModule as MatListModule} from '@angular/material/legacy-list';
+import {MatLegacyChipsModule as MatChipsModule} from '@angular/material/legacy-chips';
 import { DayAppointmentModule } from '../day-appointment/day-appointment.module';
-import { MatButtonModule } from '@angular/material/button';
+import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
 import { TranslateModule } from '../_pipes/resource.module';
 
 

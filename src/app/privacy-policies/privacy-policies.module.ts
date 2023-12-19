@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PrivacyPoliciesComponent } from './privacy-policies.component';
 import { PrivacyPoliciesRoutingModule } from './privacy-policies-routing.module';
 import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
+import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FormsModule } from '@angular/forms';
 

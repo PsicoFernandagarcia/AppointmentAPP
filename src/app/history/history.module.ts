@@ -4,11 +4,11 @@ import { CommonModule } from '@angular/common';
 import { HistoryRoutingModule } from './history-routing.module';
 import { HistoryComponent } from './history.component';
 import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
+import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
 import { TranslateModule } from '../_pipes/resource.module';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { MatChipsModule } from '@angular/material/chips';
-import { MatSelectModule } from '@angular/material/select';
+import { MatLegacyChipsModule as MatChipsModule } from '@angular/material/legacy-chips';
+import { MatLegacySelectModule as MatSelectModule } from '@angular/material/legacy-select';
 import { UserFilterModule } from '../user-filter/user-filter.module';
 import {MatDividerModule} from '@angular/material/divider';
 

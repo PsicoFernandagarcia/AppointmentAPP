@@ -4,7 +4,7 @@ import { UserService } from '../_services/users.service';
 import { NotificationService } from '../_services/notification.service';
 import { LoadingService } from '../_services/loading.service';
 import { DeleteUserDialog } from './delete-user-dialog.component';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 
 @Component({
   selector: 'app-users',

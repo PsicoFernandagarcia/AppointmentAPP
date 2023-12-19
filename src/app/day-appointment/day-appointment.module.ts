@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DayAppointmentComponent } from './day-appointment.component';
-import {MatChipsModule} from '@angular/material/chips';
+import {MatLegacyChipsModule as MatChipsModule} from '@angular/material/legacy-chips';
 import { TranslateModule } from '../_pipes/resource.module';
 import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
+import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
 
 @NgModule({
   declarations: [
