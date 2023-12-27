@@ -1,25 +1,25 @@
 <div class="contentsss">
-<h1 mat-dialog-title>Pagos Adeudados </h1>
-<div mat-dialog-content>
-  <mat-card *ngIf="appointments.length===0">
-    <mat-card-content>
-      No hay datos para mostrar
-    </mat-card-content>
-  </mat-card>
-  <mat-list role="list">
-    <mat-list-item class="item" role="listitem" *ngFor="let appointment of appointments">
-      <div class="success"  *ngIf="appointment.dateFrom > today"></div>
-      <div class="wrong" *ngIf="appointment.dateFrom <= today"></div>
-      {{appointment.dateFrom | date:'EEEE' |translate}}
-      {{appointment.dateFrom | date:'dd'}} 
-      {{appointment.dateFrom | date:'MMMM' |translate}}
-      {{appointment.dateFrom | date:'YYYY' |translate}} -
-      {{appointment.dateFrom | date:'shortTime'}}
-    </mat-list-item>
-    <mat-divider></mat-divider>
-  </mat-list>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onCancelClick()">{{"cancel"|translate}}</button>
-</div>
+  <h1 mat-dialog-title>Pagos Adeudados </h1>
+  <div mat-dialog-content>
+    <mat-card appearance="outlined" *ngIf="appointments.length===0">
+      <mat-card-content>
+        No hay datos para mostrar
+      </mat-card-content>
+    </mat-card>
+    <mat-list role="list">
+      <mat-list-item class="item" role="listitem" *ngFor="let appointment of appointments">
+        <div class="success" matListItemIcon *ngIf="appointment.dateFrom > today"></div>
+        <div class="wrong" matListItemIcon *ngIf="appointment.dateFrom <= today"></div>
+        <div matListItemTitle>{{appointment.dateFrom | date:'EEEE' |translate}}
+          {{appointment.dateFrom | date:'dd'}}
+          {{appointment.dateFrom | date:'MMMM' |translate}}
+          {{appointment.dateFrom | date:'YYYY' |translate}} -
+          {{appointment.dateFrom | date:'shortTime'}}</div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onCancelClick()">{{"cancel"|translate}}</button>
+  </div>
 </div>

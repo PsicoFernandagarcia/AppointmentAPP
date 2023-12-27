@@ -1,16 +1,16 @@
 <div class="patient-filter">
     <div *ngIf="patientsSelected.length >=1">
-        <mat-chip-list>
+        <mat-chip-listbox>
             <mat-chip *ngFor="let patient of patientsSelected" (removed)="removeFilter(patient)">
                 {{getUserFullName(patient)}}
                 <button matChipRemove>
                     <mat-icon>cancel</mat-icon>
                 </button>
             </mat-chip>
-        </mat-chip-list>
+        </mat-chip-listbox>
     </div>
     <form class="example-form" *ngIf="patientsSelected.length === 0">
-        <mat-form-field class="example-full-width" appearance="standard">
+        <mat-form-field class="example-full-width">
             <mat-label>Filtrar por paciente:</mat-label>
             <input type="text" 
                 aria-label="Paciente" 

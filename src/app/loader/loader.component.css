@@ -10,6 +10,6 @@
     z-index: 1999;
     background-color: rgba(0,0,0,0.3);
 }
-.mat-progress-spinner circle, .mat-spinner circle {
+.mat-mdc-progress-spinner circle, .mat-mdc-progress-spinner circle {
     stroke: #665b7d;
 }

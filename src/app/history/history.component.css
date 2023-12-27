@@ -21,6 +21,9 @@
 .canceled-chip{
     background-color: #ec5c5c!important;
   }
+  .canceled-chip.mat-mdc-standard-chip,.chip.disable.mat-mdc-standard-chip {
+    --mdc-chip-label-text-color: #fff;
+  }
   
   .canceled{
     text-decoration: line-through;

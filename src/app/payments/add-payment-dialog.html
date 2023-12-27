@@ -4,15 +4,15 @@
     <p> {{"new_payment_for"|translate}}{{data.payment.patient.name}} {{data.payment.patient.lastName}}</p>
   </div>
   <div class="form">
-    <mat-form-field class="example-full-width" appearance="standard">
+    <mat-form-field class="example-full-width">
       <mat-label>{{"total_amount"|translate}}</mat-label>
       <input matInput type="number" placeholder="1500" [(ngModel)]="newPayment.amount">
     </mat-form-field>
-    <mat-form-field class="example-full-width" appearance="standard">
+    <mat-form-field class="example-full-width">
       <mat-label>{{"sessions_paid"|translate}}</mat-label>
       <input matInput type="number" placeholder="2" [(ngModel)]="newPayment.sessionsPaid">
     </mat-form-field>
-    <mat-form-field appearance="standard">
+    <mat-form-field>
       <mat-label>{{"currency"|translate}}</mat-label>
       <mat-select matNativeControl [(value)]="newPayment.currency">
         <mat-option value="EUR">EUR</mat-option>
@@ -20,14 +20,14 @@
         <mat-option value="$">$</mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field appearance="standard">
+    <mat-form-field>
       <mat-label>{{'paid_at'|translate}}</mat-label>
       <input matInput [matDatepicker]="picker" [(ngModel)]="date" [disabled]="data.editPayment">
       <mat-hint>DD/MM/YYYY</mat-hint>
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-    <mat-form-field appearance="standard">
+    <mat-form-field>
       <mat-label>{{"observations"|translate}}</mat-label>
       <textarea matInput cdkTextareaAutosize [(ngModel)]="newPayment.observations" #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
         cdkAutosizeMaxRows="5"></textarea>

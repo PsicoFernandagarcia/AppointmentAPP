@@ -1,11 +1,12 @@
 <mat-list>
-  <mat-list-item *ngFor="let day of days">
+  <mat-list-item *ngFor="let day of days" class="item-list">
     <app-day-appointment
      [day]="day"
      (onCancelEvent)="onCancelAppointment($event)"
      style="width: 100%;"> </app-day-appointment>
-     <mat-divider></mat-divider>
+     <hr style="border-top-color: #cccccc29;">
   </mat-list-item>
+  
 </mat-list>
 <div class ="no-appointment" *ngIf="appointments.length === 0">
   <p>No tienes ninguna cita pendiente</p>

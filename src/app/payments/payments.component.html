@@ -18,15 +18,15 @@
                             <span class="last-payment">Ultimo pago realizado {{getIndexDate(indexPayment+1,p) | date:'MMMM' | translate}}
                             {{p.paidAt | date:'dd yyyy'}}</span>
                         </mat-panel-description>
-                        <mat-chip-list class="chip-list" style="flex-grow: 1; margin-right: 5px; white-space: nowrap;">
-                            <mat-chip class="chip-text" *ngIf="p.sessionsLeft > 0" color="success" selected
+                        <mat-chip-listbox class="chip-list" style="flex-grow: 1; margin-right: 5px; white-space: nowrap;">
+                            <mat-chip class="chip-text" *ngIf="p.sessionsLeft > 0" [color]="'success'" highlighted 
                                 (click)="addPayment($event,p,false)">
                                 Tiene {{p.sessionsLeft}} {{p.sessionsLeft === 1 ? 'sesion' : 'sesiones'}}
                             </mat-chip>
-                            <mat-chip class="chip-text" *ngIf="p.sessionsLeft === 0" color="primary" selected
+                            <mat-chip class="chip-text" *ngIf="p.sessionsLeft === 0" [color]="'primary'" highlighted 
                                 (click)="addPayment($event,p,false)">No debe
                             </mat-chip>
-                            <mat-chip class="chip-text" *ngIf="p.sessionsLeft < 0" color="warn" selected
+                            <mat-chip class="chip-text" *ngIf="p.sessionsLeft < 0" [color]="'warn'" highlighted 
                                 (click)="sp($event)" [matMenuTriggerFor]="menu">
                                 Debe {{p.sessionsLeft * (-1)}} {{p.sessionsLeft === -1 ? 'sesion' :
                                 'sesiones'}}</mat-chip>
@@ -34,7 +34,7 @@
                                     <button mat-menu-item (click)="addPayment($event,p,false)">{{"new_payment"|translate}}</button>
                                     <button mat-menu-item (click)="showPaymentsDebt($event, p.sessionsLeft,p.patientId)">{{"view_debt_payment"|translate}}</button>
                                   </mat-menu>
-                        </mat-chip-list>
+                        </mat-chip-listbox>
                     </mat-expansion-panel-header>
                     <mat-list role="list">
                         <div *ngFor="let pu of paymentsFromUserSelected; let indexPu = index;">

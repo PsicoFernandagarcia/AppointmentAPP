@@ -27,33 +27,33 @@
                 </mat-expansion-panel-header>
                 <div class="time-selection">
                   <h3 style="font-weight: 500;">{{"in_the_morning"|translate}}</h3>
-                  <mat-chip-list aria-label="hour selection">
+                  <mat-chip-listbox aria-label="hour selection">
                     <div *ngFor="let hour of availability">
-                      <mat-chip class="example-margin" *ngIf="hour.hour <= 12"
+                      <mat-chip class="chip" *ngIf="hour.hour <= 12"
                         [ngClass]="hour.availability?.appointmentId > 0 ? 'full' : !hour.availability ? 'enable' : 'disable'"
                         (click)="changeAvailabilityHour(index+1,hour)">
                         {{hour.hour}}
                       </mat-chip>
                     </div>
-                  </mat-chip-list>
+                  </mat-chip-listbox>
                   <h3 style="font-weight: 500; margin-top: 10px">{{"in_the_afternoon"|translate}}</h3>
-                  <mat-chip-list aria-label="hour selection">
+                  <mat-chip-listbox aria-label="hour selection">
                     <div *ngFor="let hour of availability">
-                      <mat-chip class="example-margin" *ngIf="hour.hour > 12"
+                      <mat-chip class="chip" *ngIf="hour.hour > 12"
                         [ngClass]="hour.availability?.appointmentId > 0 ? 'full' : !hour.availability ? 'enable' : 'disable'"
                         (click)="changeAvailabilityHour(index+1,hour)">
                         {{hour.hour}}
                       </mat-chip>
                     </div>
-                  </mat-chip-list>
+                  </mat-chip-listbox>
                   <h5 style="font-weight: 500; margin-top: 10px">{{"my_google_calendar"|translate}}</h5>
-                  <mat-chip-list class="my-g-calendar">
+                  <mat-chip-listbox class="my-g-calendar">
                     <div *ngFor="let e of calendarEvents">
                       <mat-chip class="event-g-calendar" *ngIf="e.date.getDate() == index+1">
                         <span><strong>{{e.date | date:'shortTime'}}</strong> {{e.description}}</span>
                       </mat-chip>
                     </div>
-                  </mat-chip-list>
+                  </mat-chip-listbox>
                 </div>
                 <mat-action-row>
                   <button mat-button color="primary"

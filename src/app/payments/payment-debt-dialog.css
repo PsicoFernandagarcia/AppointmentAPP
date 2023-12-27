@@ -1,5 +1,7 @@
 
-
+.contentsss{
+   margin: 20px;
+  }
 .success {
    margin-right: 3px;
    width: 10px;
@@ -16,6 +18,9 @@
    background-color: #f44336 !important;
    color: white !important;
    border-radius: 50px
+}
+span.mat-mdc-list-item-unscoped-content.mdc-list-item__primary-text{
+   display: flex!important;
 }
 
 @media only screen and (max-width: 600px) {
