@@ -15,18 +15,18 @@
           <div class="information">
             <app-user-filter *ngIf="patients.length>0" [patients]="patients" (onPatientSelectedEvent)="onUserChange($event)">
             </app-user-filter>
-            <mat-form-field appearance="standard" class="country">
+            <mat-form-field class="country">
               <mat-select (valueChange)="onCountryChange($event)">
                 <mat-option [value]="-180">AR</mat-option>
                 <mat-option [value]="60">ESP</mat-option>
               </mat-select>
             </mat-form-field>
 
-            <mat-form-field class="example-full-width" appearance="standard">
+            <mat-form-field class="example-full-width">
               <mat-label>{{"Email"|translate}}</mat-label>
               <input matInput [(ngModel)]="userToAssignSelected.email">
             </mat-form-field>
-            <mat-form-field class="example-full-width" style="margin-left:10px;" appearance="standard">
+            <mat-form-field class="example-full-width" style="margin-left:10px;">
               <mat-label>{{"Name"|translate}}</mat-label>
               <input matInput [(ngModel)]="userToAssignSelected.name">
             </mat-form-field>
@@ -55,7 +55,7 @@
               <div class="time-selection">
                 <h3>{{'availability'|translate}}:</h3>
                 <h3 style="font-weight: 500;">{{"in_the_morning"|translate}}</h3>
-                <mat-chip-list aria-label="hour selection">
+                <mat-chip-listbox aria-label="hour selection">
                   <div *ngFor="let hour of availability">
                     <mat-chip class="time-chip" *ngIf="hour.hour <= 12"
                     [ngClass]="!hour.availability ? 'enable' : 'disable'"
@@ -64,9 +64,9 @@
                     {{hour.hour}}
                     </mat-chip>
                   </div>
-                </mat-chip-list>
+                </mat-chip-listbox>
                 <h3 style="font-weight: 500;">{{"in_the_afternoon"|translate}}</h3>
-                <mat-chip-list aria-label="hour selection">
+                <mat-chip-listbox aria-label="hour selection">
                   <div *ngFor="let hour of availability">
                     <mat-chip class="time-chip" *ngIf="hour.hour > 12"
                     [ngClass]="!hour.availability ? 'enable' : 'disable'"
@@ -75,7 +75,7 @@
                     {{hour.hour}}
                     </mat-chip>
                   </div>
-                </mat-chip-list>
+                </mat-chip-listbox>
               </div>
               <mat-action-row>
                 <button mat-button color="primary" (click)="saveAppointment()">{{'save'|translate}}</button>

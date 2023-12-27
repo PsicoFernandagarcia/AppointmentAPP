@@ -41,7 +41,7 @@
                             class="b-cal-event-wrap b-allday b-past-event b-cal-color-green b-continues-right">
                             <div class="b-start-arrow" style="border-width: 12.5px 8.33333px 12.5px 0px;"></div>
                             <div class="b-cal-event" style="width: max-content;">
-                                <mat-chip-list>
+                                <mat-chip-listbox>
                                     <mat-chip *ngIf="appointment.status !== 'CANCELED'" color="primary" selected>
                                         {{appointment.patientId === currentUser.id ? appointment.hostName
                                         :appointment.patientName}}
@@ -49,7 +49,7 @@
                                             <mat-icon>cancel</mat-icon>
                                           </button>
                                     </mat-chip>
-                                </mat-chip-list>
+                                </mat-chip-listbox>
                             </div>
                             <div class="b-end-arrow" style="border-width: 12.5px 0px 12.5px 8.33333px;">
                             </div>
@@ -66,14 +66,14 @@
                             class="b-cal-event-wrap b-allday b-past-event b-cal-color-green b-continues-right">
                             <div class="b-start-arrow" style="border-width: 12.5px 8.33333px 12.5px 0px;"></div>
                             <div class="b-cal-event" style="width: max-content;">
-                                <mat-chip-list>
+                                <mat-chip-listbox>
                                     <mat-chip class="canceled-chip" selected>
                                         <span class="canceled">
                                             {{appointment.patientId === currentUser.id ? appointment.hostName
                                             :appointment.patientName}}
                                         </span> - {{"canceled"|translate}}
                                     </mat-chip>
-                                </mat-chip-list>
+                                </mat-chip-listbox>
                             </div>
                             <div class="b-end-arrow" style="border-width: 12.5px 0px 12.5px 8.33333px;">
                             </div>

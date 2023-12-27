@@ -1,8 +1,16 @@
 
-.mat-list-item.mat-focus-indicator{
+.mat-mdc-list-item.mat-focus-indicator{
   height: auto;
   min-height: 50px;
   overflow: overlay;
+}
+.mat-mdc-list-item.mdc-list-item.mat-mdc-list-item-single-line.mdc-list-item--with-one-line{
+  height: auto;
+  min-height: 50px;
+  overflow: overlay;
+}
+.mdc-list-item,.item-list{
+  overflow: overlay!important;
 }
 
 .no-appointment{

@@ -1,16 +1,19 @@
-<h1 mat-dialog-title>{{"select_reassign_user"|translate}} </h1>
-<div mat-dialog-content class="content">
-  <div class="sub-title">
-    <p> {{"reassign_user"|translate}}<strong>{{data.selectedUserToDelete.email}}</strong></p>
+<div class="container">
+  <h1 mat-dialog-title>{{"select_reassign_user"|translate}} </h1>
+  <div mat-dialog-content class="content">
+    <div class="sub-title">
+      <p> {{"reassign_user"|translate}}<strong>{{data.selectedUserToDelete.email}}</strong></p>
+    </div>
+    <app-user-filter [patients]="data.users" (onPatientSelectedEvent)="onPatientChange($event)">
+    </app-user-filter>
+    <p *ngIf="selectedUser && selectedUser.id !== data.selectedUserToDelete.id">Se reasignará al siguiente usuario:
+      {{selectedUser.fullName}} - <strong>{{selectedUser.email}}</strong> </p>
+    <p *ngIf="selectedUser && selectedUser.id === data.selectedUserToDelete.id" style="color: red;">*Debe seleccionar un
+      usuario diferente al que desea eliminar</p>
   </div>
-  <app-user-filter [patients]="data.users" (onPatientSelectedEvent)="onPatientChange($event)">
-  </app-user-filter>
-  <p *ngIf="selectedUser && selectedUser.id !== data.selectedUserToDelete.id">Se reasignará al siguiente usuario: {{selectedUser.fullName}} - <strong>{{selectedUser.email}}</strong> </p>
-  <p *ngIf="selectedUser && selectedUser.id === data.selectedUserToDelete.id" style="color: red;">*Debe seleccionar un usuario diferente al que desea eliminar</p>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onCancelClick()">{{"cancel"|translate}}</button>
-  <button mat-button color="primary" 
-          [disabled]="!selectedUser || selectedUser.id === data.selectedUserToDelete.id" 
-          cdkFocusInitial (click)="onSaveClick()">{{"save"|translate}}</button>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onCancelClick()">{{"cancel"|translate}}</button>
+    <button mat-button color="primary" [disabled]="!selectedUser || selectedUser.id === data.selectedUserToDelete.id"
+      cdkFocusInitial (click)="onSaveClick()">{{"save"|translate}}</button>
+  </div>
 </div>

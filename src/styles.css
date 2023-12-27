@@ -12,6 +12,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .full-width {
   width: 100%;
 }
+
 .side-calendar{
   width: 300px;
 }
@@ -20,7 +21,7 @@ td.mat-calendar-body-cell.custom-date-class{
   border-radius: 100% !important;
 }
 
-.success-snackbar,.mat-success.mat-chip.mat-standard-chip {
+.success-snackbar,.mat-success.mat-mdc-chip.mat-mdc-standard-chip {
   background: #28a745!important;
   color: white !important;;
 }
@@ -45,8 +46,12 @@ td.mat-calendar-body-cell.custom-date-class{
   justify-content: center;
 }
 
-@media only screen and (max-width: 600px)  {
+.mat-mdc-unelevated-button{
+  height: unset!important;
+}
 
+@media only screen and (max-width: 600px)  {
+  /* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version. */
   span.mat-button-wrapper{
     width: 100%;
   }
@@ -61,6 +66,7 @@ td.mat-calendar-body-cell.custom-date-class{
   .header>h2{
     margin:0px;
   }
+  /* TODO(mdc-migration): The following rule targets internal classes of list that may no longer apply for the MDC version. */
   .mat-list-item-content{
     padding:0px !important;
   }
@@ -68,10 +74,12 @@ td.mat-calendar-body-cell.custom-date-class{
   .b-cal-agenda-event-time{
     font-size: smaller;
   }
+  /* TODO(mdc-migration): The following rule targets internal classes of chips that may no longer apply for the MDC version. */
   mat-chip {
     font-size: smaller !important;
     font-weight: 400 !important;
   }
+  /* TODO(mdc-migration): The following rule targets internal classes of option that may no longer apply for the MDC version. */
   .mat-option-text{
     font-size: small;
   }
@@ -81,5 +89,7 @@ td.mat-calendar-body-cell.custom-date-class{
     justify-content: space-between;
   }
 
-
+  .mdc-list-item__content{
+    overflow: overlay!important;
+  }
 }

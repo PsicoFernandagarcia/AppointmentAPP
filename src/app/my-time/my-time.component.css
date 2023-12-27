@@ -15,7 +15,7 @@
   text-align: center;
   font-size: xxx-large;
 }
-.mat-list-item.mat-focus-indicator{
+.mat-mdc-list-item.mat-focus-indicator{
   height: auto;
   min-height: 50px;
 }
@@ -82,16 +82,19 @@
 }
 
 .canceled{
-  text-decoration: line-through;
+  text-decoration: line-through!important;
 }
 .disable{
-  background-color:#3f51b5;
-  color: white;
+  background-color:#3f51b5!important;
+  color: white!important;
 }
 
-.full{
-  background-color:#c22517;
-  color: white;
+.chip.full{
+  background-color:#c22517!important;
+  color: white!important;
+}
+.chip.full.mat-mdc-standard-chip,.chip.disable.mat-mdc-standard-chip {
+  --mdc-chip-label-text-color: #fff;
 }
 
 .panel-header{

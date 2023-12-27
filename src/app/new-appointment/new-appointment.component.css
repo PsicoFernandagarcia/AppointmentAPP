@@ -14,7 +14,7 @@
   left:10px;
 }
 
-.mat-list-base{
+.mat-mdc-list-base{
   padding: 0px;
 }
 
@@ -26,7 +26,7 @@
   text-align: center;
   font-size: xxx-large;
 }
-.mat-list-item.mat-focus-indicator{
+.mat-mdc-list-item.mat-focus-indicator{
   height: auto;
   min-height: 50px;
 }
@@ -101,12 +101,15 @@
 }
 
 .chip-selected{
-  border-color: #ec5c5c;
+  border-color: #ec5c5c!important;
   border-style: solid;
 }
 .disable{
-  background-color:#3f51b5;
+  background-color:#3f51b5!important;
   color: white;
+}
+.time-chip.full.mat-mdc-standard-chip,.time-chip.disable.mat-mdc-standard-chip {
+  --mdc-chip-label-text-color: #fff;
 }
 .panel-header{
   height: fit-content;
@@ -134,7 +137,7 @@
   width: 15% !important;
   margin-left:10px;
 }
-.mat-form-field.example-full-width{
+.mat-mdc-form-field.example-full-width{
   margin-right: 10px;
 }
 .country{
@@ -162,7 +165,7 @@
   .user-list h2{
     font-size: small;
   }
-  .mat-form-field.example-full-width{
+  .mat-mdc-form-field.example-full-width{
     width: 45%;
 
   }

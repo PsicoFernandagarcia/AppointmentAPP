@@ -44,19 +44,19 @@ body {
 /* Accent Colors or Primary Colors For WebPage */
 
 .primary-color {
-    color: #002D54;
+    color: #002D54!important;
 }
 
 .primary-color a {
-    color: #002D54;
+    color: #002D54!important;
 }
 
 .primary-color .hover {
-    color: #395581;
+    color: #395581!important;
 }
 
 .primary-colorh:hover {
-    color: #395581;
+    color: #395581!important;
 }
 
 .primary-colorh .hover:hover {
@@ -64,33 +64,33 @@ body {
 }
 
 .secondary-color{
-    color:#FF533D;
+    color:#FF533D!important;
 }
 
 /* Background Colors */
 
 .bg-primary-color {
-    background-color: #002D54;
+    background-color: #002D54!important;
 }
 
 .bg-primary-colorh:hover {
-    background-color: #395581;
+    background-color: #395581!important;
 }
 
 .bg-primary-colorhb:hover {
-    background: #395581;
-    color: #000000;
+    background: #395581!important;
+    color: #000000!important;
 }
 
 .bg-primary-colorh:hover a {
-    background-color: #395581;
+    background-color: #395581!important;
 }
 
 /* Border On Hover */
 
 .bg-primary-borderh:hover {
     background-color: unset;
-    border: 1px solid #395581;
+    border: 1px solid #395581!important;
 }
 
 /* Active Color for Whole Page */

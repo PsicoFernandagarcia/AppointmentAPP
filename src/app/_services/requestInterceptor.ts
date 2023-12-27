@@ -36,6 +36,7 @@ export class RequestInterceptor implements HttpInterceptor {
           let errorMsg = '';
           this.loadingService.hide();
           if(error.status === 401){
+            localStorage.removeItem("token");
             this.router.navigate(['main/login']);
           }
           if(error.status === 400){

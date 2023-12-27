@@ -34,9 +34,11 @@
 .payment-actions {
   width: 100%;
   position: sticky;
+  flex: 1;
+  margin-bottom: 5px;
 }
 
-.mat-chip.mat-chip.mat-focus-indicator.chip-text.mat-standard-chip.mat-warn.mat-chip-selected.ng-star-inserted {
+.mat-mdc-chip.mat-chip.mat-focus-indicator.chip-text.mat-mdc-standard-chip.mat-warn.mat-chip-selected.ng-star-inserted {
   cursor: pointer;
 }
 
@@ -56,13 +58,19 @@
 .payment-information{
   display: flex;
   flex-direction: column;
+  text-wrap: pretty;
 }
 .observations{
-  color: grey
+  color: grey;
+  text-wrap: pretty;
 }
 
 .list-payment-item{
   height: auto!important;
+  display: flex!important;
+}
+.chip-text.mat-mdc-standard-chip {
+  --mdc-chip-label-text-color: white;
 }
 
 @media only screen and (max-width: 600px) {
