@@ -59,15 +59,7 @@ const routes: Routes = [
         data: {
           role: 'ADMIN,HOST'
         }
-      },
-      {
-        path: 'room', loadChildren: () => import('../room/room.module')
-          .then(u => u.RoomModule),
-        canActivate: [AuthGuard],
-        data: {
-          role: 'ADMIN,HOST'
-        }
-      },
+      }
     ]
   },
 
