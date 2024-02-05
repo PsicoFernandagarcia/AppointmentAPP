@@ -82,6 +82,13 @@ export class AgendaComponent implements OnInit, OnChanges {
     });
   }
 
+  onJoinMeeting(appointment:Appointment){
+    this.notificationService.confirmation("Esta a punto de unirse a su videollamada. Desea continuar?",
+    ()=>{
+      this.router.navigate(['room'],{queryParams:{patientId:appointment.patientId}});
+    },"Atención")
+  }
+
   redirectNewAppointment(){
     this.router.navigate(['main/new-appointment']);
   }

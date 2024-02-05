@@ -24,11 +24,18 @@
           <mat-chip-listbox>
             <mat-chip *ngIf="appointment.status !== 'CANCELED'" color="primary" highlighted>
               {{appointment.patientId === currentUser.id ? appointment.hostName :appointment.patientName}}
-              <button matChipRemove (click)="cancelEvent(appointment)">
+              @if(appointment.dateFrom.isBetweenOneHour() || appointment.dateTo.isBetweenOneHour() || isHost){
+                
+                <mat-icon matChipRemove style="opacity: 1!important;" (click)="joinMeeting(appointment)">videocam</mat-icon>
+                
+              }
+              <button matChipRemove  (click)="cancelEvent(appointment)">
                 <mat-icon>cancel</mat-icon>
               </button>
             </mat-chip>
           </mat-chip-listbox>
+        
+          
         </div>
         <div class="b-end-arrow" style="border-width: 12.5px 0px 12.5px 8.33333px;">
         </div>

@@ -76,6 +76,11 @@
 .canceled{
   text-decoration: line-through;
 }
+.flat-button {
+  color: #fff;
+  background-color: #5cb85c;
+  border-color: #388538;
+}
 
 
 @media only screen and (max-width: 600px)  {
