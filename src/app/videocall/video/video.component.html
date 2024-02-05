@@ -1,0 +1,32 @@
+<div #video class="video-container" [ngClass]="{
+  'small': small,
+  'full': !small,
+  'hide': !cameraOn
+}"
+  [id]="getVideoContainer()">
+  <div class="participant-info">
+    <p class="name">
+      {{userName}}
+    </p>
+    <img src="../../../assets/icons/icon-128x128.png"/>
+    @if(!micOn){
+      <mat-icon class="material-icons-outlined color_blue"  alt="Mic is off" >mic_off</mat-icon>
+    }
+  </div>
+</div>
+@if(!cameraOn){
+<div class="video-container" [ngClass]="small ? 'small': 'full'">
+  <span>
+    <h1 class="shortName">{{cameraOffName}}</h1>
+  </span>
+  <div class="participant-info">
+    <p class="name">
+      {{userName}}
+    </p>
+    <img src="../../../assets/icons/icon-128x128.png"  />
+    @if(!micOn){
+      <mat-icon class="material-icons-outlined color_blue" alt="Mic is off">mic_off</mat-icon>
+    }
+  </div>
+</div>
+}

@@ -1,0 +1,53 @@
+<div id="drag_zone">
+
+  <app-video cdkDragBoundary=".drag_zone" cdkDrag (cdkDragStarted)="setDrag(true)" (cdkDragEnded)="setDrag(false)"
+    [userId]="currentUser.id"
+    [ngClass]="userVideoSelected === currentUser.id ?'main-video-container' : 'participant participants'"
+    [small]="userVideoSelected!= currentUser.id" [cameraOn]="localCameraEnabled" [micOn]="localAudioEnabled"
+    [userName]="currentUser.name + ' ' + currentUser.lastName" (click)="setMainVideo(currentUser.id)">
+  </app-video>
+
+  @if(remoteUser){
+  <app-video cdkDragBoundary=".drag_zone" cdkDrag (cdkDragStarted)="setDrag(true)" (cdkDragEnded)="setDrag(false)"
+    [userId]="remoteUserInformation.id"
+    [ngClass]="userVideoSelected === remoteUserInformation.id ?'main-video-container' : 'participant participants'"
+    [small]="userVideoSelected!= remoteUserInformation.id"
+    [userName]="remoteUserInformation.name + ' ' + remoteUserInformation.lastName" [micOn]="true"
+    (click)="setMainVideo(remoteUserInformation.id)">
+  </app-video>
+  }
+  @if(callReady){
+    <div class="stream__actions">
+      <button id="camera-btn"
+        [ngClass]="{'active':this.localCameraEnabled}"
+        (click)="toggleCamera()">
+        @if(this.localCameraEnabled){
+        <mat-icon class="material-icons-outlined color_blue">videocam</mat-icon>
+        }@else {
+        <mat-icon class="material-icons-outlined color_blue">videocam_off</mat-icon>
+        }
+      </button>
+      <button id="mic-btn" 
+        [ngClass]="{'active':this.localAudioEnabled}"
+        (click)="toggleMic()">
+        @if( this.localAudioEnabled){
+        <mat-icon class="material-icons-outlined color_blue">mic_none</mat-icon>
+        }@else {
+        <mat-icon class="material-icons-outlined color_blue">mic_off</mat-icon>
+        }
+      </button>
+      <button id="screen-btn" 
+        [ngClass]="{'active':this.sharingScreen}"
+        (click)="toggleScreen()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+          <path d="M0 1v17h24v-17h-24zm22 15h-20v-13h20v13zm-6.599 4l2.599 3h-12l2.599-3h6.802z" />
+        </svg>
+      </button>
+      <button id="leave-btn" style="background-color: #FF5050;" (click)="leave()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+          <path d="M16 10v-5l8 7-8 7v-5h-8v-4h8zm-16-8v20h14v-2h-12v-16h12v-2h-14z" />
+        </svg>
+      </button>
+    </div>
+  }
+</div>

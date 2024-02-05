@@ -11,6 +11,7 @@ import { NotificationService } from '../_services/notification.service';
 export class DayAppointmentComponent implements OnInit {
   @Input() day:Day = new Day(new Date(),[],false);
   @Output() onCancelEvent = new EventEmitter<number>();
+  @Output() onJoinMeetingEvent = new EventEmitter<Appointment>();
   pendingAppointments:Appointment[] = [];
   cancelledAppointments:Appointment[] = [];
   currentUser:any = JSON.parse(localStorage.getItem('currentUser')??'{}');
@@ -33,5 +34,10 @@ export class DayAppointmentComponent implements OnInit {
     } 
 
     this.onCancelEvent.emit(appointment.id);
+  }
+
+  joinMeeting(appointment: Appointment){
+    this.onJoinMeetingEvent.emit(appointment);
+    
   }
 }

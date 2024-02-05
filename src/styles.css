@@ -50,6 +50,15 @@ td.mat-calendar-body-cell.custom-date-class{
   height: unset!important;
 }
 
+div.small:has(video) ,
+div.video-container.small>div:last-child,
+video
+{
+  border-radius: 16px!important;
+}
+
+
+
 @media only screen and (max-width: 600px)  {
   /* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version. */
   span.mat-button-wrapper{

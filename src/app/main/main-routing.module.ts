@@ -59,7 +59,7 @@ const routes: Routes = [
         data: {
           role: 'ADMIN,HOST'
         }
-      },
+      }
     ]
   },
 
