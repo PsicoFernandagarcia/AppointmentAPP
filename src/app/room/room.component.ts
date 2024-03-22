@@ -1,14 +1,15 @@
-import {  AfterViewInit, ChangeDetectorRef, Component, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import {  AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import AgoraRTC, {
   IAgoraRTCClient,
   IAgoraRTCRemoteUser,
   ICameraVideoTrack,
   IMicrophoneAudioTrack,
 } from 'agora-rtc-sdk-ng';
-import { environment } from 'src/environments/environment';
 import { VideoComponent } from '../videocall/video/video.component';
 import { NotificationService } from '../_services/notification.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { VideoCallService } from '../_services/videocall.service';
+import { lastValueFrom } from 'rxjs';
 
 class ChannelParameters {
   localAudioTrack!: IMicrophoneAudioTrack;
@@ -35,7 +36,7 @@ class RemoteUserInformation{
   templateUrl: './room.component.html',
   styleUrl: './room.component.css',
 })
-export class RoomComponent implements OnInit,AfterViewInit {
+export class RoomComponent implements OnInit,AfterViewInit, OnDestroy {
   
   @ViewChildren(VideoComponent)
   private videoComponentsQueryList!:  QueryList<VideoComponent>;
@@ -53,9 +54,9 @@ export class RoomComponent implements OnInit,AfterViewInit {
   localCameraEnabled = false;
 
   config = {
-    appid: environment.video_appid,
+    appid: '',
     channelName: '',
-    token: null,
+    token: '',
     uid: '',
   };
   channelParameters = new ChannelParameters();
@@ -64,8 +65,13 @@ export class RoomComponent implements OnInit,AfterViewInit {
     private changeDetector : ChangeDetectorRef,
     private router: Router,
     private route:ActivatedRoute,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private videocallService: VideoCallService
     ) { }
+    
+  async ngOnDestroy(): Promise<void> {
+    await this.leave(false);
+  }
   
   async ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem("currentUser") ?? '{}');
@@ -75,9 +81,10 @@ export class RoomComponent implements OnInit,AfterViewInit {
           const patientId = p['params'].patientId;
           if(patientId == this.currentUser.id || currentUserRole == 'HOST'){
             this.config.channelName = `room-patient-${patientId}`;
+            this.config.uid = `${this.currentUser.id}*${this.currentUser.name}*${this.currentUser.lastName}*${this.currentUser.email}`;
             this.userVideoSelected = this.currentUser.id;
-            this.config.uid = this.currentUser.id;
             await this.setupAgoraEngine();
+            await this.setVideocallInformation();
             await this.join();
           }else {
             this.notificationService.error("Lamentablemente no tienes permitido acceder a la llamada, comunícate con la profesional");
@@ -90,6 +97,12 @@ export class RoomComponent implements OnInit,AfterViewInit {
 
   ngAfterViewInit(): void {
     this.videoComponents = this.videoComponentsQueryList.toArray();
+  }
+
+  async setVideocallInformation(){
+    var configs = await lastValueFrom(this.videocallService.GetVideoCallInformation(this.config.channelName, this.config.uid));
+    this.config.appid = configs.appId;
+    this.config.token = configs.token;
   }
 
   async setupAgoraEngine() {
@@ -112,6 +125,15 @@ export class RoomComponent implements OnInit,AfterViewInit {
       this.notificationService.success(`${this.remoteUserInformation.name} ha dejado la llamada`)
       this.remoteUserInformation = new RemoteUserInformation();
     });
+
+    this.agoraEngine.on('user-joined', async (user: IAgoraRTCRemoteUser) => {
+      if(!this.remoteUser){
+        this.remoteUser = user;
+        this.setRemoteUserInformation(user.uid.toString());
+        await this.changeDetector.detectChanges();
+        this.videoComponents = this.videoComponentsQueryList.toArray();
+      }
+    });
   }
 
   async join() {
@@ -119,7 +141,7 @@ export class RoomComponent implements OnInit,AfterViewInit {
       this.config.appid,
       this.config.channelName,
       this.config.token,
-      `${this.currentUser.id}*${this.currentUser.name}*${this.currentUser.lastName}*${this.currentUser.email}`
+      this.config.uid
     );
     // Create a local audio track from the audio sampled by a microphone.
     const audioAndVideo = await AgoraRTC.createMicrophoneAndCameraTracks();
@@ -141,7 +163,7 @@ export class RoomComponent implements OnInit,AfterViewInit {
     
   }
 
-  async leave() {
+  async leave(redirectToDashboard:boolean = true) {
     // Destroy the local audio and video tracks.
     this.channelParameters.localAudioTrack.close();
     this.channelParameters.localVideoTrack.close();
@@ -151,12 +173,7 @@ export class RoomComponent implements OnInit,AfterViewInit {
   }
 
   async handleUserPublished(user: IAgoraRTCRemoteUser, mediaType: string) {
-    if(!this.remoteUser){
-      this.remoteUser = user;
-      this.setRemoteUserInformation(user.uid.toString());
-      await this.changeDetector.detectChanges();
-      this.videoComponents = this.videoComponentsQueryList.toArray();
-    }
+   
     
 
     if (mediaType === 'video') {
