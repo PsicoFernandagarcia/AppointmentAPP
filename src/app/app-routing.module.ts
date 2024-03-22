@@ -23,7 +23,7 @@ const routes: Routes = [
     loadChildren: () => import('./room/room.module').then((m) => m.RoomModule),
     canActivate: [AuthGuard],
     data: {
-      role: 'ADMIN,HOST'
+      role: 'ADMIN,HOST,COMMON'
     }
   },
   {
