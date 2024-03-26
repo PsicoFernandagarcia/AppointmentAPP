@@ -1,5 +1,6 @@
 import {  AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import AgoraRTC, {
+  CameraVideoTrackInitConfig,
   IAgoraRTCClient,
   IAgoraRTCRemoteUser,
   ICameraVideoTrack,
@@ -143,8 +144,16 @@ export class RoomComponent implements OnInit,AfterViewInit, OnDestroy {
       this.config.token,
       this.config.uid
     );
+    const videoConfig :CameraVideoTrackInitConfig = {
+      optimizationMode : 'motion',
+      encoderConfig : {
+        width: 1280,
+        height:720,
+        frameRate:30
+      }
+    };
     // Create a local audio track from the audio sampled by a microphone.
-    const audioAndVideo = await AgoraRTC.createMicrophoneAndCameraTracks();
+    const audioAndVideo = await AgoraRTC.createMicrophoneAndCameraTracks(undefined, videoConfig);
     this.channelParameters.localAudioTrack = audioAndVideo[0];
     // Create a local video track from the video captured by a camera.
     this.channelParameters.localVideoTrack = audioAndVideo[1];
