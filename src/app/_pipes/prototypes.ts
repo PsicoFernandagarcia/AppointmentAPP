@@ -5,6 +5,7 @@ declare global{
     equalTo(compareTo:Date): boolean;
     diffInHours(compareTo:Date):number;
     isBetweenOneHour():boolean;
+    setTimeToZero():void;
   }
 
   interface String{
@@ -30,6 +31,13 @@ Date.prototype.isBetweenOneHour = function(){
   if (now.getMonth() !== this.getMonth()) return false;
   if (now.getDate() !== this.getDate()) return false;
   return Math.abs(now.getHours() - this.getHours()) <= 1;
+}
+
+Date.prototype.setTimeToZero = function(){
+  this.setHours(0);
+  this.setMinutes(0);
+  this.setSeconds(0);
+  this.setMilliseconds(0);
 }
 
 String.prototype.removeAccents = function() {
