@@ -40,6 +40,22 @@ export class AppointmentService {
     );
   }
 
+  getUnpaidFromPatient(patientId: number ):Observable<Appointment[]>{
+    const options =   {
+      params: new HttpParams().set('userId',patientId)
+                              .set('isUnpaid',true)
+    };
+    return this.http.get<Appointment[]>('/appointments',options).pipe(
+      map( response => {
+        response.forEach(a => {
+          a.dateFrom = new Date(a.dateFrom),
+          a.dateTo = new Date(a.dateTo)
+        })
+        return response;
+      })
+    );
+  }
+
   getLast(hostId:number, patientId:number, totalCount:number):Observable<Appointment[]>{
     const options =   {
       params: new HttpParams().set('hostId',hostId)

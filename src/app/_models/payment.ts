@@ -1,3 +1,4 @@
+import { Appointment } from "./appointment";
 import { User } from "./user";
 
 
@@ -12,6 +13,9 @@ export class Payment {
   sessionsLeft!: number;
   currency!:string;
   observations!:string;
+  appointments:number[] = [];
+  appointmentsPaid?:Appointment[] = [];
+
 }
 
 export class PaymentInformation{

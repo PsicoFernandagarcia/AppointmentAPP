@@ -107,7 +107,7 @@ export class PaymentsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(payment => {
-      if(!payment && payment.id <=0){
+      if(!payment || payment.id <=0){
         return;
       }
       this.patientSelectedToLoadPayment = 0;
