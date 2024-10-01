@@ -43,7 +43,7 @@
                                     <div class="payment-detail">
                                         <p>
                                             {{getIndexDate(indexPu+1,pu) | date:'MMMM' | translate}} {{pu.paidAt | date:'dd yyyy'}}
-                                            pagó {{pu.sessionsPaid}} sesiones Total: {{pu.amount|currency}}
+                                            pagó {{pu.appointmentsPaid?.length ?? 0}} sesiones Total: {{pu.amount|currency}}
                                         </p>
                                     </div>
                                     <div class="observations">

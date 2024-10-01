@@ -14,6 +14,7 @@ export class Appointment{
   isDeleted:boolean;
   status:string;
   updatedAt:Date;
+  paymentId!: number;
 
   constructor(_id:number,_title:string,_dateFrom:Date,_dateTo:Date,_with:string,
     _createdById:number,

@@ -16,6 +16,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import { PaymentDebtDialog } from './payment-debt-dialog.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { PaymentDebtDialog } from './payment-debt-dialog.component';
     MatDatepickerModule,
     MatCardModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    MatCheckboxModule
   ]
 })
 export class PaymentsModule { }

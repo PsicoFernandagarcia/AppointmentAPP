@@ -1,12 +1,13 @@
-import { ThisReceiver } from "@angular/compiler";
 import { Component, Inject } from "@angular/core";
-import { FormControl } from "@angular/forms";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { Payment } from "../_models/payment";
-import { User } from "../_models/user";
 import { LoadingService } from "../_services/loading.service";
 import { NotificationService } from "../_services/notification.service";
 import { PaymentService } from "../_services/payments.service";
+import { AppointmentService } from "../_services/appointment.service";
+import { Appointment } from "../_models/appointment";
+import { Observable, of } from "rxjs";
+import { MatCheckboxChange } from "@angular/material/checkbox";
 
 export class AddPaymentData{
   payment!: Payment;
@@ -19,17 +20,30 @@ export class AddPaymentData{
 })
 export class AddPaymentDialog {
   newPayment:Payment = new Payment();
+  appointments!: Observable<Appointment[]>;
   date:any;
   constructor(
     private paymentService:PaymentService
     ,private notificationService:NotificationService
+    ,private appointmentService:AppointmentService
     ,private loadingService : LoadingService
     ,public dialogRef: MatDialogRef<AddPaymentDialog>
     ,@Inject(MAT_DIALOG_DATA) public data: AddPaymentData
   ) {
     this.newPayment = JSON.parse(JSON.stringify(data.payment));
     this.newPayment.currency = !this.newPayment.currency ? "EUR" : this.newPayment.currency;
-    this.date = this.data.editPayment ?  this.newPayment.paidAt : new Date();
+    const appointmentsPaid = data.payment.appointmentsPaid?.map((a) => a.id) ?? [];
+    this.newPayment.appointments = (this.newPayment.appointments ?? []).concat(appointmentsPaid);
+    this.date = this.data.editPayment ?  new Date(this.newPayment.paidAt) : new Date();
+    this.loadAppointments();
+  }
+
+  loadAppointments(){
+    this.appointmentService.getUnpaidFromPatient(this.data.payment.patientId).subscribe(app => {
+        const appointments = (this.data.payment.appointmentsPaid ?? []).concat(app);
+        this.appointments = of(appointments);
+
+      });
   }
 
   onCancelClick(): void {
@@ -50,6 +64,7 @@ export class AddPaymentDialog {
       this.editPayment();
     }else{
       this.loadingService.show();
+      this.newPayment.sessionsPaid = this.newPayment.appointmentsPaid?.length ?? 0;
       this.paymentService.save(this.newPayment).subscribe(res=>{
         this.notificationService.success("Pago registrado!");
         this.loadingService.hide;
@@ -59,10 +74,19 @@ export class AddPaymentDialog {
   }
   editPayment(){
     this.loadingService.show();
+    this.newPayment.sessionsPaid = this.newPayment.appointmentsPaid?.length ?? 0;
     this.paymentService.edit(this.newPayment).subscribe(res=>{
       this.notificationService.success("Pago actualizado!");
       this.loadingService.hide;
       this.dialogRef.close(res);
     });
+  }
+
+  onAppointmentSelected(event: MatCheckboxChange, appointment: Appointment){
+    if(this.newPayment.appointments.some(a => a === appointment.id)){
+      this.newPayment.appointments = this.newPayment.appointments.filter(a => a !== appointment.id);
+    }else{
+      this.newPayment.appointments.push(appointment.id);
+    }
   }
 }
