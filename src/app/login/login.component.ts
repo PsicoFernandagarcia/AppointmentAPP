@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import jwt_decode from 'jwt-decode';
 import { BehaviorSubject } from 'rxjs';
 import { Auth, AuthExternal, AuthResponse } from '../_models/auth';
 import { NewUser } from '../_models/user-new';
-import { AppSettingsService } from '../_services/app-settings.service';
 import { AuthService } from '../_services/auth.service';
 import { NotificationService } from '../_services/notification.service';
 import { createApi } from 'unsplash-js';
@@ -31,10 +30,8 @@ export class LoginComponent implements OnInit {
   constructor(
     public authService: AuthService
     ,private router: Router
-    ,private formBuilder: UntypedFormBuilder
     ,private socialAuthService: SocialAuthService
     ,private notificationService: NotificationService
-    ,private appsettingsService: AppSettingsService
     ,private loaderService:LoadingService
   ) {
     const token = localStorage.getItem("token");
@@ -109,7 +106,7 @@ export class LoginComponent implements OnInit {
     this.authService.auth(auth).subscribe(data=>{
       this.onLoginSuccess(data);
       this.loaderService.hide();
-    },error =>{
+    },() =>{
       this.notificationService.error("Usuario o contraseña incorrecto");
     });
   }
@@ -120,10 +117,10 @@ export class LoginComponent implements OnInit {
     newUser.email = newUser.userName;
     newUser.timezoneOffset = (new Date().getTimezoneOffset()*-1);
     newUser.password = Encrypt.encrypt(newUser.password);
-    this.authService.createUser(newUser).subscribe(data=>{
+    this.authService.createUser(newUser).subscribe(()=>{
       this.notificationService.success("Usuario creado correctamente");
       this.showRegistrationForm();
-    },error =>{
+    },() =>{
       this.notificationService.error("Error al registrar el usuario");
     });
   }
