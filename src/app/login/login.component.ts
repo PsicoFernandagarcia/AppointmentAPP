@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
   formGroupRegister!: UntypedFormGroup;
   socialUser!: SocialUser;
   showRegister: boolean = false;
+  showResetPass: boolean = false;
   urlImage:string='';
   public static logginSuccess = new BehaviorSubject<AuthResponse>(new AuthResponse('','',''));
   constructor(
@@ -151,6 +152,11 @@ export class LoginComponent implements OnInit {
   showRegistrationForm(){
     this.showRegister = !this.showRegister;
   }
+
+  showResetPassForm(){
+    this.showResetPass = !this.showResetPass;
+  }
+
   isTokenValid(token:string):boolean{
     let info  = jwt_decode(token) as any;
     const exp = info.exp;

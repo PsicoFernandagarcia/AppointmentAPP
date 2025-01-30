@@ -24,10 +24,11 @@ export class AuthService {
     return this.http.post<User>('/users',newUserModel);
   }
 
-  getTimeZone():Observable<string>{
-    const options =   {
-      params: new HttpParams().set('myTz', new Date().toString())
-    };
-    return this.http.post<string>('/auth/TZ',{"myTz":new Date()});
+  sendPasswordCode(email: string): Observable<void>{
+    return this.http.post<void>('/auth/ResetPasswordCode',{email});
+  }
+  
+  resetPassword(email: string, code: string, newPassword: string): Observable<void>{
+    return this.http.put<void>('/auth/Password',{email, code, newPassword});
   }
 }

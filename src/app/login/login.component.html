@@ -12,7 +12,7 @@
       <mat-card-content class="px-lg-5 pt-0">
 
         <!-- Form Login-->
-        <form *ngIf="!showRegister" [formGroup]="formGroup" class="text-center" style="color: #757575;">
+        <form *ngIf="!showRegister && !showResetPass" [formGroup]="formGroup" class="text-center" style="color: #757575;">
           <div>
             <mat-form-field class="full-width-input" appearance="fill">
               <mat-label>{{"username"|translate}}</mat-label>
@@ -29,6 +29,7 @@
             <button mat-stroked-button color="primary" class="full-width" (click)="login()">Login</button>
             <div style="margin-top:10px">
               <button (click)="showRegistrationForm()" mat-button>{{'register'|translate}}</button>
+              <button (click)="showResetPassForm()" mat-button>{{'forgot_password'|translate}}</button>
               <!-- /
           <a mat-button href="https://www.google.com/" target="_blank">{{'forgot_password'|translate}}</a> -->
             </div>
@@ -72,6 +73,16 @@
             </div>
             <hr>
           </form>
+
+
+          <!-- Form Reset Pass-->
+           <div *ngIf="showResetPass">
+             <app-reset-password ></app-reset-password>
+             <div style="margin-top:10px">
+              <button (click)="showResetPassForm()" mat-button>{{'back_to_login'|translate}}</button>
+             </div>
+             <hr>
+           </div>
           <!-- Social login -->
           
           <p style="padding-left: 16px;">{{'external_login'|translate}}</p>
