@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { GoogleLoginProvider, GoogleSigninButtonModule, SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
+import { ResetPasswordModule } from './reset-password/reset-password.module';
 
 
 @NgModule({
@@ -28,12 +29,13 @@ import { GoogleLoginProvider, GoogleSigninButtonModule, SocialAuthServiceConfig,
     MatInputModule,
     TranslateModule,
     HttpClientModule,
-    FormsModule ,
+    FormsModule,
     ReactiveFormsModule,
     SocialLoginModule,
     GoogleSigninButtonModule,
-    MatSnackBarModule
-  ],
+    MatSnackBarModule,
+    ResetPasswordModule
+],
   providers: [
     {
       provide: 'SocialAuthServiceConfig',

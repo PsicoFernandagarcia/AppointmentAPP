@@ -67,5 +67,10 @@
 "users":"Usuarios",
 "delete": "Eliminar",
 "select_reassign_user":"Usuario a reasignar",
-"reassign_user":"Reasignar información del usuario: "
+"reassign_user":"Reasignar información del usuario: ",
+"reset-pass":"Reestablecer contraseña ",
+"send_code": "Enviar codigo",
+"resend_code": "Reenviar codigo",
+"code": "Código",
+"new_pass": "Nueva contraseña"
 }
