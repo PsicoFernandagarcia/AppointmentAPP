@@ -119,7 +119,7 @@ export class NewAppointmentComponent implements OnInit {
     this.availabilityService.getAvailabilities(this.hosts[0].id, dateFrom, this.lastDayInMonth, true).subscribe(res => {
       res = res.filter(r => r.dateOfAvailability >= new Date());
       this.hasAvailabilities = res.length > 0;
-      for (let i = 1 ?? 1; i <= this.daysInMonth; i++) {
+      for (let i = 1; i <= this.daysInMonth; i++) {
         this.selectedMonthAvailabilities[i - 1] = [];
         const availabilities = res.filter(r => r.dateOfAvailability.getDate() === i);
         if (availabilities.length === 0) continue;
@@ -141,7 +141,7 @@ export class NewAppointmentComponent implements OnInit {
       return this.firstDayInMonth;
     }
     let tomorrowsDate =  new Date();
-     tomorrowsDate.setDate(tomorrowsDate.getDate()+1);
+    // tomorrowsDate.setDate(tomorrowsDate.getDate()+1);
      return tomorrowsDate;
   }
 
