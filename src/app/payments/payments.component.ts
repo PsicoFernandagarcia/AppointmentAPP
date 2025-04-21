@@ -3,7 +3,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { Payment } from '../_models/payment';
 import { User } from '../_models/user';
 import { LoadingService } from '../_services/loading.service';
-import { NotificationService } from '../_services/notification.service';
 import { PaymentService } from '../_services/payments.service';
 import { AddPaymentDialog } from './add-payment-dialog.component';
 import { PaymentDebtDialog } from './payment-debt-dialog.component';
@@ -24,6 +23,7 @@ export class PaymentsComponent implements OnInit {
   patientSelectedCombo:number = 0;
   patientSelectedToLoadPayment = 0;
   paymentsFromUserSelected : Array<Payment>=[];
+  showOnlyDebt:boolean = false;
 
   constructor(
             private paymentService :PaymentService
@@ -62,6 +62,7 @@ export class PaymentsComponent implements OnInit {
 
   onPatientChange(p:any){
     this.patientSelected = p;
+    this.showOnlyDebt = false;
     this.paymentsFiltered = JSON.parse(JSON.stringify(this.payments));
     if(!p || p === 0 ){
       this.sortPayments();
