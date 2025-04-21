@@ -7,61 +7,64 @@
         <div class="patient-filter" *ngIf=" isHost && patients.length >0">
             <app-user-filter [patients]="patients" (onPatientSelectedEvent)="onPatientChange($event)">
             </app-user-filter>
+            <mat-checkbox [(ngModel)]="showOnlyDebt" style="padding-top:18px" [color]="'primary'">{{"only_debt"|translate}}</mat-checkbox>
         </div>
         <div>
             <mat-accordion>
-                <mat-expansion-panel *ngFor="let p of paymentsFiltered ; let indexPayment = index;"
-                    (click)="loadPaymentsFromPatient(p)">
-                    <mat-expansion-panel-header class="expansion-pannel-payment">
-                        <mat-panel-description class="description-text">
-                            <span ><strong>{{p.patient.name}} {{p.patient.lastName}}</strong></span>
-                            <span class="last-payment">Ultimo pago realizado {{getIndexDate(indexPayment+1,p) | date:'MMMM' | translate}}
-                            {{p.paidAt | date:'dd yyyy'}}</span>
-                        </mat-panel-description>
-                        <mat-chip-listbox class="chip-list" style="flex-grow: 1; margin-right: 5px; white-space: nowrap;">
-                            <mat-chip class="chip-text" *ngIf="p.sessionsLeft > 0" [color]="'success'" highlighted 
-                                (click)="addPayment($event,p,false)">
-                                Tiene {{p.sessionsLeft}} {{p.sessionsLeft === 1 ? 'sesion' : 'sesiones'}}
-                            </mat-chip>
-                            <mat-chip class="chip-text" *ngIf="p.sessionsLeft === 0" [color]="'primary'" highlighted 
-                                (click)="addPayment($event,p,false)">No debe
-                            </mat-chip>
-                            <mat-chip class="chip-text" *ngIf="p.sessionsLeft < 0" [color]="'warn'" highlighted 
-                                (click)="sp($event)" [matMenuTriggerFor]="menu">
-                                Debe {{p.sessionsLeft * (-1)}} {{p.sessionsLeft === -1 ? 'sesion' :
-                                'sesiones'}}</mat-chip>
-                                <mat-menu #menu="matMenu">
-                                    <button mat-menu-item (click)="addPayment($event,p,false)">{{"new_payment"|translate}}</button>
-                                    <button mat-menu-item (click)="showPaymentsDebt($event, p.sessionsLeft,p.patientId)">{{"view_debt_payment"|translate}}</button>
-                                  </mat-menu>
-                        </mat-chip-listbox>
-                    </mat-expansion-panel-header>
-                    <mat-list role="list">
-                        <div *ngFor="let pu of paymentsFromUserSelected; let indexPu = index;">
-                            <mat-list-item role="listitem" class="list-payment-item">
-                                <div class="payment-information">
-                                    <div class="payment-detail">
-                                        <p>
-                                            {{getIndexDate(indexPu+1,pu) | date:'MMMM' | translate}} {{pu.paidAt | date:'dd yyyy'}}
-                                            pagó {{pu.appointmentsPaid?.length ?? 0}} sesiones Total: {{pu.amount|currency}}
-                                        </p>
+                <ng-container *ngFor="let p of paymentsFiltered ; let indexPayment = index;">
+                    <mat-expansion-panel  *ngIf="p.sessionsLeft < 0 || !showOnlyDebt"
+                        (click)="loadPaymentsFromPatient(p)">
+                        <mat-expansion-panel-header class="expansion-pannel-payment">
+                            <mat-panel-description class="description-text">
+                                <span ><strong>{{p.patient.name}} {{p.patient.lastName}}</strong></span>
+                                <span class="last-payment">Ultimo pago realizado {{getIndexDate(indexPayment+1,p) | date:'MMMM' | translate}}
+                                {{p.paidAt | date:'dd yyyy'}}</span>
+                            </mat-panel-description>
+                            <mat-chip-listbox class="chip-list" style="flex-grow: 1; margin-right: 5px; white-space: nowrap;">
+                                <mat-chip class="chip-text" *ngIf="p.sessionsLeft > 0" [color]="'success'" highlighted 
+                                    (click)="addPayment($event,p,false)">
+                                    Tiene {{p.sessionsLeft}} {{p.sessionsLeft === 1 ? 'sesion' : 'sesiones'}}
+                                </mat-chip>
+                                <mat-chip class="chip-text" *ngIf="p.sessionsLeft === 0" [color]="'primary'" highlighted 
+                                    (click)="addPayment($event,p,false)">No debe
+                                </mat-chip>
+                                <mat-chip class="chip-text" *ngIf="p.sessionsLeft < 0" [color]="'warn'" highlighted 
+                                    (click)="sp($event)" [matMenuTriggerFor]="menu">
+                                    Debe {{p.sessionsLeft * (-1)}} {{p.sessionsLeft === -1 ? 'sesion' :
+                                    'sesiones'}}</mat-chip>
+                                    <mat-menu #menu="matMenu">
+                                        <button mat-menu-item (click)="addPayment($event,p,false)">{{"new_payment"|translate}}</button>
+                                        <button mat-menu-item (click)="showPaymentsDebt($event, p.sessionsLeft,p.patientId)">{{"view_debt_payment"|translate}}</button>
+                                    </mat-menu>
+                            </mat-chip-listbox>
+                        </mat-expansion-panel-header>
+                        <mat-list role="list">
+                            <div *ngFor="let pu of paymentsFromUserSelected; let indexPu = index;">
+                                <mat-list-item role="listitem" class="list-payment-item">
+                                    <div class="payment-information">
+                                        <div class="payment-detail">
+                                            <p>
+                                                {{getIndexDate(indexPu+1,pu) | date:'MMMM' | translate}} {{pu.paidAt | date:'dd yyyy'}}
+                                                pagó {{pu.appointmentsPaid?.length ?? 0}} sesiones Total: {{pu.amount|currency}}
+                                            </p>
+                                        </div>
+                                        <div class="observations">
+                                            {{pu.observations}}
+                                        </div>
+                                        
                                     </div>
-                                    <div class="observations">
-                                        {{pu.observations}}
+                                    <div class="payment-actions">
+                                        <button mat-stroked-button color="primary" (click)="addPayment($event,pu,true)">
+                                            {{'edit'|translate}}
+                                        </button>
                                     </div>
-                                    
-                                </div>
-                                <div class="payment-actions">
-                                    <button mat-stroked-button color="primary" (click)="addPayment($event,pu,true)">
-                                        {{'edit'|translate}}
-                                    </button>
-                                </div>
-                            </mat-list-item>
-                            <mat-divider></mat-divider>
-                        </div>
-                    </mat-list>
+                                </mat-list-item>
+                                <mat-divider></mat-divider>
+                            </div>
+                        </mat-list>
 
-                </mat-expansion-panel>
+                    </mat-expansion-panel>
+                </ng-container>
             </mat-accordion>
         </div>
     </div>

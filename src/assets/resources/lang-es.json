@@ -72,5 +72,6 @@
 "send_code": "Enviar codigo",
 "resend_code": "Reenviar codigo",
 "code": "Código",
-"new_pass": "Nueva contraseña"
+"new_pass": "Nueva contraseña",
+"only_debt":"Solo con deudas"
 }
