@@ -35,13 +35,15 @@
     <section class="example-full-width">
       <h4>Seleccione los pagos realizados:</h4>
       <p *ngFor="let appointment of appointments | async">
-        <mat-checkbox (change)="onAppointmentSelected($event, appointment)" color="primary" [checked]="appointment.paymentId" >
-          {{appointment.dateFrom | date:'EEEE' |translate}}
-          {{appointment.dateFrom | date:'dd'}}
-          {{appointment.dateFrom | date:'MMMM' |translate}}
-          {{appointment.dateFrom | date:'YYYY' |translate}} -
-          {{appointment.dateFrom | date:'shortTime'}}
-        </mat-checkbox>
+        @if (appointment.status != 'CANCELED') {
+          <mat-checkbox (change)="onAppointmentSelected($event, appointment)" color="primary" [checked]="appointment.paymentId" >
+            {{appointment.dateFrom | date:'EEEE' |translate}}
+            {{appointment.dateFrom | date:'dd'}}
+            {{appointment.dateFrom | date:'MMMM' |translate}}
+            {{appointment.dateFrom | date:'YYYY' |translate}} -
+            {{appointment.dateFrom | date:'shortTime'}}
+          </mat-checkbox>
+        }
       </p>
     </section>
   </div>
