@@ -36,15 +36,6 @@ export class PaymentDebtDialog {
         this.loadingService.hide();
       });
   }
-  loadAppointments2() {
-    this.loadingService.show();
-    this.appointmentService
-      .getLast( this.data.hostId, this.data.patientId, this.data.totalDebt)
-      .subscribe((app) => {
-        this.appointments = app;
-        this.loadingService.hide();
-      });
-  }
 
   onCancelClick(): void {
     this.dialogRef.close();
