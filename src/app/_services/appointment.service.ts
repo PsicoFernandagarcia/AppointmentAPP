@@ -51,7 +51,7 @@ export class AppointmentService {
           a.dateFrom = new Date(a.dateFrom),
           a.dateTo = new Date(a.dateTo)
         })
-        return response;
+        return response.filter(i => i.status !== "CANCELED");
       })
     );
   }
