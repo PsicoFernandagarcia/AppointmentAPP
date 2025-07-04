@@ -30,7 +30,7 @@ export class PaymentDebtDialog {
   loadAppointments() {
     this.loadingService.show();
     this.appointmentService
-      .getLast( this.data.hostId, this.data.patientId, this.data.totalDebt)
+      .getUnpaidFromPatient(this.data.patientId)
       .subscribe((app) => {
         this.appointments = app;
         this.loadingService.hide();
