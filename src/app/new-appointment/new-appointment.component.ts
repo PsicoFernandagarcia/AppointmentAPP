@@ -44,6 +44,7 @@ export class NewAppointmentComponent implements OnInit {
     , private userService: UserService
   ) {
     this.nextMonthDate = new Date(this.today.getFullYear(),this.today.getMonth()+1);
+    this.showHostIsOffMessage();
    }
 
   async ngOnInit() {
@@ -62,6 +63,14 @@ export class NewAppointmentComponent implements OnInit {
         if(!hasAnyPreviousAppointment)
           this.notificationService.alert("Recuerde contactar a la psicóloga previo a la obtención de su primera cita","Atención");
     })
+  }
+
+  showHostIsOffMessage(){
+    const showTill = new Date("2025/08/31");
+    const today = new Date();
+    if(today<showTill){
+          this.notificationService.alert("Por motivos personales no podré abrir el consultorio esta semana. Se reanudara la actividad habitual el domingo 31. Cualquier consulta escribir al whatsapp. Muchas gracias y discrulpe las molestias","Importante");
+    }
   }
 
   shouldDrawerBeOppened(): boolean {
