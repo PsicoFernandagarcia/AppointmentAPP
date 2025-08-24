@@ -23,7 +23,7 @@ export class PaymentsComponent implements OnInit {
   patientSelectedCombo:number = 0;
   patientSelectedToLoadPayment = 0;
   paymentsFromUserSelected : Array<Payment>=[];
-  showOnlyDebt:boolean = false;
+  showOnlyDebt!:boolean;
 
   constructor(
             private paymentService :PaymentService
@@ -62,7 +62,6 @@ export class PaymentsComponent implements OnInit {
 
   onPatientChange(p:any){
     this.patientSelected = p;
-    this.showOnlyDebt = false;
     this.paymentsFiltered = JSON.parse(JSON.stringify(this.payments));
     if(!p || p === 0 ){
       this.sortPayments();
