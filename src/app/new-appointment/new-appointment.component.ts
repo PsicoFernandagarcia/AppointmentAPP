@@ -69,7 +69,7 @@ export class NewAppointmentComponent implements OnInit {
     const showTill = new Date("2025/08/31");
     const today = new Date();
     if(today<showTill){
-          this.notificationService.alert("Por motivos personales no podré abrir el consultorio esta semana. Se reanudara la actividad habitual el domingo 31. Cualquier consulta escribir al whatsapp. Muchas gracias y discrulpe las molestias","Importante");
+          this.notificationService.alert("Por motivos personales no podré abrir el consultorio esta semana. Se reanudara la actividad habitual el domingo 31. Cualquier consulta escribir al whatsapp. Muchas gracias y disculpe las molestias","Importante");
     }
   }
 
