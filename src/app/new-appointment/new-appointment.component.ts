@@ -66,10 +66,10 @@ export class NewAppointmentComponent implements OnInit {
   }
 
   showHostIsOffMessage(){
-    const showTill = new Date("2025/08/31");
+    const showTill = new Date("2025/09/14");
     const today = new Date();
     if(today<showTill){
-          this.notificationService.alert("Por motivos personales no podré abrir el consultorio esta semana. Se reanudara la actividad habitual el domingo 31. Cualquier consulta escribir al whatsapp. Muchas gracias y disculpe las molestias","Importante");
+          this.notificationService.alert("Pacientes de Argentina: Conforme a lo estipulado por el colegio de psicólogos de la provincia de Córdoba, a partir de septiembre habrá una modificación en los honorarios. Por favor, comunicarse conmigo para consultarlos. Desde ya muchas gracias y disculpe las molestias","Importante (Argentina)");
     }
   }
 
