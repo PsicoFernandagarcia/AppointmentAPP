@@ -1,0 +1,102 @@
+<!-- ===================== Navbar ===================== -->
+<header>
+  <nav class="navbar navbar-expand-xl fixed-top text-white-persist text-center px-4" style="background-color: #00012b;">
+    <div class="container-fluid">
+      <a class="navbar-brand p-0 fs-navbar-brand fw-bold" href="https://psicofernandagarcia.com">
+        <img style="width: 100px; margin:0%;position:absolute; top:3px" alt="logo"
+          src="../../assets/images/logo-png.webp">
+      </a>
+      <button class="navbar-toggler text-white" type="button" data-toggle="collapse"
+        data-target="#navbarSupportedContent" aria-controls="navbarNavDropdown" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span>
+          <mat-icon>menu</mat-icon>
+        </span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-xl-auto ml-auto fs-nav-link primary-colorh" id="navbarNavDropdown">
+          <li class="nav-item">
+            <a class="nav-link px-3 hover" [ngClass]="selected === 1 ? 'active': ''" (click)="selected = 1"
+              href="#">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link px-3 hover" [ngClass]="selected === 2 ? 'active': ''" (click)="selected = 2"
+              href="#about">Sobre mi</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link px-3 hover" [ngClass]="selected === 3 ? 'active': ''" (click)="selected = 7"
+              href="#team">Deportes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link px-3 hover" [ngClass]="selected === 4 ? 'active': ''" (click)="selected = 7"
+              href="https://psicofernandagarcia.com/courses">Cursos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link px-3 hover" [ngClass]="selected === 5 ? 'active': ''" (click)="selected = 8"
+              href="#blogs">Publicaciones</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link px-3 hover" [ngClass]="selected === 10 ? 'active': ''" (click)="selected = 10"
+              href="#contact">Contacto</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+<!-- ===================== Navbar End ===================== -->
+<!-- ===================== Courses Page ===================== -->
+<section class="section-padding courses bg-white-e" id="courses">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center">
+        <div class="heading heading-margin">
+          <div class="heading-absolute text-white-c sh-above"><span>Cursos</span></div>
+          <h1 class="sh-above2 position-relative">
+            <span class="heading-border primary-color-border secondary-color">Cursos</span> Disponibles
+          </h1>
+        </div>
+        <p class="text-black-5 para-margin">
+          Aquí puedes ver los cursos disponibles y los próximos lanzamientos. ¡Inscríbete o consulta más información!
+        </p>
+      </div>
+    </div>
+    <!-- Cursos Disponibles -->
+    <div class="row">
+      <div class="mat-card" *ngFor="let course of courses">
+        <div class="card-image-container">
+          <img alt={{course.alt}} class="mat-card-image" src={{course.image}} />
+          <mat-chip class="mat-chip" color="primary" highlighted *ngIf="today < course.endDate">PRÓXIMAMENTE</mat-chip>
+          <mat-chip class="mat-chip" *ngIf="today >= course.endDate">FINALIZADO</mat-chip>
+        </div>
+        <div class="mat-card-content">
+          <h2 class="mat-card-title">{{course.title}}</h2>
+          <p>
+            {{course.description}}
+          </p>
+          <div class="info-item" style="margin-top: 10px;">
+            <span class="material-icons mat-icon">calendar_today</span>
+            <span class="info-text">{{course.date}}</span>
+          </div>
+          <div class="info-item info-item-last">
+            <span class="material-icons mat-icon">schedule</span>
+            <span class="info-text">Duración: {{course.duration}}</span>
+          </div>
+          <div class="card-actions">
+            <a mat-raised-button color="primary" class="mat-raised-button" [href]="course.enrollUrl" target="_blank">
+              <span class="material-icons">assignment_turned_in</span>
+              Pre-Inscribirse al Taller
+            </a>
+            <a mat-stroked-button class="mat-stroked-button" [href]="course.moreInfoUrl" target="_blank">
+              <span class="material-icons">info</span>
+              Ver Más
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="tech-info">
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ===================== Courses Page End ===================== -->

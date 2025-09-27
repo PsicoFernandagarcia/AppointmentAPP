@@ -1,518 +1,485 @@
-<div data-spy="scroll" data-target="#navbarSupportedContent" data-offset="0" style="height: 100%;"
-    cz-shortcut-listen="true">
-
-    <!-- Navbar Starts-->
-    <header>
-        <nav class="navbar navbar-expand-xl fixed-top text-white-persist text-center px-4">
-            <div class="container-fluid">
-                <a class="navbar-brand p-0 fs-navbar-brand fw-bold" href="https://psicofernandagarcia.com">
-                    <img style="width: 100px; margin:0%;position:absolute; top:3px" alt="logo"
-                        src="../../assets/images/logo-png.webp">
-                </a>
-                <button class="navbar-toggler text-white" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarNavDropdown" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="">
-                        <mat-icon>menu</mat-icon>
-                    </span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-xl-auto ml-auto fs-nav-link primary-colorh" id="navbarNavDropdown">
-                        <li class="nav-item">
-                            <a class="nav-link px-3 hover" [ngClass]="selected === 1 ? 'active': ''"
-                                (click)="selected = 1" href="#">Inicio </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link px-3 hover" [ngClass]="selected === 2 ? 'active': ''"
-                                (click)="selected = 2" href="#about">Sobre mi</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link px-3 hover" 
-                                [ngClass]="selected === 7 ? 'active': ''" 
-                                (click)="selected = 7"
-                                href="#team">Deportes</a>
-                        </li>
-                         <li class="nav-item">
-                            <a class="nav-link px-3 hover" 
-                                [ngClass]="selected === 8 ? 'active': ''"  
-                                (click)="selected = 8"
-                                href="#blogs">Publicaciones</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link px-3 hover" [ngClass]="selected === 10 ? 'active': ''"
-                                (click)="selected = 10" href="#contact">Contacto</a>
-                        </li>
-                    </ul>
-                </div><!-- end navbar-collapse -->
-
-            </div>
-        </nav>
-    </header>
-    <!-- Navbar End-->
-
-    <!-- Parallax Background Starts-->
-    <div class="parallax-bg" id="home">
-        <div class="meta vh-100 bg-overlay"
-            style="background: url(../../assets/images/slider-1.webp);background-size: cover;background-position: center;background-repeat: no-repeat;">
-            <div id="particles-js"><canvas class="particles-js-canvas-el" width="1252" height="1012"
-                    style="width: 100%; height: 100%;"></canvas></div>
-            <div class="container flex-centering text-center vh-100 ">
-                <div class="row sh-above">
-                    <div class="col-12">
-                        <div class="first-page-text text-white-persist">
-                            <div class="first-page-text-headings">
-                                <h1 class="fw-medium animated fadeInDownBig">Bienvenidos</h1>
-                                <h1 class="display-4 fw-semi-bold animated fadeInDownBig delay-1s">
-                                    Soy Fernanda Garcia
-                                </h1>
-
-                                <div class="custom-border sh-above">
-                                    <div class="line-border"></div>
-                                </div>
-
-                                <p class="dash line text-white-persist-e fw-regular animated fadeInDownBig delay-2s">
-                                    Psicóloga / Entrenadora Mental
-                                </p>
-
-                                <div class="custom-border sh-above">
-                                    <div class="line-border"></div>
-                                </div>
-
-                                <ul class="list-unstyled list-inline social text-white-persist primary-colorh">
-
-                                    <li class="list-inline-item">
-                                        <a href="https://psicofernandagarcia.com/main/new-appointment" mat-flat-button
-                                            class="btn on-bg-color bg-primary-color bg-primary-colorh fw-semi-bold br0 ml-2 ">RESERVAR
-                                            CITA</a>
-                                    </li>
-                                </ul>
-
-                            </div><!-- end first-page-text-headings -->
-                        </div><!-- end first-page-text -->
-                    </div>
-                </div>
-            </div>
-        </div><!-- end meta -->
-    </div><!-- end parallax-bg -->
-    <!-- Parallax Background Ends-->
-
-    <!-- About Start  -->
-    <section class="section-padding about bg-white" id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mx-auto flex-centering mb-5 mb-lg-0">
-                    <div class="img-styled">
-                        <div class="border-styled secondary-border">
-                            <img src="../../assets/images/slider-0.webp" alt="about-img" class="img-fluid">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-8 flex-centering">
-                    <div class="about-text">
-                        <div class="heading heading-margin">
-                            <div class="heading-absolute text-white-c sh-above"><span>Mi</span></div>
-                            <h1 class="sh-above2 position-relative"><span
-                                    class="heading-border secondary-color">Sobre</span> Mi</h1>
-                        </div>
-                        <h4 class="text-black-5 fw-semi-bold about-margin">Mi nombre es Fernanda García, pero puedes
-                            llamarme "Fer". </h4>
-                        <p class="text-black-5 about-margin"> Soy psicóloga y atleta. Desde hace algunos años me dedico
-                            al deporte, rendimiento y aprendizaje.
-
-                            <br>Si hablamos de formación, luego de obtener mi título de Licenciada en Psicología, hice
-                            dos Máster: uno en Psicología deportiva y coaching deportivo; y el otro en Investigación en
-                            Educación Física y Salud.
-                            <br>
-                            <br>Para algunos también soy conocida como "profe Fer" ya que soy profesora adscripta en la
-                            Cátedra de Problemas de aprendizaje de la Facultad de Psicología de la Universidad Nacional
-                            de Córdoba.
-                            Realmente me apasiona acompañar a quienes me eligen para mejorar su rendimiento y entrenar
-                            su mente para lograr sus objetivos ¡A por ello!
-
-
-                        </p>
-
-                        <div class="about-btns pt-1">
-                            <a href="https://www.instagram.com/psico.fernandagarcia/" target="_blank"
-                                class="btn on-bg-color bg-primary-color bg-primary-colorh fw-semi-bold br0">Ver
-                                Instagram</a>
-                        </div><!-- end about-btns -->
-                    </div><!-- end about-text -->
-                </div>
-            </div>
+<div data-spy="scroll" data-target="#navbarSupportedContent" data-offset="0" style="height: 100%;">
+  <!-- ===================== Navbar ===================== -->
+  <header>
+    <nav class="navbar navbar-expand-xl fixed-top text-white-persist text-center px-4">
+      <div class="container-fluid">
+        <a class="navbar-brand p-0 fs-navbar-brand fw-bold" href="https://psicofernandagarcia.com">
+          <img style="width: 100px; margin:0%;position:absolute; top:3px" alt="logo"
+            src="../../assets/images/logo-png.webp">
+        </a>
+        <button class="navbar-toggler text-white" type="button" data-toggle="collapse"
+          data-target="#navbarSupportedContent" aria-controls="navbarNavDropdown" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span>
+            <mat-icon>menu</mat-icon>
+          </span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-xl-auto ml-auto fs-nav-link primary-colorh" id="navbarNavDropdown">
+            <li class="nav-item">
+              <a class="nav-link px-3 hover" [ngClass]="selected === 1 ? 'active': ''"
+                (click)="selected = 1" href="#">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-3 hover" [ngClass]="selected === 2 ? 'active': ''"
+                (click)="selected = 2" href="#about">Sobre mi</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-3 hover" [ngClass]="selected === 7 ? 'active': ''"
+                (click)="selected = 7" href="#team">Deportes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-3 hover" [ngClass]="selected === 7 ? 'active': ''"
+                (click)="selected = 7" href="https://psicofernandagarcia.com/courses">Cursos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-3 hover" [ngClass]="selected === 8 ? 'active': ''"
+                (click)="selected = 8" href="#blogs">Publicaciones</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-3 hover" [ngClass]="selected === 10 ? 'active': ''"
+                (click)="selected = 10" href="#contact">Contacto</a>
+            </li>
+          </ul>
         </div>
-    </section>
-    <!-- About End  -->
+      </div>
+    </nav>
+  </header>
+  <!-- ===================== Navbar End ===================== -->
 
-    
-    <!-- team Starts  -->
-    <section class="section-padding team bg-white" id="team">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <div class="heading heading-margin">
-                        <div class="heading-absolute text-white-c sh-above"><span>Deportes</span></div>
-                        <h1 class="sh-above2 position-relative"><span
-                                class="heading-border primary-color-border secondary-color">Acompañando</span> Estos y
-                            Más Deportes</h1>
-                    </div>
-                    <p class="text-black-5 para-margin">Los deportistas que apuestan en mi para mejorar su rendimiento,
-                        se enfocan en algunos de los siguientes deportes
-                    </p>
+  <!-- ===================== Parallax Background ===================== -->
+  <div class="parallax-bg" id="home">
+    <div class="meta vh-100 bg-overlay"
+      style="background: url(../../assets/images/slider-1.webp);background-size: cover;background-position: center;background-repeat: no-repeat;">
+      <div id="particles-js"></div>
+      <div class="container flex-centering text-center vh-100">
+        <div class="row sh-above">
+          <div class="col-12">
+            <div class="first-page-text text-white-persist">
+              <div class="first-page-text-headings">
+                <h1 class="fw-medium animated fadeInDownBig">Bienvenidos</h1>
+                <h1 class="display-4 fw-semi-bold animated fadeInDownBig delay-1s">
+                  Soy Fernanda Garcia
+                </h1>
+                <div class="custom-border sh-above">
+                  <div class="line-border"></div>
                 </div>
+                <p class="dash line text-white-persist-e fw-regular animated fadeInDownBig delay-2s">
+                  Psicóloga / Entrenadora Mental
+                </p>
+                <div class="custom-border sh-above">
+                  <div class="line-border"></div>
+                </div>
+                <ul class="list-unstyled list-inline social text-white-persist primary-colorh">
+                  <li class="list-inline-item">
+                    <a href="https://psicofernandagarcia.com/main/new-appointment" mat-flat-button
+                      class="btn on-bg-color bg-primary-color bg-primary-colorh fw-semi-bold br0 ml-2">RESERVAR CITA</a>
+                  </li>
+                   <li class="list-inline-item">
+                    <a href="https://psicofernandagarcia.com/courses" mat-flat-button
+                      class="btn on-bg-color bg-primary-color bg-primary-colorh fw-semi-bold br0 ml-2">NUEVO TALLER</a>
+                  </li>
+                </ul>
+              </div>
             </div>
-            <div class="" id="">
-                <div class="">
-                    <div class=""
-                        style=" display: flex; flex-wrap: wrap; ">
-                        <div class="owl-item active" >
-                            <div class="item">
-                                <div class="team-box primary-border  primary-border-e primary-border-eh">
-                                    <img src="../../assets/images/pole.webp" alt="team-image" class="img-fluid">
-                                    <div class="team-text text-black-3">
-                                        <h4 class="text-uppercase">Pole Sport / Dance</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="owl-item active" >
-                            <div class="item">
-                                <div class="team-box primary-border  primary-border-e primary-border-eh">
-                                    <img src="../../assets/images/gim-ritmica.webp" alt="team-image" class="img-fluid">
-                                    <div class="team-text text-black-3">
-                                        <h4 class="text-uppercase">Gimnasia Ritmica</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="owl-item active">
-                            <div class="item">
-                                <div class="team-box primary-border  primary-border-e primary-border-eh">
-                                    <img src="../../assets/images/gim-artistica.webp" alt="team-image" class="img-fluid">
-                                    <div class="team-text text-black-3">
-                                        <h4 class="text-uppercase">Gimnasia Artistica</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                         <div class="owl-item active" >
-                            <div class="item">
-                                <div class="team-box primary-border  primary-border-e primary-border-eh">
-                                    <img src="../../assets/images/patin.webp" alt="team-image" class="img-fluid">
-                                    <div class="team-text text-black-3">
-                                        <h4 class="text-uppercase">Patinaje</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="owl-item active" >
-                            <div class="item">
-                                <div class="team-box primary-border  primary-border-e primary-border-eh">
-                                    <img src="../../assets/images/futbol.webp" alt="team-image" class="img-fluid">
-                                    <div class="team-text text-black-3">
-                                        <h4 class="text-uppercase">Fútbol</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="owl-item active" >
-                            <div class="item">
-                                <div class="team-box primary-border  primary-border-e primary-border-eh">
-                                    <img src="../../assets/images/baloncesto.webp" alt="team-image" class="img-fluid">
-                                    <div class="team-text text-black-3">
-                                        <h4 class="text-uppercase">Baloncesto</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="owl-item active" >
-                            <div class="item">
-                                <div class="team-box primary-border  primary-border-e primary-border-eh">
-                                    <img src="../../assets/images/golf.webp" alt="team-image" class="img-fluid">
-                                    <div class="team-text text-black-3">
-                                        <h4 class="text-uppercase">Golf</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="owl-item active" >
-                            <div class="item">
-                                <div class="team-box primary-border  primary-border-e primary-border-eh">
-                                    <img src="../../assets/images/oposiciones.webp" alt="team-image" class="img-fluid">
-                                    <div class="team-text text-black-3">
-                                        <h4 class="text-uppercase">Oposiciones</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="owl-item active" >
-                            <div class="item">
-                                <div class="team-box primary-border  primary-border-e primary-border-eh">
-                                    <img src="../../assets/images/crossfit.webp" alt="team-image" class="img-fluid">
-                                    <div class="team-text text-black-3">
-                                        <h4 class="text-uppercase">Crossfit</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="owl-controls clickable">
-                    <div class="owl-pagination">
-                        <div class="owl-page active"><span class=""></span></div>
-                        <div class="owl-page "><span class=""></span></div>
-                        <div class="owl-page "><span class=""></span></div>
-                        <div class="owl-page"><span class=""></span></div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-    </section>
-    <!-- team Ends  -->
+      </div>
+    </div>
+  </div>
+  <!-- ===================== Parallax Background End ===================== -->
 
-    <!-- Blogs Starts  -->
-    <section class="section-padding blogs bg-white-e" id="blogs">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <div class="heading heading-margin">
-                        <div class="heading-absolute text-white-c sh-above"><span>Publicaciones</span></div>
-                        <h1 class="sh-above2 position-relative"><span
-                                class="heading-border primary-color-border secondary-color">Publicaciones</span></h1>
-                    </div>
-                    <p class="text-black-5 para-margin">Estas son algunas publicaciones, articulos y temas de interes para deportistas, entrenadores y familias
-                    </p>
-                </div>
+  <!-- ===================== About ===================== -->
+  <section class="section-padding about bg-white" id="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mx-auto flex-centering mb-5 mb-lg-0">
+          <div class="img-styled">
+            <div class="border-styled secondary-border">
+              <img src="../../assets/images/slider-0.webp" alt="about-img" class="img-fluid">
             </div>
-            <div class="row">
-                <div class="col-md-6 col-lg mt-4 mt-md-0">
-                    <div class="blog-block">
-                        <img src="../../assets/images/blog1.webp" alt="blog-image" class="img-fluid">
-                        <div class="blog-text mt-3 primary-border-e primary-border-eh">
-
-                            <ul class="list-inline date text-black-5">
-                                <li class="list-inline-item right-border pl-0">
-                                    <p>Por: Claudia Torcomian, Maria Fernanda Garcia, et al</p>
-                                </li>
-                                <li class="list-inline-item right-border">
-                                    <p>Mar 2022</p>
-                                </li>
-                                <li class="list-inline-item right-border border-unset">
-                                    
-                                </li>
-                            </ul>
-                            <h6 class="my-3">Experiencia, aprendizaje y subjetividad. Cómo se aprende en diferentes escenarios</h6>
-                            <!-- <p class="text-black-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
-                                tenetur ratione quod.</p> -->
-                            <a href="https://www.researchgate.net/publication/360313133_Experiencia_aprendizaje_y_subjetividad_Como_se_aprende_en_diferentes_escenarios"
-                                target="_blank"
-                                class="btn bg-primary-color on-bg-color bg-primary-borderh br0 mt-4 px-3">Leer Más</a>
-                        </div><!-- end blog-text -->
-                    </div><!-- end blog-block -->
-                </div>
-                <div class="col-md-6 col-lg mt-4 mt-lg-0">
-                    <div class="blog-block">
-                        <img src="../../assets/images/blog3.webp" alt="blog-image" class="img-fluid">
-                        <div class="blog-text mt-3 primary-border-e primary-border-eh">
-
-                            <ul class="list-inline date text-black-5">
-                                <li class="list-inline-item right-border pl-0">
-                                    <p>Por: Claudia Torcomian, Maria Fernanda Garcia</p>
-                                </li>
-                                <li class="list-inline-item right-border">
-                                    <p>Mayo 2021</p>
-                                </li>
-                                <li class="list-inline-item right-border border-unset">
-                                    
-                                </li>
-                            </ul>
-                            <h6 class="my-3">La mirada a través del avatar</h6>
-                            <!-- <p class="text-black-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
-                                tenetur ratione quod.</p> -->
-                            <a href="https://www.researchgate.net/publication/360320658_La_mirada_a_traves_del_avatar_Fracturas_continuidades_y_creatividad_en_la_educacion_del_2020"
-                                target="_blank"
-                                class="btn bg-primary-color on-bg-color bg-primary-borderh br0 mt-4 px-3">Leer Más</a>
-                        </div><!-- end blog-text -->
-                    </div><!-- end blog-block -->
-                </div>
-                <div class="col-md-6 col-lg">
-                    <div class="blog-block">
-                        <img src="../../assets/images/blog2.webp" alt="blog-image" class="img-fluid">
-                        <div class="blog-text mt-3 primary-border-e primary-border-eh">
-
-                            <ul class="list-inline date text-black-5">
-                                <li class="list-inline-item right-border pl-0">
-                                    <p>Por: Maria Fernanda Garcia, Fabian Fariña</p>
-                                </li>
-                                <li class="list-inline-item right-border">
-                                    <p>Dic 2020</p>
-                                </li>
-                                <li class="list-inline-item right-border border-unset">
-                                   
-                                </li>
-                            </ul>
-                            <h6 class="my-3">Vínculos Y Aprendizajes. Análisis Institucional De LaPirámide Vincular De Un Colegio Secundario De Córdoba</h6>
-                            <!-- <p class="text-black-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem                                tenetur ratione quod.</p> -->
-                            <a href="https://www.researchgate.net/publication/351276847_Palabras_Claves_Institucion_Educativa_Vinculos_Convivencia_Aprendizajes_Piramide_Vincular_Informacion_de_Contacto_fabianfarinaunceduar_psicofernandagarciagmailcom"
-                                target="_blank"    
-                            class="btn bg-primary-color on-bg-color bg-primary-borderh br0 mt-4 px-3">Leer Más</a>
-                        </div><!-- end blog-text -->
-                    </div><!-- end blog-block -->
-                </div>
-                
-               
-            </div>
+          </div>
         </div>
-    </section>
-    <!-- Blogs Ends  -->
-
-    
-
-    <!-- Contact Starts  -->
-    <section class="section-padding contact bg-white" id="contact">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-11 mx-auto">
-                    <div class="contact-info mb-4 mb-md-0">
-                        <h3 class="heading-margin pb-1 text-center text-sm-left">Medios de contacto:</h3>
-                        <div class="row my-3 ml-0">
-                            <div class="col-sm-auto center-responsive">
-                                <div class="img-styled ml-0">
-                                    <div class="border-styled secondary-border">
-                                        <div class="bg-white-c style">
-                                            <div class="icon flex-centering">
-                                                <mat-icon> phone</mat-icon>
-                                            </div>
-                                        </div><!-- end bg-white-e -->
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col flex-centeringv text-black-7 center-responsive">
-                                <div class="text mb-2 ml-sm-3">
-                                    <a href="tel:+34603760557" style="color:#002D54;">
-                                        <h5 style=" text-decoration: underline;"><b>+34603760557</b></h5>
-                                    </a>
-                                </div><!-- end text -->
-                            </div>
-                        </div>
-                        <div class="row my-3 ml-0">
-                            <div class="col-sm-auto center-responsive">
-                                <div class="img-styled ml-0">
-                                    <div class="border-styled secondary-border">
-                                        <div class="bg-white-c style">
-                                            <div class="icon flex-centering">
-                                                <mat-icon> phone</mat-icon>
-                                            </div>
-                                        </div><!-- end bg-white-e -->
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col flex-centeringv text-black-7 center-responsive">
-                                <div class="text mb-2 ml-sm-3">
-                                    <a href="https://wa.me/+34603760557" target="_blank" style="color:#002D54;">
-                                        <h5 style=" text-decoration: underline;"><b>Whatsapp</b></h5>
-                                    </a>
-                                </div><!-- end text -->
-                            </div>
-                        </div>
-                        <div class="row my-3 ml-0">
-                            <div class="col-sm-auto center-responsive">
-                                <div class="img-styled ml-0">
-                                    <div class="border-styled secondary-border">
-                                        <div class="bg-white-c style">
-                                            <div class="icon flex-centering">
-                                                <mat-icon> email</mat-icon>
-                                            </div>
-                                        </div><!-- end bg-white-e -->
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col flex-centeringv text-black-7 center-responsive">
-                                <div class="text mb-2 ml-sm-3">
-                                    <a href="mailto: psico.fernandagarcia@gmail.com" style="color:#002D54;">
-                                        <h5 style=" text-decoration: underline;"><b>psico.fernandagarcia&#64;gmail.com</b>
-                                        </h5>
-                                    </a>
-                                </div><!-- end text -->
-                            </div>
-                        </div>
-
-                        <div class="row mt-3 ml-0">
-                            <div class="col-sm-auto center-responsive">
-                                <div class="img-styled ml-0">
-                                    <div class="border-styled secondary-border">
-                                        <div class="bg-white-c style">
-                                            <div class="icon flex-centering">
-                                                <mat-icon> contacts</mat-icon>
-                                            </div>
-                                        </div><!-- end bg-white-e -->
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col flex-centeringv text-black-7 center-responsive">
-                                <div class="text mb-2 ml-sm-3">
-                                    <a href="https://psicofernandagarcia.com/main/login" target="_blank"
-                                        style="color:#002D54;">
-                                        <h5 style=" text-decoration: underline;"><b>psicofernandagarcia.com</b></h5>
-                                    </a>
-                                </div><!-- end text -->
-                            </div>
-                        </div>
-                    </div><!-- end contact-info -->
-                </div>
-
-                <div class="col-lg-6 col-11 mx-auto mt-5 mt-lg-0 text-center text-sm-left">
-                    <div class="row ">
-                        <div class="col">
-                            <div class="heading heading-margin">
-                                <div class="heading-absolute text-white-c sh-above"><span>+Info</span></div>
-                                <h1 class="sh-above2 position-relative"><span
-                                        class="heading-border secondary-color">Contacta</span>me</h1>
-                            </div>
-                            <h3 class="text-black-5 text-capitalize about-margin freelance">Envíame tu consulta
-                            </h3>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="needs-validation" novalidate="">
-                                <div class="form-group">
-                                    <input type="text"
-                                        class="form-control mt-0 primary-border-e primary-border-eh bg-white-e"
-                                        id="exampleInputName1" placeholder="Nombre" [(ngModel)]="name" required="">
-                                </div><!-- end form-group -->
-                                <div class="form-group">
-                                    <input type="email"
-                                        class="form-control primary-border-e primary-border-eh bg-white-e"
-                                        id="exampleInputEmail1" placeholder="Email" [(ngModel)]="email" required="">
-                                </div><!-- end form-group -->
-                                <div class="form-group">
-                                    <textarea class="form-control primary-border-e primary-border-eh bg-white-e"
-                                        id="exampleFormControlTextarea1" rows="8" [(ngModel)]="body" placeholder="Mensaje"
-                                        required=""></textarea>
-                                </div><!-- end form-group -->
-                                <a  [href]="getEmailString()" target="_top"
-                                    class="btn btn-block bg-primary-color bg-primary-colorh on-bg-color">Enviar</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="col-lg-8 flex-centering">
+          <div class="about-text">
+            <div class="heading heading-margin">
+              <div class="heading-absolute text-white-c sh-above"><span>Mi</span></div>
+              <h1 class="sh-above2 position-relative">
+                <span class="heading-border secondary-color">Sobre</span> Mi
+              </h1>
             </div>
-        </div>
-    </section>
-    <!-- Contact Ends  -->
-
-    <!-- Footer Starts  -->
-    <footer class="py-5 bg-black">
-        <div class="container">
-            <div class="row">
-                <div class="col text-center text-white">
-                    <p class="text-capitalize lsp1">Copyright &#64; 2023 PsicoFer. Derechos reservados</p>
-                    <a class="nav-link px-3 hover" href="https://psicofernandagarcia.com/privacy-policies">Politicas de privacidad</a>
-                </div>
+            <h4 class="text-black-5 fw-semi-bold about-margin">
+              Mi nombre es Fernanda García, pero puedes llamarme "Fer".
+            </h4>
+            <p class="text-black-5 about-margin">
+              Soy psicóloga y atleta. Desde hace algunos años me dedico al deporte, rendimiento y aprendizaje.
+              <br>
+              Si hablamos de formación, luego de obtener mi título de Licenciada en Psicología, hice dos Máster: uno en Psicología deportiva y coaching deportivo; y el otro en Investigación en Educación Física y Salud.
+              <br><br>
+              Para algunos también soy conocida como "profe Fer" ya que soy profesora adscripta en la Cátedra de Problemas de aprendizaje de la Facultad de Psicología de la Universidad Nacional de Córdoba.
+              Realmente me apasiona acompañar a quienes me eligen para mejorar su rendimiento y entrenar su mente para lograr sus objetivos ¡A por ello!
+            </p>
+            <div class="about-btns pt-1">
+              <a href="https://www.instagram.com/psico.fernandagarcia/" target="_blank"
+                class="btn on-bg-color bg-primary-color bg-primary-colorh fw-semi-bold br0">Ver Instagram</a>
             </div>
+          </div>
         </div>
-    </footer>
-    <!-- Footer Ends  -->
+      </div>
+    </div>
+  </section>
+  <!-- ===================== About End ===================== -->
+
+  <!-- ===================== Team ===================== -->
+  <section class="section-padding team bg-white" id="team">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <div class="heading heading-margin">
+            <div class="heading-absolute text-white-c sh-above"><span>Deportes</span></div>
+            <h1 class="sh-above2 position-relative">
+              <span class="heading-border primary-color-border secondary-color">Acompañando</span> Estos y Más Deportes
+            </h1>
+          </div>
+          <p class="text-black-5 para-margin">
+            Los deportistas que apuestan en mi para mejorar su rendimiento, se enfocan en algunos de los siguientes deportes
+          </p>
+        </div>
+      </div>
+      <div style="display: flex; flex-wrap: wrap;">
+        <div class="owl-item active">
+          <div class="item">
+            <div class="team-box primary-border primary-border-e primary-border-eh">
+              <img src="../../assets/images/pole.webp" alt="Pole Sport / Dance" class="img-fluid">
+              <div class="team-text text-black-3">
+                <h4 class="text-uppercase">Pole Sport / Dance</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="owl-item active">
+          <div class="item">
+            <div class="team-box primary-border primary-border-e primary-border-eh">
+              <img src="../../assets/images/gim-ritmica.webp" alt="Gimnasia Ritmica" class="img-fluid">
+              <div class="team-text text-black-3">
+                <h4 class="text-uppercase">Gimnasia Ritmica</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="owl-item active">
+          <div class="item">
+            <div class="team-box primary-border primary-border-e primary-border-eh">
+              <img src="../../assets/images/gim-artistica.webp" alt="Gimnasia Artistica" class="img-fluid">
+              <div class="team-text text-black-3">
+                <h4 class="text-uppercase">Gimnasia Artistica</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="owl-item active">
+          <div class="item">
+            <div class="team-box primary-border primary-border-e primary-border-eh">
+              <img src="../../assets/images/patin.webp" alt="Patinaje" class="img-fluid">
+              <div class="team-text text-black-3">
+                <h4 class="text-uppercase">Patinaje</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="owl-item active">
+          <div class="item">
+            <div class="team-box primary-border primary-border-e primary-border-eh">
+              <img src="../../assets/images/futbol.webp" alt="Fútbol" class="img-fluid">
+              <div class="team-text text-black-3">
+                <h4 class="text-uppercase">Fútbol</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="owl-item active">
+          <div class="item">
+            <div class="team-box primary-border primary-border-e primary-border-eh">
+              <img src="../../assets/images/baloncesto.webp" alt="Baloncesto" class="img-fluid">
+              <div class="team-text text-black-3">
+                <h4 class="text-uppercase">Baloncesto</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="owl-item active">
+          <div class="item">
+            <div class="team-box primary-border primary-border-e primary-border-eh">
+              <img src="../../assets/images/golf.webp" alt="Golf" class="img-fluid">
+              <div class="team-text text-black-3">
+                <h4 class="text-uppercase">Golf</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="owl-item active">
+          <div class="item">
+            <div class="team-box primary-border primary-border-e primary-border-eh">
+              <img src="../../assets/images/oposiciones.webp" alt="Oposiciones" class="img-fluid">
+              <div class="team-text text-black-3">
+                <h4 class="text-uppercase">Oposiciones</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="owl-item active">
+          <div class="item">
+            <div class="team-box primary-border primary-border-e primary-border-eh">
+              <img src="../../assets/images/crossfit.webp" alt="Crossfit" class="img-fluid">
+              <div class="team-text text-black-3">
+                <h4 class="text-uppercase">Crossfit</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="owl-controls clickable">
+        <div class="owl-pagination">
+          <div class="owl-page active"><span></span></div>
+          <div class="owl-page"><span></span></div>
+          <div class="owl-page"><span></span></div>
+          <div class="owl-page"><span></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ===================== Team End ===================== -->
+
+  <!-- ===================== Blogs ===================== -->
+  <section class="section-padding blogs bg-white-e" id="blogs">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <div class="heading heading-margin">
+            <div class="heading-absolute text-white-c sh-above"><span>Publicaciones</span></div>
+            <h1 class="sh-above2 position-relative">
+              <span class="heading-border primary-color-border secondary-color">Publicaciones</span>
+            </h1>
+          </div>
+          <p class="text-black-5 para-margin">
+            Estas son algunas publicaciones, articulos y temas de interes para deportistas, entrenadores y familias
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <!-- Blog 1 -->
+        <div class="col-md-6 col-lg mt-4 mt-md-0">
+          <div class="blog-block">
+            <img src="../../assets/images/blog1.webp" alt="Experiencia, aprendizaje y subjetividad" class="img-fluid">
+            <div class="blog-text mt-3 primary-border-e primary-border-eh">
+              <ul class="list-inline date text-black-5">
+                <li class="list-inline-item right-border pl-0">
+                  <p>Por: Claudia Torcomian, Maria Fernanda Garcia, et al</p>
+                </li>
+                <li class="list-inline-item right-border">
+                  <p>Mar 2022</p>
+                </li>
+              </ul>
+              <h6 class="my-3">Experiencia, aprendizaje y subjetividad. Cómo se aprende en diferentes escenarios</h6>
+              <a href="https://www.researchgate.net/publication/360313133_Experiencia_aprendizaje_y_subjetividad_Como_se_aprende_en_diferentes_escenarios"
+                target="_blank"
+                class="btn bg-primary-color on-bg-color bg-primary-borderh br0 mt-4 px-3">Leer Más</a>
+            </div>
+          </div>
+        </div>
+        <!-- Blog 2 -->
+        <div class="col-md-6 col-lg mt-4 mt-lg-0">
+          <div class="blog-block">
+            <img src="../../assets/images/blog3.webp" alt="La mirada a través del avatar" class="img-fluid">
+            <div class="blog-text mt-3 primary-border-e primary-border-eh">
+              <ul class="list-inline date text-black-5">
+                <li class="list-inline-item right-border pl-0">
+                  <p>Por: Claudia Torcomian, Maria Fernanda Garcia</p>
+                </li>
+                <li class="list-inline-item right-border">
+                  <p>Mayo 2021</p>
+                </li>
+              </ul>
+              <h6 class="my-3">La mirada a través del avatar</h6>
+              <a href="https://www.researchgate.net/publication/360320658_La_mirada_a_traves_del_avatar_Fracturas_continuidades_y_creatividad_en_la_educacion_del_2020"
+                target="_blank"
+                class="btn bg-primary-color on-bg-color bg-primary-borderh br0 mt-4 px-3">Leer Más</a>
+            </div>
+          </div>
+        </div>
+        <!-- Blog 3 -->
+        <div class="col-md-6 col-lg mt-4 mt-lg-0">
+          <div class="blog-block">
+            <img src="../../assets/images/blog2.webp" alt="Vínculos Y Aprendizajes" class="img-fluid">
+            <div class="blog-text mt-3 primary-border-e primary-border-eh">
+              <ul class="list-inline date text-black-5">
+                <li class="list-inline-item right-border pl-0">
+                  <p>Por: Maria Fernanda Garcia, Fabian Fariña</p>
+                </li>
+                <li class="list-inline-item right-border">
+                  <p>Dic 2020</p>
+                </li>
+              </ul>
+              <h6 class="my-3">
+                Vínculos Y Aprendizajes. Análisis Institucional De LaPirámide Vincular De Un Colegio Secundario De Córdoba
+              </h6>
+              <a href="https://www.researchgate.net/publication/351276847_Palabras_Claves_Institucion_Educativa_Vinculos_Convivencia_Aprendizajes_Piramide_Vincular_Informacion_de_Contacto_fabianfarinaunceduar_psicofernandagarciagmailcom"
+                target="_blank"
+                class="btn bg-primary-color on-bg-color bg-primary-borderh br0 mt-4 px-3">Leer Más</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ===================== Blogs End ===================== -->
+
+  <!-- ===================== Contact ===================== -->
+  <section class="section-padding contact bg-white" id="contact">
+    <div class="container">
+      <div class="row">
+        <!-- Contact Info -->
+        <div class="col-lg-6 col-11 mx-auto">
+          <div class="contact-info mb-4 mb-md-0">
+            <h3 class="heading-margin pb-1 text-center text-sm-left">Medios de contacto:</h3>
+            <div class="row my-3 ml-0">
+              <div class="col-sm-auto center-responsive">
+                <div class="img-styled ml-0">
+                  <div class="border-styled secondary-border">
+                    <div class="bg-white-c style">
+                      <div class="icon flex-centering">
+                        <mat-icon>phone</mat-icon>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col flex-centeringv text-black-7 center-responsive">
+                <div class="text mb-2 ml-sm-3">
+                  <a href="tel:+34603760557" style="color:#002C54;">
+                    <h5 style="text-decoration: underline;"><b>+34603760557</b></h5>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="row my-3 ml-0">
+              <div class="col-sm-auto center-responsive">
+                <div class="img-styled ml-0">
+                  <div class="border-styled secondary-border">
+                    <div class="bg-white-c style">
+                      <div class="icon flex-centering">
+                        <mat-icon>phone</mat-icon>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col flex-centeringv text-black-7 center-responsive">
+                <div class="text mb-2 ml-sm-3">
+                  <a href="https://wa.me/+34603760557" target="_blank" style="color:#002C54;">
+                    <h5 style="text-decoration: underline;"><b>Whatsapp</b></h5>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="row my-3 ml-0">
+              <div class="col-sm-auto center-responsive">
+                <div class="img-styled ml-0">
+                  <div class="border-styled secondary-border">
+                    <div class="bg-white-c style">
+                      <div class="icon flex-centering">
+                        <mat-icon>email</mat-icon>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col flex-centeringv text-black-7 center-responsive">
+                <div class="text mb-2 ml-sm-3">
+                  <a href="mailto:psico.fernandagarcia@gmail.com" style="color:#002C54;">
+                    <h5 style="text-decoration: underline;"><b>psico.fernandagarcia&#64;gmail.com</b></h5>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-3 ml-0">
+              <div class="col-sm-auto center-responsive">
+                <div class="img-styled ml-0">
+                  <div class="border-styled secondary-border">
+                    <div class="bg-white-c style">
+                      <div class="icon flex-centering">
+                        <mat-icon>contacts</mat-icon>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col flex-centeringv text-black-7 center-responsive">
+                <div class="text mb-2 ml-sm-3">
+                  <a href="https://psicofernandagarcia.com/main/login" target="_blank" style="color:#002C54;">
+                    <h5 style="text-decoration: underline;"><b>psicofernandagarcia.com</b></h5>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Contact Form -->
+        <div class="col-lg-6 col-11 mx-auto mt-5 mt-lg-0 text-center text-sm-left">
+          <div class="row">
+            <div class="col">
+              <div class="heading heading-margin">
+                <div class="heading-absolute text-white-c sh-above"><span>+Info</span></div>
+                <h1 class="sh-above2 position-relative">
+                  <span class="heading-border secondary-color">Contacta</span>me
+                </h1>
+              </div>
+              <h3 class="text-black-5 text-capitalize about-margin freelance">Envíame tu consulta</h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="needs-validation" novalidate>
+                <div class="form-group">
+                  <input type="text"
+                    class="form-control mt-0 primary-border-e primary-border-eh bg-white-e"
+                    id="exampleInputName1" placeholder="Nombre" [(ngModel)]="name" required>
+                </div>
+                <div class="form-group">
+                  <input type="email"
+                    class="form-control primary-border-e primary-border-eh bg-white-e"
+                    id="exampleInputEmail1" placeholder="Email" [(ngModel)]="email" required>
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control primary-border-e primary-border-eh bg-white-e"
+                    id="exampleFormControlTextarea1" rows="8" [(ngModel)]="body" placeholder="Mensaje"
+                    required></textarea>
+                </div>
+                <a [href]="getEmailString()" target="_top"
+                  class="btn btn-block bg-primary-color bg-primary-colorh on-bg-color">Enviar</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ===================== Contact End ===================== -->
+
+  <!-- ===================== Footer ===================== -->
+  <footer class="py-5 bg-black">
+    <div class="container">
+      <div class="row">
+        <div class="col text-center text-white">
+          <p class="text-capitalize lsp1">
+            Copyright &#64; 2025 PsicoFer. Derechos reservados
+          </p>
+          <a class="nav-link px-3 hover" href="https://psicofernandagarcia.com/privacy-policies">
+            Politicas de privacidad
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- ===================== Footer End ===================== -->
 </div>

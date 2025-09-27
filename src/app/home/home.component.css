@@ -3,9 +3,18 @@
     width: 30%;
 }
 
+.blog-block{
+    width: 290px !important ;
+}
+
+
 @media only screen and (max-width: 700px)  {
     .owl-item{
         margin-top:10px;
         width: 50%;
+    }
+
+    .blog-block{
+        width: auto !important ;
     }
   }
