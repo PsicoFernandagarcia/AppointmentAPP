@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
        cc.cookieconsent?.initialise({
          palette: {
            popup: {
-             background: "#002D54"
+             background: "#002C54"
            },
            button: {
              background: "#FF533D",

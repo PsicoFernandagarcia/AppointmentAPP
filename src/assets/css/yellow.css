@@ -44,11 +44,11 @@ body {
 /* Accent Colors or Primary Colors For WebPage */
 
 .primary-color {
-    color: #002D54!important;
+    color: #002C54!important;
 }
 
 .primary-color a {
-    color: #002D54!important;
+    color: #002C54!important;
 }
 
 .primary-color .hover {
@@ -70,7 +70,7 @@ body {
 /* Background Colors */
 
 .bg-primary-color {
-    background-color: #002D54!important;
+    background-color: #002C54!important;
 }
 
 .bg-primary-colorh:hover {
@@ -100,7 +100,7 @@ body {
 }
 
 .bg-active {
-    background-color: #002D54 !important;
+    background-color: #002C54 !important;
 }
 
 /* Border Colors */
@@ -109,7 +109,7 @@ body {
 }
 
 .primary-border {
-    border-color: #002D54 !important;
+    border-color: #002C54 !important;
 }
 
 .primary-border-e {
@@ -237,7 +237,7 @@ nav.navbar.padding {
 ====================================================== */
 
 .resume .resume-details .resume-box {
-    border-right: 3px solid #002D54;
+    border-right: 3px solid #002C54;
 }
 
 .resume .nav-tabs .nav-link.active:hover {
@@ -245,15 +245,15 @@ nav.navbar.padding {
 }
 
 .resume .resume-details .resume-box:before {
-    background-color: #002D54;
+    background-color: #002C54;
 }
 
 .resume .resume-details .circle:before {
-    background-color: #002D54;
+    background-color: #002C54;
 }
 
 .resume .resume-details .circle:after {
-    background-color: #002D54;
+    background-color: #002C54;
 }
 
 /* ====================================================
@@ -261,8 +261,8 @@ nav.navbar.padding {
 ====================================================== */
 
 .line-skills-border {
-    background-image: -webkit-gradient(linear, left top, right top, color-stop(30%, transparent), color-stop(30%, #002D54));
-    background-image: linear-gradient(to right, transparent 30%, #002D54 30%);
+    background-image: -webkit-gradient(linear, left top, right top, color-stop(30%, transparent), color-stop(30%, #002C54));
+    background-image: linear-gradient(to right, transparent 30%, #002C54 30%);
 }
 
 /* ====================================================

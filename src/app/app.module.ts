@@ -34,6 +34,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatCardModule } from '@angular/material/card';
 
 const moment = _rollupMoment || _moment;
 moment.locale('es');
@@ -83,6 +84,7 @@ export function scrollFactory(overlay: Overlay): () => CloseScrollStrategy {
     MatSelectModule,
     MatDatepickerModule,
     MatCheckboxModule,
+    MatCardModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the application is stable
