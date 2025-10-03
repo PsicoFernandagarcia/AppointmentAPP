@@ -35,6 +35,7 @@ export class NewAppointmentComponent implements OnInit {
   userToAssignSelected: User = new User(0, '-', '');
   timezoneOffsetSelected: number = 0;
   hasAvailabilities:boolean = false;
+  nextSunday: Date = this.getNextSunday();
 
   constructor(
     private availabilityService: AvailabilityService
@@ -123,9 +124,14 @@ export class NewAppointmentComponent implements OnInit {
   }
 
   loadAvailabilities() {
+    if(this.checkIfTodayIsSundayBefore17UTC() && !this.isHost){
+       this.loadingService.hide();
+      return;
+        }
     this.loadingService.show();
     let dateFrom =  this.getDateToFilter();
-    this.availabilityService.getAvailabilities(this.hosts[0].id, dateFrom, this.lastDayInMonth, true).subscribe(res => {
+    const dateTo = this.isHost ? this.lastDayInMonth : this.nextSunday ;
+    this.availabilityService.getAvailabilities(this.hosts[0].id, dateFrom, dateTo, true).subscribe(res => {
       res = res.filter(r => r.dateOfAvailability >= new Date());
       this.hasAvailabilities = res.length > 0;
       for (let i = 1; i <= this.daysInMonth; i++) {
@@ -243,5 +249,22 @@ export class NewAppointmentComponent implements OnInit {
 
   onCountryChange(value: number) {
     this.timezoneOffsetSelected = value;
+  }
+
+  getNextSunday(): Date {
+    const today = new Date();
+    const dayOfWeek = today.getDay();
+    const daysUntilSunday = (7 - dayOfWeek) % 7 || 7;
+    const nextSunday = new Date(today);
+    nextSunday.setDate(today.getDate() + daysUntilSunday);
+    nextSunday.setHours(0, 0, 0, 0);
+    return nextSunday;
+  }
+
+  checkIfTodayIsSundayBefore17UTC(): boolean {
+    const now = new Date();
+    const isSunday = now.getUTCDay() === 0;
+    const isBefore17UTC = now.getUTCHours() < 18;
+    return isSunday && isBefore17UTC;
   }
 }
