@@ -67,10 +67,10 @@ export class NewAppointmentComponent implements OnInit {
   }
 
   showHostIsOffMessage(){
-    const showTill = new Date("2025/09/14");
+    const showTill = new Date("2026/07/01");
     const today = new Date();
     if(today<showTill){
-          this.notificationService.alert("Pacientes de Argentina: Conforme a lo estipulado por el colegio de psicólogos de la provincia de Córdoba, a partir de septiembre habrá una modificación en los honorarios. Por favor, comunicarse conmigo para consultarlos. Desde ya muchas gracias y disculpe las molestias","Importante (Argentina)");
+          this.notificationService.alert("¡Lea con atención! Cambios en los honorarios desde junio. Por favor, comuníquese con la profesional para consultarlos. Muchas gracias.");
     }
   }
 
