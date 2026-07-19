@@ -67,10 +67,10 @@ export class NewAppointmentComponent implements OnInit {
   }
 
   showHostIsOffMessage(){
-    const showTill = new Date("2026/07/01");
+    const showTill = new Date("2026/07/25");
     const today = new Date();
     if(today<showTill){
-          this.notificationService.alert("¡Lea con atención! Cambios en los honorarios desde junio. Por favor, comuníquese con la profesional para consultarlos. Muchas gracias.");
+          this.notificationService.alert("¡Lea con atención! Estimados pacientes, por motivos personales, esta semana deberán comunicarse con la profesional via Whatsapp para coordinar los horarios. Disculpen las molestias");
     }
   }
 
