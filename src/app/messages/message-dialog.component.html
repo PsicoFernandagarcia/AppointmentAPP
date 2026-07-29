@@ -1,0 +1,40 @@
+<h2 mat-dialog-title>{{ isEditMode ? 'Editar Mensaje' : 'Nuevo Mensaje' }}</h2>
+
+<mat-dialog-content class="dialog-content">
+  <form [formGroup]="form" class="form-container">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Título</mat-label>
+      <input matInput formControlName="title" placeholder="Ingrese título" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Contenido</mat-label>
+      <textarea matInput formControlName="content" rows="4" placeholder="Ingrese contenido" required></textarea>
+    </mat-form-field>
+
+    <div class="date-row">
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Fecha Desde</mat-label>
+        <input matInput [matDatepicker]="pickerFrom" formControlName="dateFrom" required>
+        <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+        <mat-datepicker #pickerFrom></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Fecha Hasta</mat-label>
+        <input matInput [matDatepicker]="pickerTo" formControlName="dateTo" required>
+        <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+        <mat-datepicker #pickerTo></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div class="checkbox-row">
+      <mat-checkbox formControlName="active" color="primary">Activo</mat-checkbox>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button mat-raised-button color="primary" [disabled]="form.invalid" (click)="onSave()">Guardar</button>
+</mat-dialog-actions>

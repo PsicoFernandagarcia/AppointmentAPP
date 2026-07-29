@@ -8,6 +8,7 @@ import { AvailabilityService } from '../_services/availability.service';
 import { LoadingService } from '../_services/loading.service';
 import { NotificationService } from '../_services/notification.service';
 import { UserService } from '../_services/users.service';
+import { MessagesService } from '../_services/messages.service';
 
 @Component({
   selector: 'app-new-appointment',
@@ -27,51 +28,52 @@ export class NewAppointmentComponent implements OnInit {
   minDate!: Date;
   maxDate!: Date;
   availabilitiesToRemove: Availability[] = [];
-  availabilitySelected: Availability = new Availability(-1, 0, new Date(), 0, false, 0 , '');
+  availabilitySelected: Availability = new Availability(-1, 0, new Date(), 0, false, 0, '');
   hosts: User[] = [];
   patients: User[] = [];
   isHost: boolean = false;
   disableSelectUser = new UntypedFormControl(false);
   userToAssignSelected: User = new User(0, '-', '');
   timezoneOffsetSelected: number = 0;
-  hasAvailabilities:boolean = false;
+  hasAvailabilities: boolean = false;
   nextSunday: Date = this.getNextSunday();
 
   constructor(
     private availabilityService: AvailabilityService
     , private appointmentService: AppointmentService
     , private notificationService: NotificationService
-    , private loadingService:LoadingService
+    , private loadingService: LoadingService
     , private userService: UserService
+    , private messagesService: MessagesService
   ) {
-    this.nextMonthDate = new Date(this.today.getFullYear(),this.today.getMonth()+1);
-    this.showHostIsOffMessage();
-   }
+    this.nextMonthDate = new Date(this.today.getFullYear(), this.today.getMonth() + 1);
+    this.showMessage();
+  }
 
   async ngOnInit() {
     this.isHost = localStorage.getItem('userRole') === "HOST";
     this.loadingService.show();
-    [this.hosts,this.patients] = await Promise.all([this.loadHosts(), this.loadPatients()]);
+    [this.hosts, this.patients] = await Promise.all([this.loadHosts(), this.loadPatients()]);
     this.checkIfUserHasAnyPreviousAppointment();
     this.loadDates();
   }
 
-  checkIfUserHasAnyPreviousAppointment(){
-    if(this.isHost) return;
+  checkIfUserHasAnyPreviousAppointment() {
+    if (this.isHost) return;
     const currentUser = JSON.parse(localStorage.getItem("currentUser") ?? '{}');
-    this.appointmentService.hasAnyPreviousAppointment(currentUser.id,this.hosts[0].id).subscribe(
-      hasAnyPreviousAppointment=>{
-        if(!hasAnyPreviousAppointment)
-          this.notificationService.alert("Recuerde contactar a la psicóloga previo a la obtención de su primera cita","Atención");
-    })
+    this.appointmentService.hasAnyPreviousAppointment(currentUser.id, this.hosts[0].id).subscribe(
+      hasAnyPreviousAppointment => {
+        if (!hasAnyPreviousAppointment)
+          this.notificationService.alert("Recuerde contactar a la psicóloga previo a la obtención de su primera cita", "Atención");
+      })
   }
 
-  showHostIsOffMessage(){
-    const showTill = new Date("2026/07/25");
-    const today = new Date();
-    if(today<showTill){
-          this.notificationService.alert("¡Lea con atención! Estimados pacientes, por motivos personales, esta semana deberán comunicarse con la profesional via Whatsapp para coordinar los horarios. Disculpen las molestias");
-    }
+  showMessage() {
+    this.messagesService.getMessages(false).subscribe(messages => {
+      if (messages.length > 0) {
+        this.notificationService.alert(messages[0].content, messages[0].title);
+      }
+    });
   }
 
   shouldDrawerBeOppened(): boolean {
@@ -93,7 +95,7 @@ export class NewAppointmentComponent implements OnInit {
     this.firstDayInMonth = new Date(year, month, 1);
     this.lastDayInMonth = new Date(year, month + 1, 1);
     this.loadDays();
-    
+
     this.loadAvailabilities();
   }
 
@@ -124,13 +126,13 @@ export class NewAppointmentComponent implements OnInit {
   }
 
   loadAvailabilities() {
-    if(this.checkIfTodayIsSundayBefore17UTC() && !this.isHost){
-       this.loadingService.hide();
+    if (this.checkIfTodayIsSundayBefore17UTC() && !this.isHost) {
+      this.loadingService.hide();
       return;
-        }
+    }
     this.loadingService.show();
-    let dateFrom =  this.getDateToFilter();
-    const dateTo = this.isHost ? this.lastDayInMonth : this.nextSunday ;
+    let dateFrom = this.getDateToFilter();
+    const dateTo = this.isHost ? this.lastDayInMonth : this.nextSunday;
     this.availabilityService.getAvailabilities(this.hosts[0].id, dateFrom, dateTo, true).subscribe(res => {
       res = res.filter(r => r.dateOfAvailability >= new Date());
       this.hasAvailabilities = res.length > 0;
@@ -139,10 +141,12 @@ export class NewAppointmentComponent implements OnInit {
         const availabilities = res.filter(r => r.dateOfAvailability.getDate() === i);
         if (availabilities.length === 0) continue;
         availabilities.forEach(a => {
-          this.selectedMonthAvailabilities[i - 1].push({
-            "hour": a.dateOfAvailability.getHours(),
-            "availability": a
-          });
+          if (this.selectedDay.getMonth() === a.dateOfAvailability.getMonth()) {
+            this.selectedMonthAvailabilities[i - 1].push({
+              "hour": a.dateOfAvailability.getHours(),
+              "availability": a
+            });
+          }
         })
       }
       this.loadingService.hide();
@@ -151,13 +155,12 @@ export class NewAppointmentComponent implements OnInit {
     })
   }
 
-  getDateToFilter():Date{
-    if(this.today.getMonth() !== this.selectedDay.getMonth() || this.isHost){
+  getDateToFilter(): Date {
+    if (this.today.getMonth() !== this.selectedDay.getMonth() || this.isHost) {
       return this.firstDayInMonth;
     }
-    let tomorrowsDate =  new Date();
-    // tomorrowsDate.setDate(tomorrowsDate.getDate()+1);
-     return tomorrowsDate;
+    let tomorrowsDate = new Date();
+    return tomorrowsDate;
   }
 
   onDateChange($event: Date | null) {
@@ -165,8 +168,8 @@ export class NewAppointmentComponent implements OnInit {
     this.prevSelectedDay = this.selectedDay;
     this.loadDates();
   }
-  
-  changeDate(newDate:Date){
+
+  changeDate(newDate: Date) {
     this.prevSelectedDay = this.selectedDay;
     this.selectedDay = newDate;
     this.loadDates();
@@ -240,8 +243,8 @@ export class NewAppointmentComponent implements OnInit {
   }
 
   onUserChange(value: number) {
-    if(value === 0){
-      this.userToAssignSelected = new User(0,'','');
+    if (value === 0) {
+      this.userToAssignSelected = new User(0, '', '');
       return;
     }
     this.userToAssignSelected = this.patients.filter(x => x.id === value)[0];

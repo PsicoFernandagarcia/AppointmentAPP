@@ -59,6 +59,14 @@ const routes: Routes = [
         data: {
           role: 'ADMIN,HOST'
         }
+      },
+      {
+        path: 'messages', loadChildren: () => import('../messages/messages.module')
+          .then(m => m.MessagesModule),
+        canActivate: [AuthGuard],
+        data: {
+          role: 'ADMIN,HOST'
+        }
       }
     ]
   },
